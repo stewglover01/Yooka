@@ -1,2 +1,3 @@
-<h1>Users#tools</h1>
-<p>Find me in app/views/users/tools.html.erb</p>
+<h1><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %>'s Tools Dashboard</h1>
+
+<%= link_to 'Back', :back %>

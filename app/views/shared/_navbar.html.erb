@@ -10,17 +10,22 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+    
+    <% if current_user %>
       <li class="nav-item active">
-        <%= link_to "Home", users_home_path, class: "nav-link" %>
+        <%= link_to "Social", "/users/social", class: "nav-link" %>
       </li>
-      <li class="nav-item">
-        <%= link_to "Learn", "#", class: "nav-link" %>
+      <li class="nav-item active">
+        <%= link_to "Tools", "/users/tools", class: "nav-link" %>
       </li>
-      <li class="nav-item">
-        <%= link_to "Social", "#", class: "nav-link" %>
+      <li class="nav-item active">
+        <%= link_to "Support", "/users/support", class: "nav-link" %>
       </li>
-      <li class="nav-item">
-        <%= link_to "Tools", "#", class: "nav-link" %>
+      <li class="nav-item active">
+        <%= link_to "Home", "/users/home", class: "nav-link" %>
+      </li>
+    <% end %>
+   
       </li>
     </ul>
   </div>
