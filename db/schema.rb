@@ -10,6 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
+ActiveRecord::Schema.define(version: 2020_08_25_154548) do
+
 ActiveRecord::Schema.define(version: 2020_08_25_161439) do
 
 ActiveRecord::Schema.define(version: 2020_08_25_160031) do
@@ -83,10 +86,31 @@ ActiveRecord::Schema.define(version: 2020_08_25_160031) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+
+  create_table "questions", force: :cascade do |t|
+    t.string "question"
+    t.string "correct_answer"
+    t.string "possible_answers"
+    t.bigint "activity_id"
+    t.bigint "habit_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["activity_id"], name: "index_questions_on_activity_id"
+    t.index ["habit_id"], name: "index_questions_on_habit_id"
+  end
+
+  create_table "responses", force: :cascade do |t|
+    t.bigint "question_id", null: false
+    t.string "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["question_id"], name: "index_responses_on_question_id"
+
   create_table "moods", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+
   end
 
   create_table "users", force: :cascade do |t|
@@ -130,5 +154,8 @@ ActiveRecord::Schema.define(version: 2020_08_25_160031) do
   add_foreign_key "journey_lessons", "journeys"
   add_foreign_key "journey_lessons", "lessons"
   add_foreign_key "journeys", "users"
+  add_foreign_key "questions", "activities"
+  add_foreign_key "questions", "habits"
+  add_foreign_key "responses", "questions"
   add_foreign_key "videos", "lessons"
 end
