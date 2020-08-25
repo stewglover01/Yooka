@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'moods/checkin'
+  get 'moods/checkin2'
   get 'lessons/show'
 
   get 'journeys/show'

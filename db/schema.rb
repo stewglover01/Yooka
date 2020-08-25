@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_25_103832) do
+ActiveRecord::Schema.define(version: 2020_08_25_161439) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "daily_moods", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "mood_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["mood_id"], name: "index_daily_moods_on_mood_id"
+    t.index ["user_id"], name: "index_daily_moods_on_user_id"
+  end
 
   create_table "journey_lessons", force: :cascade do |t|
     t.bigint "lesson_id", null: false
@@ -44,6 +53,12 @@ ActiveRecord::Schema.define(version: 2020_08_25_103832) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "moods", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -64,6 +79,8 @@ ActiveRecord::Schema.define(version: 2020_08_25_103832) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "daily_moods", "moods"
+  add_foreign_key "daily_moods", "users"
   add_foreign_key "journey_lessons", "journeys"
   add_foreign_key "journey_lessons", "lessons"
   add_foreign_key "journeys", "users"
