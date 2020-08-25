@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'moods/checkin'
+  get 'moods/checkin2'
   get 'lessons/show'
 
+  get 'activities/show'
+  get 'videos/show'
+  get 'lessons/show'
   get 'journeys/show'
-
   get 'users/home'
   get 'users/show'
   get 'users/social'
@@ -20,7 +24,11 @@ Rails.application.routes.draw do
   get 'users/support', to: 'users#support'
 
   resources :journeys, only: [:show]
-  resources :lessons, only: [:show]
+  resources :lessons, only: [:show] do
+    resources :videos, only: [:show]
+    resources :activities, only: [:show]
+  end
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
