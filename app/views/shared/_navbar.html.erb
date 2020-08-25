@@ -10,12 +10,21 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+    
+    <% if current_user %>
       <li class="nav-item active">
-        <%= link_to "Home", "#", class: "nav-link" %>
+        <%= link_to "Social", "/users/social", class: "nav-link" %>
       </li>
-      <li class="nav-item">
-        <%= link_to "Messages", "#", class: "nav-link" %>
+      <li class="nav-item active">
+        <%= link_to "Tools", "/users/tools", class: "nav-link" %>
       </li>
+      <li class="nav-item active">
+        <%= link_to "Support", "/users/support", class: "nav-link" %>
+      </li>
+      <li class="nav-item active">
+        <%= link_to "Home", "/users/home", class: "nav-link" %>
+      </li>
+    <% end %>
       <li class="nav-item dropup">
         <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

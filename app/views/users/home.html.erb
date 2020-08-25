@@ -7,8 +7,10 @@
     <% end %>
     XP
 </h2>
+<% if @journeys %>
 <h2>Your current journey:</h2>
 <h2><%= @journeys.last.name %></h2>
+<% end %>
 
 
 <ul>
