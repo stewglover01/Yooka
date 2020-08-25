@@ -13,9 +13,9 @@ require "json"
 puts "Deleting all questions, activities, lessons, journeys and users"
 # Question.delete_all
 # Activity.delete_all
+JourneyLesson.delete_all
 Lesson.delete_all
 Journey.delete_all
-JourneyLesson.delete_all
 User.delete_all
 
 puts "Creating resilience index"
