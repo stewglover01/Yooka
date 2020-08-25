@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
+
 require "open-uri"
 require "json"
 
@@ -216,9 +217,4 @@ puts "creating 30 users"
   )
   journeylesson9.save!
 end
-
-
-
-
-
 
