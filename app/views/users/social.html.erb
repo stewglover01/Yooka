@@ -1,2 +1,15 @@
-<h1>Users#social</h1>
-<p>Find me in app/views/users/social.html.erb</p>
+<h1><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %>'s Social Dashboard</h1>
+<h2>Challenge Leaderboard</h2>
+<table style="width: 50%" class="table table-dark">
+    <tr>
+        <th scope="col">User</th><th scope="col">XP</th>
+    </tr>
+        <% @leaderboard.each do |user| %>
+            <tr>
+                <td><%= user.first_name %></td>
+                <td><%= user.xp %></td>
+            </tr>
+        <% end %>
+</table>
+
+<%= link_to 'Back', :back %>

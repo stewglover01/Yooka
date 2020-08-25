@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+  get 'lessons/show'
+
+  get 'journeys/show'
+
   get 'users/home'
   get 'users/show'
   get 'users/social'

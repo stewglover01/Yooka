@@ -1,2 +1,3 @@
-<h1>Users#support</h1>
-<p>Find me in app/views/users/support.html.erb</p>
+<h1><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %>'s Support Page</h1>
+
+<%= link_to 'Back', :back %>
