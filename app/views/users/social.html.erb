@@ -1,8 +1,8 @@
 <h1><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %>'s Social Dashboard</h1>
 <h2>Challenge Leaderboard</h2>
-<table>
+<table style="width: 50%" class="table table-dark">
     <tr>
-        <th>User</th><th>XP</th>
+        <th scope="col">User</th><th scope="col">XP</th>
     </tr>
         <% @leaderboard.each do |user| %>
             <tr>
