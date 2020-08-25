@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_25_154545) do
+ActiveRecord::Schema.define(version: 2020_08_25_160031) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,16 @@ ActiveRecord::Schema.define(version: 2020_08_25_154545) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "journey_habits", force: :cascade do |t|
+    t.boolean "complete"
+    t.bigint "journey_id", null: false
+    t.bigint "habit_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["habit_id"], name: "index_journey_habits_on_habit_id"
+    t.index ["journey_id"], name: "index_journey_habits_on_journey_id"
   end
 
   create_table "journey_lessons", force: :cascade do |t|
@@ -95,6 +105,8 @@ ActiveRecord::Schema.define(version: 2020_08_25_154545) do
   end
 
   add_foreign_key "activities", "lessons"
+  add_foreign_key "journey_habits", "habits"
+  add_foreign_key "journey_habits", "journeys"
   add_foreign_key "journey_lessons", "journeys"
   add_foreign_key "journey_lessons", "lessons"
   add_foreign_key "journeys", "users"
