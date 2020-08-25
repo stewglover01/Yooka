@@ -5,8 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-moods = %w(happy joyful content silly sad angry scared worried confused surprised hurt embarrassed)
-moods.each do |mood|
-    puts "creating #{mood}"
-    Mood.create(name: mood)
-end
+
+# moods = %w(happy joyful content silly sad angry scared worried confused surprised hurt embarrassed)
+# moods.each do |mood|
+#     puts "creating #{mood}"
+#     Mood.create(name: mood)
+# end
