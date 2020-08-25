@@ -1,0 +1,9 @@
+<h1>How are you feeling today <%= current_user.first_name.capitalize %>?</h1>
+
+<ul>
+    <% @moods.each do |mood|%>
+        <%= link_to checkin2_path(mood:mood) do %>
+            <li><%= mood.name %></li>
+        <% end %>
+    <% end %>
+</ul>
