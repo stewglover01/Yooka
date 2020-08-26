@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   end
 
   def tools
+    @tools = Tool.all
   end
 
   def support
