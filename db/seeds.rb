@@ -17,8 +17,12 @@ require "open-uri"
 require "json"
 
 puts "Deleting all questions, activities, lessons, journeys and users"
-# Question.delete_all
-# Activity.delete_all
+DailyMood.delete_all
+Mood.delete_all
+Response.delete_all
+Question.delete_all
+Activity.delete_all
+Video.delete_all
 JourneyLesson.delete_all
 Lesson.delete_all
 Journey.delete_all
@@ -34,6 +38,27 @@ lesson1 = Lesson.new(
   time_to_complete: "10 mins",
 )
 lesson1.save!
+video1 = Video.new(
+  name: "Intro to resilience",
+  description: "An Introduction to resilience",
+  time_to_complete: "2 min",
+  xp: 15
+)
+video1.lesson = lesson1
+video1.save!
+activity1 = Activity.new(
+  name: "Resilience index",
+  description: "Learn how your habits and mindset are impacting your ability to bounce back  in tough times.",
+  xp: 50,
+  time_to_complete: "10 mins"
+)
+activity1.lesson = lesson1
+activity1.save!
+questions = ["How often did you feel tired out for no good reason?", "How often excited to tackle your school work?", "How often did you feel so nervous that nothing could calm you down?", "How often do you feel like you cant achieve your goals?", "How often do you feel like you its not your fault when you fail?", "How often do you feel like you have slept well?", "How often did you feel that you can cheer yourself up?", "How often did you feel your cool under-pressure", "How many hours sleep should you get a night?", "How many hours sleep  do you think you get a night?"]
+questions.each do |question|
+  question1 = Question.new(question: question)
+  question1.save!
+end
 
 puts "creating 5 sleep lessons"
 
@@ -45,6 +70,46 @@ lesson2 = Lesson.new(
   time_to_complete: "25 mins"
 )
 lesson2.save!
+video2 = Video.new(
+  name: "How sleep affects you",
+  description: "Video about the effects of sleep on happiness and resilience",
+  time_to_complete: "8 mins",
+  xp: 30
+)
+video2.lesson = lesson2
+video2.save!
+activity2 = Activity.new(
+  name: "Reflecting on your sleep",
+  description: "Reflect on how your sleep impacts your day",
+  xp: 15,
+  time_to_complete: "5 mins"
+)
+activity2.lesson = lesson2
+activity2.save!
+activity3 = Activity.new(
+  name: "Quiz",
+  description: "Do you remember what you just learnt?",
+  xp: 50,
+  time_to_complete: "10 mins"
+)
+activity3.lesson = lesson2
+activity3.save!
+questions2 = ["How much sleep a night does a 16 year old need?","Do teenagers need more sleep than adults?", "Select the impacts of great sleep that are true."]
+questions.each do |question|
+  question2 = Question.new(question: question)
+  question2.save!
+end
+activity4 = Activity.new(
+  name: "Quiz",
+  description: "Do you remember what you just learnt?",
+  xp: 50,
+  time_to_complete: "10 mins"
+)
+activity4.lesson = lesson2
+activity4.save!
+
+
+
 
 lesson3 = Lesson.new(
   name: "How to build a habit",
