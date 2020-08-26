@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
 require 'faker'
 
 require "open-uri"
@@ -528,6 +529,7 @@ counter = 0
       lesson_id: lesson9.id
   )
   journeylesson9.save!
+
     journeylesson10 = JourneyLesson.new(
       journey_id: journey.id,
       lesson_id: lesson10.id
@@ -545,3 +547,4 @@ counter = 0
   journeylesson12.save!
   counter += 1
 end
+
