@@ -32,25 +32,25 @@
 </nav> -->
 
 <nav class="nav">
-  <a href="/users/home" class="nav__link">
+  <%= link_to users_home_path, class: "nav__link" do %>
     <i class="material-icons nav__icon">home</i>
     <span class="nav__text">Home</span>
-  </a>
-  <a href="/journeys/show" class="nav__link nav__link--active">
+  <% end %>
+  <%= link_to journeys_show_path, class: "nav__link nav__link--active" do %>
     <i class="material-icons nav__icon">school</i>
     <span class="nav__text">Learn</span>
-  </a>
-  <a href="/users/social" class="nav__link">
+  <% end %>
+  <%= link_to users_social_path, class: "nav__link" do %>
     <i class="material-icons nav__icon">people</i>
     <span class="nav__text">Social</span>
-  </a>
-  <a href="/users/tools" class="nav__link">
+  <% end %>
+  <%= link_to users_tools_path, class: "nav__link" do %>
     <i class="material-icons nav__icon">build</i>
     <span class="nav__text">Tools</span>
-  </a>
- <!--  <a href="#" class="nav__link">
+  <% end %>
+  <%= link_to destroy_user_session_path, method: :delete, class: "nav__link" do %>
     <i class="material-icons nav__icon">clear</i>
     <span class="nav__text">Sign Out</span>
-  </a> -->
+  <% end %>
 </nav>
 

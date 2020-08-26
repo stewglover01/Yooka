@@ -1,11 +1,9 @@
 <div class="top-navbar-container">
-  <div class="back-item">
-    <i class="material-icons md-36 ml-2 mt-2">keyboard_backspace</i>
-  </div>
-  <div class="support-item">
-    <!-- <i class="material-icons md-36">face</i> -->
-    <p class="nav-item active">
-      <%= link_to "Log-out", destroy_user_session_path, method: :delete, class: "nav-link" %>
-    </p>
-  </div>
+  <%= link_to :back, class: "back-item" do %>
+  <i class="material-icons md-36 ml-2 mt-2">keyboard_backspace</i>
+  <% end %>
+
+  <%= link_to "/users/support", class: "support-item" do %>
+    <i class="material-icons md-36 mr-2 mt-2">support</i>
+  <% end %>
 </div>
