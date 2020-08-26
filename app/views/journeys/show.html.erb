@@ -1,20 +1,20 @@
 <h1><%= @journey.name.capitalize %></h1>
 <h2>Lessons for this journey</h2>
 
-<% @journey_lessons.each do |lesson| %>
-    <%= link_to lesson_path(lesson.lesson) do %>
-        <% if lesson.complete %>
+<% @journey_lessons.each do |journey_lesson| %>
+    <%= link_to lesson_path(journey_lesson.lesson) do %>
+        <% if journey_lesson.complete %>
             <div style="filter: contrast(60%) opacity(50%)">
         <% else %>
             <div>
         <% end %>
                 <div class="lesson-card">
-                    <img src="https://images.unsplash.com/photo-1579273166152-d725a4e2b755?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
+                    <%= image_tag journey_lesson.lesson.photo %>
                      <div class="lesson-card-infos">
-                        <h2><%= lesson.lesson.name %></h2>
-                        <p><%= lesson.lesson.description %></p>
+                        <h2><%= journey_lesson.lesson.name %></h2>
+                        <p><%= journey_lesson.lesson.description %></p>
                         <p>  
-                            <% unless lesson.complete %>
+                            <% unless journey_lesson.complete %>
                                 not
                             <% end %>
                                 completed

@@ -13,11 +13,10 @@
 # end
 
 require 'faker'
-
 require "open-uri"
 require "json"
 
-puts "Deleting all questions, activities, lessons, journeys and users"
+puts "Deleting everything!!!"
 DailyMood.delete_all
 Mood.delete_all
 Response.delete_all
@@ -33,11 +32,6 @@ BadgeUser.delete_all
 Badge.delete_all
 User.delete_all
 
-moods = %w(happy joyful content silly sad angry scared worried confused surprised hurt embarrassed)
-moods.each do |mood|
-    puts "creating #{mood} mood"
-    Mood.create(name: mood)
-end
 
 badges = ['hot streak', 'mentor', 'stress buster', 'mindfulness guru', 'sleep master', 'habit former']
 badges.each do|badge|
@@ -61,6 +55,9 @@ lesson1 = Lesson.new(
   author: "Martin Selligman",
   topic: "Resilience",
   time_to_complete: "10 mins",
+  photo: "mailbox.svg",
+  author_photo: "MartinSelligman.jpg",
+  author_description: "Commonly known as the founder of Positive Psychology, Martin Seligman is a leading authority in the fields of Positive Psychology, resilience, learned helplessness, depression, optimism and pessimism."
 )
 lesson1.save!
   video1 = Video.new(
@@ -93,7 +90,10 @@ lesson2 = Lesson.new(
   description:"Why should you care about how you sleep? Learn how sleep affects your daily life in this lesson.",
   author: "Matthew Walker",
   topic: "Sleep",
-  time_to_complete: "25 mins"
+  time_to_complete: "25 mins",
+  photo: "mailbox.svg",
+  author_photo: "MatthewWalker.jpg",
+  author_description: "Author of 'Why We Sleep'. Matthew is seen as the world expert on sleeps effects on the brain"
 )
 lesson2.save!
   video2 = Video.new(
@@ -163,7 +163,10 @@ lesson3 = Lesson.new(
   description:"Learn the science behind making habits stick.",
   author: "Charles Duhigg",
   topic: "Sleep",
-  time_to_complete: "25 mins"
+  time_to_complete: "25 mins",
+  photo: "mailbox.svg",
+  author_photo: "MatthewWalker.jpg",
+  author_description: "Author of 'Why We Sleep'. Matthew is seen as the world expert on sleeps effects on the brain"
 )
 lesson3.save!
 
@@ -214,7 +217,10 @@ lesson4 =Lesson.new(
   description:"Learn how science can help you sleep better.",
   author: "Matthew Walker",
   topic: "Sleep",
-  time_to_complete: "45 mins"
+  time_to_complete: "45 mins",
+  photo: "mailbox.svg",
+  author_photo: "MatthewWalker.jpg",
+  author_description: "Author of 'Why We Sleep'. Matthew is seen as the world expert on sleeps effects on the brain"
 )
 lesson4.save!
 
@@ -280,7 +286,10 @@ lesson5 =Lesson.new(
   description:"How your phone and laptop are sabotaging your sleep.",
   author: "Matthew Walker",
   topic: "Sleep",
-  time_to_complete: "20 mins"
+  time_to_complete: "20 mins",
+  photo: "mailbox.svg",
+  author_photo: "MatthewWalker.jpg",
+  author_description: "Author of 'Why We Sleep'. Matthew is seen as the world expert on sleeps effects on the brain"
 )
 lesson5.save!
 
@@ -346,7 +355,10 @@ lesson6 =Lesson.new(
   description:"Lets pull everything we've learnt together into 12 key tips.",
   author: "Matthew Walker",
   topic: "Sleep",
-  time_to_complete: "30 mins"
+  time_to_complete: "30 mins",
+  photo: "mailbox.svg",
+  author_photo: "MatthewWalker.jpg",
+  author_description: "Author of 'Why We Sleep'. Matthew is seen as the world expert on sleeps effects on the brain"
 )
 lesson6.save!
 
@@ -416,7 +428,10 @@ lesson7 =Lesson.new(
   description:"What does anxiety do to your body? Learn about the effects.",
   author: "Albert Bandura",
   topic: "Managing anxiety",
-  time_to_complete: "45 mins"
+  time_to_complete: "45 mins",
+  photo: "mailbox.svg",
+  author_description: "Albert is the world expert on managing anxiety. After suffering from crippling anxiety at school he went on to study at Harvard and winning an Olympic gold medal.",
+  author_photo: "AlbertBandura.jpg"
 )
 lesson7.save!
 
@@ -425,7 +440,10 @@ lesson8 =Lesson.new(
   description:"How to stop exam nerves.",
   author: "Albert Bandura",
   topic: "Managing anxiety",
-  time_to_complete: "20 mins"
+  time_to_complete: "20 mins",
+  photo: "mailbox.svg",
+  author_description: "Albert is the world expert on managing anxiety. After suffering from crippling anxiety at school he went on to study at Harvard and winning an Olympic gold medal.",
+  author_photo: "AlbertBandura.jpg"
 )
 lesson8.save!
 
@@ -434,7 +452,10 @@ lesson9 =Lesson.new(
   description:"What to do when your feeling anxious. Learn how the window of tolerance can help.",
   author: "Albert Bandura",
   topic: "Managing anxiety",
-  time_to_complete: "35 mins"
+  time_to_complete: "35 mins",
+  photo: "mailbox.svg",
+  author_description: "Albert is the world expert on managing anxiety. After suffering from crippling anxiety at school he went on to study at Harvard and winning an Olympic gold medal.",
+  author_photo: "AlbertBandura.jpg"
 )
 lesson9.save!
 
@@ -447,7 +468,10 @@ lesson10 =Lesson.new(
   description:"Failure is often a good thing. Learn why.",
   author: "Samantha Green",
   topic: "Dealing with failure",
-  time_to_complete: "15 mins"
+  time_to_complete: "15 mins",
+  photo: "mailbox.svg",
+  author_description: "Samantha is the CEO and recently launched the Beating Failure Partnership with Oxford University.",
+  author_photo: "SamanthaGreen.jpg"
 )
 lesson10.save!
 
@@ -456,7 +480,10 @@ lesson11 =Lesson.new(
   description:"Sometimes when you fall what matters is how you respond.",
   author: "Samantha Green",
   topic: "Dealing with failure",
-  time_to_complete: "25 mins"
+  time_to_complete: "25 mins",
+  photo: "mailbox.svg",
+  author_description: "Samantha is the CEO and recently launched the Beating Failure Partnership with Oxford University.",
+  author_photo: "SamanthaGreen.jpg"
 )
 lesson11.save!
 
@@ -465,7 +492,10 @@ lesson12 =Lesson.new(
   description:"Learn about the link between failure and resilience. How can you use failure to your advantage?",
   author: "Samantha Green",
   topic: "Dealing with failure",
-  time_to_complete: "35 mins"
+  time_to_complete: "35 mins",
+  photo: "mailbox.svg",
+  author_description: "Samantha is the CEO and recently launched the Beating Failure Partnership with Oxford University.",
+  author_photo: "SamanthaGreen.jpg"
 )
 lesson12.save!
 
