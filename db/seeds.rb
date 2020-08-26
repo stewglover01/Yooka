@@ -604,5 +604,9 @@ puts "creating tools"
 
 tools = ["Meditation", "Sleep Sounds", "CBT Therapy", "Noting", "Exam Planner", "Calm Counter", "Sleep Tracker", "Hydration monitor", "Yoga", "Stories" ]
 tools.each do |tool|
-  Tool.new(name: tool)
+  toolobject = Tool.new(
+    name: tool,
+    photo: "mailbox.svg"
+  )
+toolobject.save!
 end

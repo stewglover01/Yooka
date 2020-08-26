@@ -1,34 +1,16 @@
+
 <h1><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %>'s Tools Dashboard</h1>
 
 <% @tools.each do |tool| %>	
 
-            <div class="card-trip-index">
-                <% if chef.photos[0].present? %>
-                    <%=  cl_image_tag chef.photos[0].key %>
-                <% else %>
-                    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-                <% end %>
-                <div class="card-trip-infos">
-                    <div>
-                    <h2><%= link_to "#{chef.user.first_name} #{chef.user.last_name}", chef_path(chef) %></h2>
-                    <p> Cuisine |  <%= chef.cuisine %> <br>
-                        <% if chef.rating %>
-                            <% chef.rating.times do  %>
-                                <span>★</span>
-                            <% end %>
-                        <% end %>
-                    </p>	
-                    </div>
-                    <h2 class="card-trip-pricing">£ <%=chef.price%></h2>
-                    <% if chef.user.photo.attached? %>
-                        <%=  cl_image_tag chef.user.photo.key, :gravity=>"faces", :width=>42, :height=>42, :crop=>"fill", class: "card-trip-user avatar-bordered" %>
-                    <% else %>
-                        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-                    <% end %>
-                </div>
-            </div>
 
-        <% end %>	
+<div class="card-trip-index">
+    <%=  image_tag tool.photo %>
+    <div class="card-trip-infos">
+      <h2><%= link_to "#{tool.name}", tool_path(tool) %></h2>
+    </div>
+</div>
+<% end %>	
 
 
 <%= link_to 'Back', :back %>

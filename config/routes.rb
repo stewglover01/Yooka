@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get 'users/support', to: 'users#support'
 
   resources :journeys, only: [:show]
+  resources :tools, only: [:show]
   resources :lessons, only: [:show] do
     resources :videos, only: [:show]
     resources :activities, only: [:show]
