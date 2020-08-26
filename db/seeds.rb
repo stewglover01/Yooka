@@ -477,11 +477,6 @@ puts "We now have #{Lesson.count} lessons created"
 # end
 # counter1 = 0
 
-puts "creating 30 users"
-
-counter = 12
-30.times do
-
 puts "creating 4 users"
 first_names = ["Bill", "Lachlan", "Liam", "Stewart"]
 last_names = ["Bawden", "Oreo", "Barlow", "Glover"]
@@ -499,7 +494,7 @@ counter = 0
     email: emails[counter],
     password: "123456"
   )
-  counter += 12
+  counter += 1
 #   file1 = URI.open(headshots[counter1])
 #   counter1 += 1
 #   user.photo.attach(io: file1, filename: 'nes.png', content_type: 'image/png')
@@ -572,6 +567,4 @@ counter = 0
       lesson_id: lesson12.id
   )
   journeylesson12.save!
-  counter += 1
 end
-
