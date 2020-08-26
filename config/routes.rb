@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'responses/create'
   get 'moods/checkin'
   get 'moods/checkin2'
   get 'lessons/show'
@@ -29,6 +30,9 @@ Rails.application.routes.draw do
     resources :activities, only: [:show]
   end
 
+  resources :questions, only: [] do
+    resources :responses, only: [:create]
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
