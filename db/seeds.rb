@@ -501,11 +501,12 @@ lesson12.save!
 
 puts "We now have #{Lesson.count} lessons created"
 
-# api_call = Unsplash::Photo.search('headshot', page = 1, per_page = 30)
-# api_call.each do |photo|
-#   headshots << photo.urls.regular
-# end
-# counter1 = 0
+headshots = []
+api_call = Unsplash::Photo.search('headshot', page = 1, per_page = 30)
+api_call.each do |photo|
+  headshots << photo.urls.regular
+end
+counter1 = 0
 
 puts "creating 4 users"
 first_names = ["Bill", "Lachlan", "Liam", "Stewart"]
@@ -525,9 +526,10 @@ counter = 0
     password: "123456"
   )
   counter += 1
-#   file1 = URI.open(headshots[counter1])
-#   counter1 += 1
-#   user.photo.attach(io: file1, filename: 'nes.png', content_type: 'image/png')
+  file1 = URI.open(headshots[counter1])
+  counter1 += 1
+  user.photo.attach(io: file1, filename: 'nes.png', content_type: 'image/png')
+
   user.save!
   puts "saved #{user.first_name}"
   journey = Journey.new(
