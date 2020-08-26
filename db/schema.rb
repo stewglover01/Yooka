@@ -10,23 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2020_08_25_154548) do
-
 ActiveRecord::Schema.define(version: 2020_08_25_161439) do
-
-ActiveRecord::Schema.define(version: 2020_08_25_160031) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "daily_moods", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "mood_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["mood_id"], name: "index_daily_moods_on_mood_id"
-    t.index ["user_id"], name: "index_daily_moods_on_user_id"
 
   create_table "activities", force: :cascade do |t|
     t.string "name"
@@ -37,6 +24,15 @@ ActiveRecord::Schema.define(version: 2020_08_25_160031) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["lesson_id"], name: "index_activities_on_lesson_id"
+  end
+
+  create_table "daily_moods", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "mood_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["mood_id"], name: "index_daily_moods_on_mood_id"
+    t.index ["user_id"], name: "index_daily_moods_on_user_id"
   end
 
   create_table "habits", force: :cascade do |t|
@@ -86,6 +82,11 @@ ActiveRecord::Schema.define(version: 2020_08_25_160031) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "moods", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "questions", force: :cascade do |t|
     t.string "question"
@@ -105,12 +106,6 @@ ActiveRecord::Schema.define(version: 2020_08_25_160031) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["question_id"], name: "index_responses_on_question_id"
-
-  create_table "moods", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-
   end
 
   create_table "users", force: :cascade do |t|
@@ -133,10 +128,6 @@ ActiveRecord::Schema.define(version: 2020_08_25_160031) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-
-  add_foreign_key "daily_moods", "moods"
-  add_foreign_key "daily_moods", "users"
-
   create_table "videos", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -149,6 +140,8 @@ ActiveRecord::Schema.define(version: 2020_08_25_160031) do
   end
 
   add_foreign_key "activities", "lessons"
+  add_foreign_key "daily_moods", "moods"
+  add_foreign_key "daily_moods", "users"
   add_foreign_key "journey_habits", "habits"
   add_foreign_key "journey_habits", "journeys"
   add_foreign_key "journey_lessons", "journeys"

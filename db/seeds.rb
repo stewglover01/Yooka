@@ -11,6 +11,9 @@
 #     puts "creating #{mood}"
 #     Mood.create(name: mood)
 # end
+require 'faker'
+require "open-uri"
+require "json"
 
 moods = %w(happy joyful content silly sad angry scared worried confused surprised hurt embarrassed)
 moods.each do |mood|
@@ -18,14 +21,11 @@ moods.each do |mood|
     Mood.create(name: mood)
 end
 
-require 'faker'
-
-require "open-uri"
-require "json"
 
 puts "Deleting all questions, activities, lessons, journeys and users"
 # Question.delete_all
 # Activity.delete_all
+Video.delete_all
 JourneyLesson.delete_all
 Lesson.delete_all
 Journey.delete_all
@@ -164,7 +164,7 @@ puts "creating 30 users"
 30.times do
   user = User.new(
     first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,    
+    last_name: Faker::Name.last_name,
     year_level: 10,
     school_name: "Cherrybrook High School",
     school_class: "Year 10 C",
