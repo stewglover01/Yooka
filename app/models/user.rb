@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :journeys, dependent: :destroy
   validates :first_name, :last_name, presence: true
+  has_one_attached :photo
 end
