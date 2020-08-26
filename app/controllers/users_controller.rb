@@ -22,4 +22,8 @@ class UsersController < ApplicationController
 
   def support
   end
+
+private
+
+
 end

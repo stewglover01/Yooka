@@ -1,6 +1,6 @@
 <h1><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %>'s Tools Dashboard</h1>
 
-<% @tool.each do |chef| %>	
+<% @tools.each do |tool| %>	
 
             <div class="card-trip-index">
                 <% if chef.photos[0].present? %>
