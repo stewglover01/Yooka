@@ -1,5 +1,16 @@
 
 <div class="container">
   <h1><%= @activity.name %></h1>
+  <h4> <%= @activity.description %> </h4>
+
+
+ <% @activity.questions.each do |question| %>
+ <div class="form-group">
+    <label for="exampleFormControlTextarea1"> <%= question.question %></label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+
+ <% end %>
+ <button type="button" class="btn btn-primary btn-lg btn-block">Submit Answers</button>
 </div>
 
