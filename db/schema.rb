@@ -10,6 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 2020_08_26_111900) do
+
 ActiveRecord::Schema.define(version: 2020_08_25_161439) do
 
   # These are extensions that must be enabled in order to support this database
@@ -24,6 +26,22 @@ ActiveRecord::Schema.define(version: 2020_08_25_161439) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["lesson_id"], name: "index_activities_on_lesson_id"
+  end
+
+  create_table "badge_users", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "badge_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["badge_id"], name: "index_badge_users_on_badge_id"
+    t.index ["user_id"], name: "index_badge_users_on_user_id"
+  end
+
+  create_table "badges", force: :cascade do |t|
+    t.string "name"
+    t.string "image_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "daily_moods", force: :cascade do |t|
@@ -140,6 +158,8 @@ ActiveRecord::Schema.define(version: 2020_08_25_161439) do
   end
 
   add_foreign_key "activities", "lessons"
+  add_foreign_key "badge_users", "badges"
+  add_foreign_key "badge_users", "users"
   add_foreign_key "daily_moods", "moods"
   add_foreign_key "daily_moods", "users"
   add_foreign_key "journey_habits", "habits"

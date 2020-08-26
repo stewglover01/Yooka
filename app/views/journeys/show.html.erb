@@ -2,7 +2,7 @@
 <h2>Lessons for this journey</h2>
 
 <% @journey_lessons.each do |lesson| %>
-    <%= link_to lesson_path(lesson) do %>
+    <%= link_to lesson_path(lesson.lesson) do %>
         <% if lesson.complete %>
             <div style="filter: contrast(60%) opacity(50%)">
         <% else %>

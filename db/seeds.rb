@@ -6,6 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# moods = %w(happy joyful content silly sad angry scared worried confused surprised hurt embarrassed)
+# moods.each do |mood|
+#     puts "creating #{mood}"
+#     Mood.create(name: mood)
+# end
 
 require 'faker'
 
@@ -22,7 +27,23 @@ Video.delete_all
 JourneyLesson.delete_all
 Lesson.delete_all
 Journey.delete_all
+DailyMood.delete_all
+Mood.delete_all
+BadgeUser.delete_all
+Badge.delete_all
 User.delete_all
+
+moods = %w(happy joyful content silly sad angry scared worried confused surprised hurt embarrassed)
+moods.each do |mood|
+    puts "creating #{mood} mood"
+    Mood.create(name: mood)
+end
+
+badges = ['hot streak', 'mentor', 'stress buster', 'mindfulness guru', 'sleep master', 'habit former']
+badges.each do|badge|
+    puts "creating #{badge} badge"
+    Badge.create(name: badge, image_url: "/assets/images/badges/#{badge}.png")
+end
 
 puts "creating moods"
 
@@ -456,6 +477,11 @@ puts "We now have #{Lesson.count} lessons created"
 # end
 # counter1 = 0
 
+puts "creating 30 users"
+
+counter = 12
+30.times do
+
 puts "creating 4 users"
 first_names = ["Bill", "Lachlan", "Liam", "Stewart"]
 last_names = ["Bawden", "Oreo", "Barlow", "Glover"]
@@ -468,11 +494,12 @@ counter = 0
     year_level: 10,
     school_name: "Cherrybrook High School",
     school_class: "Year 10 C",
-    xp: 0,
+    xp: counter,
     teacher: false,
     email: emails[counter],
     password: "123456"
   )
+  counter += 12
 #   file1 = URI.open(headshots[counter1])
 #   counter1 += 1
 #   user.photo.attach(io: file1, filename: 'nes.png', content_type: 'image/png')
