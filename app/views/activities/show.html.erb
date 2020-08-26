@@ -3,14 +3,16 @@
   <h1><%= @activity.name %></h1>
   <h4> <%= @activity.description %> </h4>
 
+  <% if @unanswered_questions.empty? %>
+    <h3>You have answered all questions</h3>
+  <% else %>
+  <h1>hello</h1>
+    <%= simple_form_for [@unanswered_questions.first, @response] do |f| %>
+      <%= f.input :content %>
+      <%= f.button :submit %>
+    <% end %>
+  <% end %>
 
- <% @activity.questions.each do |question| %>
- <div class="form-group">
-    <label for="exampleFormControlTextarea1"> <%= question.question %></label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-  </div>
 
- <% end %>
- <button type="button" class="btn btn-primary btn-lg btn-block">Submit Answers</button>
-</div>
+ </div>
 
