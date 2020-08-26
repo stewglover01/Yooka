@@ -7,7 +7,7 @@
     <% end %>
     XP
 </h2>
-<% if @journeys %>
+<% if @journeys.length > 0 %>
 <h2>Your current journey:</h2>
 <%= link_to journey_path(@journeys.last) do %>
         <div class="lesson-card">
@@ -29,3 +29,4 @@
 <li><p><%= link_to "Tools Dashboard", "/users/tools" %></p></li>
 <li><p><%= link_to "Get Support", "/users/support" %></p></li>
 </ul>
+
