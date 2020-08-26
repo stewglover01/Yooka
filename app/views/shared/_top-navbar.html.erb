@@ -1,0 +1,11 @@
+<div class="top-navbar-container">
+  <div class="back-item">
+    <i class="material-icons md-36 ml-2 mt-2">keyboard_backspace</i>
+  </div>
+  <div class="support-item">
+    <!-- <i class="material-icons md-36">face</i> -->
+    <p class="nav-item active">
+      <%= link_to "Log-out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+    </p>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-<nav class="navbar fixed-bottom navbar-expand-sm navbar-light navbar-lewagon">
+<!-- <nav class="navbar fixed-bottom navbar-expand-sm navbar-light navbar-lewagon">
   <%= link_to users_home_path, class: "navbar-brand" do %>
     <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
   <% end %>
@@ -10,7 +10,7 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-    
+
     <% if current_user %>
       <li class="nav-item active">
         <%= link_to "Social", "/users/social", class: "nav-link" %>
@@ -25,8 +25,32 @@
         <%= link_to "Home", "/users/home", class: "nav-link" %>
       </li>
     <% end %>
-   
+
       </li>
     </ul>
   </div>
+</nav> -->
+
+<nav class="nav">
+  <a href="/users/home" class="nav__link">
+    <i class="material-icons nav__icon">home</i>
+    <span class="nav__text">Home</span>
+  </a>
+  <a href="/journeys/show" class="nav__link nav__link--active">
+    <i class="material-icons nav__icon">school</i>
+    <span class="nav__text">Learn</span>
+  </a>
+  <a href="/users/social" class="nav__link">
+    <i class="material-icons nav__icon">people</i>
+    <span class="nav__text">Social</span>
+  </a>
+  <a href="/users/tools" class="nav__link">
+    <i class="material-icons nav__icon">build</i>
+    <span class="nav__text">Tools</span>
+  </a>
+ <!--  <a href="#" class="nav__link">
+    <i class="material-icons nav__icon">clear</i>
+    <span class="nav__text">Sign Out</span>
+  </a> -->
 </nav>
+

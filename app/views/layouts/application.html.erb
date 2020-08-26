@@ -7,14 +7,16 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
   <body>
+    <%= render "shared/top-navbar" %>
     <div class="container extra-margin">
       <%= yield %>
     </div>
-      <%= render "shared/navbar" %>
+    <%= render "shared/navbar" %>
   </body>
 </html>
