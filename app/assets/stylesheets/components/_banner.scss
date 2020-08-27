@@ -1,5 +1,6 @@
 .banner-svg {
   width: 100vw;
+  position: relative
 
 }
 .banner {
@@ -8,4 +9,13 @@
   position: absolute;
   top: 0;
   z-index: -1;
+}
+
+.absolute-header {
+  position: absolute;
+  top: 67px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: white;
 }
