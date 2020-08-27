@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'responses/create'
   get 'moods/checkin'
   get 'moods/checkin2'
   get 'lessons/show'
@@ -24,11 +25,15 @@ Rails.application.routes.draw do
   get 'users/support', to: 'users#support'
 
   resources :journeys, only: [:show]
+  resources :tools, only: [:show]
   resources :lessons, only: [:show] do
     resources :videos, only: [:show]
     resources :activities, only: [:show]
   end
 
+  resources :questions, only: [] do
+    resources :responses, only: [:create]
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

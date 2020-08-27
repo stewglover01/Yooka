@@ -13,11 +13,10 @@
 # end
 
 require 'faker'
-
 require "open-uri"
 require "json"
 
-puts "Deleting all questions, activities, lessons, journeys and users"
+puts "Deleting everything!!!"
 DailyMood.delete_all
 Mood.delete_all
 Response.delete_all
@@ -33,11 +32,6 @@ BadgeUser.delete_all
 Badge.delete_all
 User.delete_all
 
-moods = %w(happy joyful content silly sad angry scared worried confused surprised hurt embarrassed)
-moods.each do |mood|
-    puts "creating #{mood} mood"
-    Mood.create(name: mood)
-end
 
 badges = ['hot streak', 'mentor', 'stress buster', 'mindfulness guru', 'sleep master', 'habit former']
 badges.each do|badge|
@@ -61,13 +55,17 @@ lesson1 = Lesson.new(
   author: "Martin Selligman",
   topic: "Resilience",
   time_to_complete: "10 mins",
+  photo: "mailbox.svg",
+  author_photo: "MartinSelligman.jpg",
+  author_description: "Commonly known as the founder of Positive Psychology, Martin Seligman is a leading authority in the fields of Positive Psychology, resilience, learned helplessness, depression, optimism and pessimism."
 )
 lesson1.save!
   video1 = Video.new(
     name: "Intro to resilience",
     description: "An Introduction to resilience",
     time_to_complete: "2 min",
-    xp: 15
+    xp: 15,
+    video: "Footboys.mp4"
   )
   video1.lesson = lesson1
   video1.save!
@@ -93,14 +91,18 @@ lesson2 = Lesson.new(
   description:"Why should you care about how you sleep? Learn how sleep affects your daily life in this lesson.",
   author: "Matthew Walker",
   topic: "Sleep",
-  time_to_complete: "25 mins"
+  time_to_complete: "25 mins",
+  photo: "mailbox.svg",
+  author_photo: "MatthewWalker.jpg",
+  author_description: "Author of 'Why We Sleep'. Matthew is seen as the world expert on sleeps effects on the brain"
 )
 lesson2.save!
   video2 = Video.new(
     name: "How sleep affects you",
     description: "Video about the effects of sleep on happiness and resilience",
     time_to_complete: "8 mins",
-    xp: 30
+    xp: 30,
+    video: "Footboys.mp4"
   )
   video2.lesson = lesson2
   video2.save!
@@ -163,7 +165,10 @@ lesson3 = Lesson.new(
   description:"Learn the science behind making habits stick.",
   author: "Charles Duhigg",
   topic: "Sleep",
-  time_to_complete: "25 mins"
+  time_to_complete: "25 mins",
+  photo: "mailbox.svg",
+  author_photo: "CharlesDuhigg.jpg",
+  author_description: "The author of The Power of habit. Charles knows what it takes to make a new habit stick!"
 )
 lesson3.save!
 
@@ -171,7 +176,8 @@ lesson3.save!
     name: "Why habits matter",
     description: Faker::Quote.yoda,
     time_to_complete: "2 min",
-    xp: 15
+    xp: 15,
+    video: "Footboys.mp4"
   )
   video3.lesson = lesson3
   video3.save!
@@ -214,7 +220,10 @@ lesson4 =Lesson.new(
   description:"Learn how science can help you sleep better.",
   author: "Matthew Walker",
   topic: "Sleep",
-  time_to_complete: "45 mins"
+  time_to_complete: "45 mins",
+  photo: "mailbox.svg",
+  author_photo: "MatthewWalker.jpg",
+  author_description: "Author of 'Why We Sleep'. Matthew is seen as the world expert on sleeps effects on the brain"
 )
 lesson4.save!
 
@@ -222,7 +231,8 @@ video4 = Video.new(
     name: "Learn",
     description: Faker::Quote.yoda,
     time_to_complete: "10 mins",
-    xp: 30
+    xp: 30,
+    video: "Footboys.mp4"
   )
   video4.lesson = lesson4
   video4.save!
@@ -280,7 +290,10 @@ lesson5 =Lesson.new(
   description:"How your phone and laptop are sabotaging your sleep.",
   author: "Matthew Walker",
   topic: "Sleep",
-  time_to_complete: "20 mins"
+  time_to_complete: "20 mins",
+  photo: "mailbox.svg",
+  author_photo: "MatthewWalker.jpg",
+  author_description: "Author of 'Why We Sleep'. Matthew is seen as the world expert on sleeps effects on the brain"
 )
 lesson5.save!
 
@@ -288,7 +301,8 @@ video5 = Video.new(
     name: "Learn",
     description: Faker::Quote.yoda,
     time_to_complete: "10 mins",
-    xp: 30
+    xp: 30,
+    video: "Footboys.mp4"
   )
   video5.lesson = lesson5
   video5.save!
@@ -346,7 +360,10 @@ lesson6 =Lesson.new(
   description:"Lets pull everything we've learnt together into 12 key tips.",
   author: "Matthew Walker",
   topic: "Sleep",
-  time_to_complete: "30 mins"
+  time_to_complete: "30 mins",
+  photo: "mailbox.svg",
+  author_photo: "MatthewWalker.jpg",
+  author_description: "Author of 'Why We Sleep'. Matthew is seen as the world expert on sleeps effects on the brain"
 )
 lesson6.save!
 
@@ -354,7 +371,8 @@ video6 = Video.new(
     name: "Learn",
     description: Faker::Quote.yoda,
     time_to_complete: "10 mins",
-    xp: 30
+    xp: 30,
+    video: "Footboys.mp4"
   )
   video6.lesson = lesson6
   video6.save!
@@ -416,7 +434,10 @@ lesson7 =Lesson.new(
   description:"What does anxiety do to your body? Learn about the effects.",
   author: "Albert Bandura",
   topic: "Managing anxiety",
-  time_to_complete: "45 mins"
+  time_to_complete: "45 mins",
+  photo: "mailbox.svg",
+  author_description: "Albert is the world expert on managing anxiety. After suffering from crippling anxiety at school he went on to study at Harvard and winning an Olympic gold medal.",
+  author_photo: "AlbertBandura.jpg"
 )
 lesson7.save!
 
@@ -425,7 +446,10 @@ lesson8 =Lesson.new(
   description:"How to stop exam nerves.",
   author: "Albert Bandura",
   topic: "Managing anxiety",
-  time_to_complete: "20 mins"
+  time_to_complete: "20 mins",
+  photo: "mailbox.svg",
+  author_description: "Albert is the world expert on managing anxiety. After suffering from crippling anxiety at school he went on to study at Harvard and winning an Olympic gold medal.",
+  author_photo: "AlbertBandura.jpg"
 )
 lesson8.save!
 
@@ -434,7 +458,10 @@ lesson9 =Lesson.new(
   description:"What to do when your feeling anxious. Learn how the window of tolerance can help.",
   author: "Albert Bandura",
   topic: "Managing anxiety",
-  time_to_complete: "35 mins"
+  time_to_complete: "35 mins",
+  photo: "mailbox.svg",
+  author_description: "Albert is the world expert on managing anxiety. After suffering from crippling anxiety at school he went on to study at Harvard and winning an Olympic gold medal.",
+  author_photo: "AlbertBandura.jpg"
 )
 lesson9.save!
 
@@ -447,7 +474,10 @@ lesson10 =Lesson.new(
   description:"Failure is often a good thing. Learn why.",
   author: "Samantha Green",
   topic: "Dealing with failure",
-  time_to_complete: "15 mins"
+  time_to_complete: "15 mins",
+  photo: "mailbox.svg",
+  author_description: "Samantha is the CEO and recently launched the Beating Failure Partnership with Oxford University.",
+  author_photo: "SamanthaGreen.jpg"
 )
 lesson10.save!
 
@@ -456,7 +486,10 @@ lesson11 =Lesson.new(
   description:"Sometimes when you fall what matters is how you respond.",
   author: "Samantha Green",
   topic: "Dealing with failure",
-  time_to_complete: "25 mins"
+  time_to_complete: "25 mins",
+  photo: "mailbox.svg",
+  author_description: "Samantha is the CEO and recently launched the Beating Failure Partnership with Oxford University.",
+  author_photo: "SamanthaGreen.jpg"
 )
 lesson11.save!
 
@@ -465,22 +498,21 @@ lesson12 =Lesson.new(
   description:"Learn about the link between failure and resilience. How can you use failure to your advantage?",
   author: "Samantha Green",
   topic: "Dealing with failure",
-  time_to_complete: "35 mins"
+  time_to_complete: "35 mins",
+  photo: "mailbox.svg",
+  author_description: "Samantha is the CEO and recently launched the Beating Failure Partnership with Oxford University.",
+  author_photo: "SamanthaGreen.jpg"
 )
 lesson12.save!
 
 puts "We now have #{Lesson.count} lessons created"
 
-# api_call = Unsplash::Photo.search('headshot', page = 1, per_page = 30)
-# api_call.each do |photo|
-#   headshots << photo.urls.regular
-# end
-# counter1 = 0
-
-puts "creating 30 users"
-
-counter = 12
-30.times do
+headshots = []
+api_call = Unsplash::Photo.search('headshot', page = 1, per_page = 30)
+api_call.each do |photo|
+  headshots << photo.urls.regular
+end
+counter1 = 0
 
 puts "creating 4 users"
 first_names = ["Bill", "Lachlan", "Liam", "Stewart"]
@@ -499,10 +531,11 @@ counter = 0
     email: emails[counter],
     password: "123456"
   )
-  counter += 12
-#   file1 = URI.open(headshots[counter1])
-#   counter1 += 1
-#   user.photo.attach(io: file1, filename: 'nes.png', content_type: 'image/png')
+  counter += 1
+  file1 = URI.open(headshots[counter1])
+  counter1 += 1
+  user.photo.attach(io: file1, filename: 'nes.png', content_type: 'image/png')
+
   user.save!
   puts "saved #{user.first_name}"
   journey = Journey.new(
@@ -572,6 +605,14 @@ counter = 0
       lesson_id: lesson12.id
   )
   journeylesson12.save!
-  counter += 1
 end
+puts "creating tools"
 
+tools = ["Meditation", "Sleep Sounds", "CBT Therapy", "Noting", "Exam Planner", "Calm Counter", "Sleep Tracker", "Hydration monitor", "Yoga", "Stories" ]
+tools.each do |tool|
+  toolobject = Tool.new(
+    name: tool,
+    photo: "mailbox.svg"
+  )
+toolobject.save!
+end

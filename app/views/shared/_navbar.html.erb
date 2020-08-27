@@ -1,32 +1,22 @@
-<nav class="navbar fixed-bottom navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to users_home_path, class: "navbar-brand" do %>
-    <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+<nav class="nav">
+  <%= link_to users_home_path, class: "nav__link" do %>
+    <i class="material-icons nav__icon">home</i>
+    <span class="nav__text">Home</span>
   <% end %>
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-    
-    <% if current_user %>
-      <li class="nav-item active">
-        <%= link_to "Social", "/users/social", class: "nav-link" %>
-      </li>
-      <li class="nav-item active">
-        <%= link_to "Tools", "/users/tools", class: "nav-link" %>
-      </li>
-      <li class="nav-item active">
-        <%= link_to "Support", "/users/support", class: "nav-link" %>
-      </li>
-      <li class="nav-item active">
-        <%= link_to "Home", "/users/home", class: "nav-link" %>
-      </li>
-    <% end %>
-   
-      </li>
-    </ul>
-  </div>
+  <%= link_to journeys_show_path, class: "nav__link nav__link--active" do %>
+    <i class="material-icons nav__icon">school</i>
+    <span class="nav__text">Learn</span>
+  <% end %>
+  <%= link_to users_social_path, class: "nav__link" do %>
+    <i class="material-icons nav__icon">people</i>
+    <span class="nav__text">Social</span>
+  <% end %>
+  <%= link_to users_tools_path, class: "nav__link" do %>
+    <i class="material-icons nav__icon">build</i>
+    <span class="nav__text">Tools</span>
+  <% end %>
+  <%= link_to destroy_user_session_path, method: :delete, class: "nav__link" do %>
+    <i class="material-icons nav__icon">clear</i>
+    <span class="nav__text">Sign Out</span>
+  <% end %>
 </nav>

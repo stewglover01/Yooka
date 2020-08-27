@@ -1,7 +1,10 @@
 <h1>Dashboard for <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></h1>
 
-<%# badges %>
 
+<%= cl_image_tag current_user.photo.key, :gravity=>"faces", :crop=>"fill", class: "avatar-bordered feature-avatar m-1", alt: "avatar-large" %>
+
+<%# badges %>
+  
 <% if  @user_badges %>
     <h2>Badges:</h2>
     <% @user_badges.each do |user_badge| %>
