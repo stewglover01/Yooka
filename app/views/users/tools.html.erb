@@ -1,3 +1,16 @@
+
 <h1><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %>'s Tools Dashboard</h1>
+
+<% @tools.each do |tool| %>	
+
+
+<div class="card-trip-index">
+    <%=  image_tag tool.photo %>
+    <div class="card-trip-infos">
+      <h2><%= link_to "#{tool.name}", tool_path(tool) %></h2>
+    </div>
+</div>
+<% end %>	
+
 
 <%= link_to 'Back', :back %>
