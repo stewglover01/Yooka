@@ -1,47 +1,10 @@
-<h1>Dashboard for <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></h1>
+
+<h1><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></h1>
+
 
 
 <%= cl_image_tag current_user.photo.key, :gravity=>"faces", :crop=>"fill", class: "avatar-bordered feature-avatar m-1", alt: "avatar-large" %>
 
-<%# badges %>
-
-<% if  @user_badges %>
-    <% if  @user_badges.length > 0 %>
-        <h2>Badges:</h2>
-        <div class="user-badges d-flex flex-wrap justify-content-start">
-            <% @user_badges.each do |user_badge| %>
-                <div class="d-flex align-items-center flex-column user-badge">
-                    <%= image_tag "badges/#{user_badge.badge.name.gsub(/\s+/, "")}.png", alt: user_badge.badge.name %>
-                    <p class="mb-auto"><%= user_badge.badge.name %></p>
-                </div>
-            <% end %>
-        </div>
-    <% else %>
-        <h3>You currently have no badges</h3>
-    <% end %>
-<% end %>
-
-<%# xp %>
-
-<h2>
-    <% if current_user.xp %>
-        <%= current_user.xp %>
-    <% else %>
-        0
-    <% end %>
-    XP
-</h2>
-
-
-<%# habits %>
-
-<% if @journey_habits.length > 0  %>
-    <h3>Your current habit is <%= @journey_habits.last.habit.name %> streak: <%= @streak %></h3>
-        <% @journey_habits.each do |journey_habit| %>
-            <p>You logged <%= journey_habit.habit.name %> on <%= journey_habit.created_at.strftime("%A %d %B %Y") %></p>
-        <% end %>
-
-<% end %>
 <%# journey %>
 
 <% if @journeys.length > 0 %>
@@ -56,13 +19,77 @@
     <% end %>
 <% end %>
 
+<%# badges %>
+
+<% if  @user_badges %>
 
 
 
+<% if  @user_badges.length > 0 %>
+    <h2>Badges:</h2>
+    <div class="user-badges d-flex flex-wrap justify-content-start">
+        <% @user_badges.each do |user_badge| %>
+            <div class="d-flex align-items-center flex-column user-badge">
+                <%= image_tag "badges/#{user_badge.badge.name.gsub(/\s+/, "")}.png", alt: user_badge.badge.name %>
+                <p class="mb-auto"><%= user_badge.badge.name %></p>
+            </div>
+        <% end %>
+    </div>
+<% else %>
+    <h3>You currently have no badges</h3>
 
-<ul>
-<li><p><%= link_to "Social Dashboard", "/users/social" %></p></li>
-<li><p><%= link_to "Tools Dashboard", "/users/tools" %></p></li>
-<li><p><%= link_to "Get Support", "/users/support" %></p></li>
-</ul>
+    <% if  @user_badges.length > 0 %>
+        <h2>Badges:</h2>
+        <div class="user-badges d-flex flex-wrap justify-content-start">
+            <% @user_badges.each do |user_badge| %>
+                <div class="d-flex align-items-center flex-column user-badge">
+                    <%= image_tag "badges/#{user_badge.badge.name.gsub(/\s+/, "")}.png", alt: user_badge.badge.name %>
+                    <p class="mb-auto"><%= user_badge.badge.name %></p>
+                </div>
+            <% end %>
+        </div>
+    <% else %>
+        <h3>You currently have no badges</h3>
+    <% end %>
+
+<% end %>
+<% end %>
+<%# xp %>
+
+<div class="d-flex xp-streak">
+    <div class="dashboard-element xp">
+        <h4><i class="fas fa-gem"></i> points: 
+            <% if current_user.xp %>
+                <%= current_user.xp %>
+            <% else %>
+                0  
+            <% end %>
+        </h4>
+    </div>
+    <div class="dashboard-element streak">
+        <h4><i class="fas fa-fire-alt"></i> <%= @streak %> day streak</h4>
+    </div>
+</div>
+
+<%= link_to "Log Sleep", journey_habits_create_path, class: "btn btn-main" %>
+
+<div class="dashboard-leaderboard dashboard-element">
+    <h4>Challenge Leaderboard</h4>
+    <table class="table">
+        <tr>
+            <th scope="col">User</th><th scope="col">Points</th>
+        </tr>
+            <% leaderboard_counter = 1 %>
+            <% @short_leaderboard.each do |user| %>
+                <tr>
+                    <td><%= leaderboard_counter %>. <%= user.first_name %></td>
+                    <td><%= user.xp %></td>
+                    <% leaderboard_counter += 1 %>
+                </tr>
+            <% end %>
+    </table>
+</div>
+
+
+
 

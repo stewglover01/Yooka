@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def home
+    @short_leaderboard = User.order('xp DESC').limit(4)
     @journeys = current_user.journeys
     @user_badges = BadgeUser.where(user: current_user)
     @journey_habits = JourneyHabit.where(journey: @journeys.last).order('created_at DESC')
@@ -26,7 +27,7 @@ class UsersController < ApplicationController
         counter += 1
     end
     @streak = counter
-    
+
   end
 
   def show

@@ -43,3 +43,17 @@
     width: 40px;
   }
 
+  .dashboard-element {
+    border: lightgray;
+    border-style: solid;
+    border-width: 0.5;
+    border-radius: 4px;
+    padding: 6px;
+    margin: 6px;
+    transition: all .5s ease;
+    max-width: 350px;
+  }
+
+  .dashboard-element:hover {
+    transform: translate3D(0, -1px, 0) scale(1.05);
+  }
