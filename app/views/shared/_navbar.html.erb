@@ -1,10 +1,10 @@
-<nav class="nav"> 
+<nav class="nav">
   <% if current_user %>
     <%= link_to users_home_path, class: "nav__link" do %>
       <i class="material-icons nav__icon">home</i>
       <span class="nav__text">Home</span>
     <% end %>
-    <%= link_to journeys_show_path, class: "nav__link nav__link--active" do %>
+    <%= link_to journeys_show_path, class: "nav__link " do %>
       <i class="material-icons nav__icon">school</i>
       <span class="nav__text">Learn</span>
     <% end %>
@@ -16,7 +16,7 @@
       <i class="material-icons nav__icon">build</i>
       <span class="nav__text">Tools</span>
     <% end %>
-    <%= link_to destroy_user_session_path, method: :delete, class: "nav__link" do %>
+    <%= link_to destroy_user_session_path, method: :delete, class: "nav__link nav__link--active" do %>
       <i class="material-icons nav__icon">clear</i>
       <span class="nav__text">Sign Out</span>
     <% end %>
