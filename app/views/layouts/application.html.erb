@@ -12,7 +12,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <body>
+  <body class="<%= "background-brand-color" if devise_controller? %>">
     <%= render "shared/top-navbar" %>
     <div class="container extra-margin">
       <%= yield %>
