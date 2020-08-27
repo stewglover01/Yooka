@@ -10,25 +10,38 @@
 </div>
 
 <% @journey_lessons.each do |journey_lesson| %>
-    <%= link_to lesson_path(journey_lesson.lesson) do %>
-        <% if journey_lesson.complete %>
-            <div style="filter: contrast(60%) opacity(50%)">
-        <% else %>
-            <div>
-        <% end %>
-                <div class="lesson-card">
-                    <%= image_tag journey_lesson.lesson.photo %>
-                     <div class="lesson-card-infos">
-                        <h2><%= journey_lesson.lesson.name %></h2>
-                        <p><%= journey_lesson.lesson.description %></p>
-                        <p>
-                            <% unless journey_lesson.complete %>
-                                not
-                            <% end %>
-                                completed
-                    </div>
+    <% user_responses = []  %>
+    <% journey_lesson.lesson.activities.each do |activity| %>
+        <% user_responses << activity.responses.where(user: current_user) %>
+    <% end %>
+    <% all_lesson_questions = []  %>
+    <% journey_lesson.lesson.activities.each do |activity| %>
+        <% all_lesson_questions << activity.questions %>
+    <% end %>
+    <% unanswered_questions = all_lesson_questions.flatten - user_responses.flatten.map { |response| response.question }  %>
+    <% unanswered_questions.count %>
+    <% if unanswered_questions.count == 0 %>
+        <% journey_lesson.complete = true %>
+        <% journey_lesson.save! %>
+        <%= link_to lesson_path(journey_lesson.lesson) do %>
+            <div class="lesson-card" style="filter: contrast(60%) opacity(50%)">
+                <%= image_tag journey_lesson.lesson.photo %>
+                <div class="lesson-card-infos">
+                    <h2><%= journey_lesson.lesson.name %></h2>
+                    <p><%= journey_lesson.lesson.description %></p>              
                 </div>
-            </div>
+            </div> 
+        <% end %>
+    <% else %>
+        <%= link_to lesson_path(journey_lesson.lesson) do %>
+            <div class="lesson-card">
+                <%= image_tag journey_lesson.lesson.photo %>
+                <div class="lesson-card-infos">
+                    <h2><%= journey_lesson.lesson.name %></h2>
+                    <p><%= journey_lesson.lesson.description %></p>                 
+                </div>
+            </div> 
+        <% end %>
     <% end %>
 <% end %>
 
