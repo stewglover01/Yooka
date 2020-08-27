@@ -1,4 +1,6 @@
-<h1>Dashboard for <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></h1>
+<div class="container">
+  <h1>Dashboard for <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></h1>
+</div>
 
 
 <%= cl_image_tag current_user.photo.key, :gravity=>"faces", :crop=>"fill", class: "avatar-bordered feature-avatar m-1", alt: "avatar-large" %>
@@ -23,14 +25,27 @@
 
 <%# xp %>
 
-<h2>
-    <% if current_user.xp %>
-        <%= current_user.xp %>
-    <% else %>
-        0
-    <% end %>
-    XP
-</h2>
+<div class="container">
+      <% if  @user_badges %>
+          <h5 class="border">Badges:</h5>
+          <% @user_badges.each do |user_badge| %>
+              <%= image_tag "badges/#{user_badge.badge.name.gsub(/\s+/, "")}.png", alt: user_badge.badge.name %>
+          <% end %>
+      <% else %>
+          <h3>You currently have no badges</h3>
+      <% end %>
+
+      <%# xp %>
+
+        <h5 class="border">
+            <% if current_user.xp %>
+                <%= current_user.xp %>
+            <% else %>
+                0
+            <% end %>
+            XP
+        </h5>
+</div>
 
 
 <%# habits %>
@@ -60,9 +75,8 @@
 
 
 
-<ul>
-<li><p><%= link_to "Social Dashboard", "/users/social" %></p></li>
-<li><p><%= link_to "Tools Dashboard", "/users/tools" %></p></li>
-<li><p><%= link_to "Get Support", "/users/support" %></p></li>
-</ul>
+<p><%= link_to "Social Dashboard", "/users/social", class: 'btn btn-main' %>
+<p><%= link_to "Tools Dashboard", "/users/tools", class: 'btn btn-main' %>
+<p><%= link_to "Get Support", "/users/support", class: 'btn btn-main' %>
+
 
