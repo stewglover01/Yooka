@@ -4,19 +4,23 @@
   <h4> <%= @activity.description %> </h4>
 
   <% if @unanswered_questions.empty? %>
-    <h3>You have answered all questions</h3>
+    <h3>You have answered all questions and earnt <%= @activity.xp%> xp</h3>
+    <% @badgesearned.each do |user_badge| %>
+      <p>You also earnt this badge<%= image_tag "badges/#{user_badge.badge.name.gsub(/\s+/, "")}.png", alt: user_badge.badge.name %></p>
+    <% end %>
+    <%= link_to 'Head home', journey_path(@journeys.last) %>
   <% else %>
     <p><%= @unanswered_questions.first.question %></p>
-    <%= simple_form_for [@unanswered_questions.first, @response] do |f| %>
-      <% if @unanswered_questions.first.correct_answer.nil? %>
+  <%= simple_form_for [@unanswered_questions.first, @response] do |f| %>
+      <% if @unanswered_questions.first.possible_answers.nil? %>
         <%= f.input :content %>
       <% else %>
-        <%= f.input :content, as: :radio_buttons, collection: ['female','male']%>
+        <%= f.input :content, as: :radio_buttons, collection: JSON.parse(@unanswered_questions.first.possible_answers)%>
       <% end %>
         <%= f.button :submit %>
     <% end %>
   <% end %>
-
-
  </div>
+
+
 

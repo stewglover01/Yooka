@@ -13,6 +13,8 @@
     <% unanswered_questions = all_lesson_questions.flatten - user_responses.flatten.map { |response| response.question }  %>
     <% unanswered_questions.count %>
     <% if unanswered_questions.count == 0 %>
+        <% journey_lesson.complete = true %>
+        <% journey_lesson.save! %>
         <%= link_to lesson_path(journey_lesson.lesson) do %>
             <div class="lesson-card" style="filter: contrast(60%) opacity(50%)">
                 <%= image_tag journey_lesson.lesson.photo %>

@@ -78,8 +78,9 @@ lesson1.save!
   activity1.lesson = lesson1
   activity1.save!
     questions = ["How often did you feel tired out for no good reason?", "How often excited to tackle your school work?", "How often did you feel so nervous that nothing could calm you down?", "How often do you feel like you cant achieve your goals?", "How often do you feel like you its not your fault when you fail?", "How often do you feel like you have slept well?", "How often did you feel that you can cheer yourself up?", "How often did you feel your cool under-pressure", "How many hours sleep should you get a night?", "How many hours sleep  do you think you get a night?"]
-    questions.each do |question|
-      question = Question.new(question: question)
+    possible_answers = ["Never", "Rarely", "Sometimes", "Often", "Always"]
+      questions.each do |question|
+      question = Question.new(question: question, possible_answers: possible_answers)
       question.activity = activity1
       question.save!
     end
