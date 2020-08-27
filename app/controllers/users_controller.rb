@@ -11,16 +11,19 @@ class UsersController < ApplicationController
     # streak logic
     counter = 0
     last_habit = nil
-    @journey_habits.each do |journey_habit|
-      if last_habit == nil
-        counter += 0
-        last_habit = journey_habit
-      elsif
-        (last_habit.created_at.strftime("%j").to_i - journey_habit.created_at.strftime("%j").to_i) == 1
+    if @journey_habits.length > 0 && @journey_habits.first.created_at.strftime("%j").to_i == Date.today.strftime("%j").to_i
+      @journey_habits.each do |journey_habit|
+          if last_habit == nil
+            last_habit = journey_habit
+          elsif
+            (last_habit.created_at.strftime("%j").to_i - journey_habit.created_at.strftime("%j").to_i) == 1
+            counter += 1
+            last_habit = journey_habit
+          else
+            break
+          end
+        end
         counter += 1
-        last_habit = journey_habit
-      else break
-      end
     end
     @streak = counter
     

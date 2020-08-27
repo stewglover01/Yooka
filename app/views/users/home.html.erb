@@ -6,20 +6,19 @@
 <%# badges %>
 
 <% if  @user_badges %>
-
-  
-<% if  @user_badges.length > 0 %>
-    <h2>Badges:</h2>
-    <div class="user-badges d-flex flex-wrap justify-content-start">
-        <% @user_badges.each do |user_badge| %>
-            <div class="d-flex align-items-center flex-column user-badge">
-                <%= image_tag "badges/#{user_badge.badge.name.gsub(/\s+/, "")}.png", alt: user_badge.badge.name %>
-                <p class="mb-auto"><%= user_badge.badge.name %></p>
-            </div>
-        <% end %>
-    </div>
-<% else %>
-    <h3>You currently have no badges</h3>
+    <% if  @user_badges.length > 0 %>
+        <h2>Badges:</h2>
+        <div class="user-badges d-flex flex-wrap justify-content-start">
+            <% @user_badges.each do |user_badge| %>
+                <div class="d-flex align-items-center flex-column user-badge">
+                    <%= image_tag "badges/#{user_badge.badge.name.gsub(/\s+/, "")}.png", alt: user_badge.badge.name %>
+                    <p class="mb-auto"><%= user_badge.badge.name %></p>
+                </div>
+            <% end %>
+        </div>
+    <% else %>
+        <h3>You currently have no badges</h3>
+    <% end %>
 <% end %>
 
 <%# xp %>
