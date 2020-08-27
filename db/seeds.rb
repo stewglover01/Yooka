@@ -64,7 +64,8 @@ lesson1.save!
     name: "Intro to resilience",
     description: "An Introduction to resilience",
     time_to_complete: "2 min",
-    xp: 15
+    xp: 15,
+    video: "Footboys.mp4"
   )
   video1.lesson = lesson1
   video1.save!
@@ -100,7 +101,8 @@ lesson2.save!
     name: "How sleep affects you",
     description: "Video about the effects of sleep on happiness and resilience",
     time_to_complete: "8 mins",
-    xp: 30
+    xp: 30,
+    video: "Footboys.mp4"
   )
   video2.lesson = lesson2
   video2.save!
@@ -165,8 +167,8 @@ lesson3 = Lesson.new(
   topic: "Sleep",
   time_to_complete: "25 mins",
   photo: "mailbox.svg",
-  author_photo: "MatthewWalker.jpg",
-  author_description: "Author of 'Why We Sleep'. Matthew is seen as the world expert on sleeps effects on the brain"
+  author_photo: "CharlesDuhigg.jpg",
+  author_description: "The author of The Power of habit. Charles knows what it takes to make a new habit stick!"
 )
 lesson3.save!
 
@@ -174,7 +176,8 @@ lesson3.save!
     name: "Why habits matter",
     description: Faker::Quote.yoda,
     time_to_complete: "2 min",
-    xp: 15
+    xp: 15,
+    video: "Footboys.mp4"
   )
   video3.lesson = lesson3
   video3.save!
@@ -228,7 +231,8 @@ video4 = Video.new(
     name: "Learn",
     description: Faker::Quote.yoda,
     time_to_complete: "10 mins",
-    xp: 30
+    xp: 30,
+    video: "Footboys.mp4"
   )
   video4.lesson = lesson4
   video4.save!
@@ -297,7 +301,8 @@ video5 = Video.new(
     name: "Learn",
     description: Faker::Quote.yoda,
     time_to_complete: "10 mins",
-    xp: 30
+    xp: 30,
+    video: "Footboys.mp4"
   )
   video5.lesson = lesson5
   video5.save!
@@ -366,7 +371,8 @@ video6 = Video.new(
     name: "Learn",
     description: Faker::Quote.yoda,
     time_to_complete: "10 mins",
-    xp: 30
+    xp: 30,
+    video: "Footboys.mp4"
   )
   video6.lesson = lesson6
   video6.save!

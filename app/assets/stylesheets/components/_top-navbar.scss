@@ -4,5 +4,21 @@
   position: fixed;
   top: 0;
   width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-top: 15px;
+  margin-top: auto;
+  margin-right: auto;
+  margin-left: auto;
   background-color: #f4f4f4;
+}
+
+.support-item {
+  text-decoration: none;
+  color: #34b8b2;
+}
+
+.back-item {
+  text-emphasis: none;
+  color: #34b8b2;
 }
