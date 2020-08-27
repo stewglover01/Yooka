@@ -1,9 +1,19 @@
 .banner-svg {
   width: 100vw;
+  position: relative
 
 }
 .banner {
   width: 100vw;
   margin-top: -50px;
 
+}
+
+.absolute-header {
+  position: absolute;
+  top: 67px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: white;
 }
