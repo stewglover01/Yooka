@@ -2,14 +2,25 @@
 <h1><%= @lesson.topic.capitalize %></h1>
 <h3><%= @lesson.name.capitalize %></h3>
 <h3><%= @lesson.time_to_complete %> mins</h3>
-
 <p><%= @lesson.description %></p>
 
 <div class="author-container">
-  <img src="author.jpg" alt="image of author">
+  <%= image_tag @lesson.author_photo, class: "avatar-bordered feature-avatar m-1" %>
   <h5><%= @lesson.author.capitalize %></h5>
-  <p>Author Description</p>
+  <p><%= @lesson.author_description %></p>
 </div>
+    <% @lesson.videos.each do |video| %>
+      <%= link_to lesson_video_path(@lesson, video) do  %>
+        <div class="lesson-card mb-2">
+          <img src="https://images.unsplash.com/photo-1579273166152-d725a4e2b755?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
+          <div class="lesson-card-infos">
+            <h2> <%= video.name %> </h2>
+            <p> <%= video.description %></p>
+          </div>
+        </div>
+        <% end %>
+    <% end %>
+
 
    <% @lesson.activities.each do |activity| %>
    <%= link_to lesson_activity_path(@lesson, activity) do  %>
