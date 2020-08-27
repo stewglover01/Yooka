@@ -4,6 +4,10 @@
     <h2>Lessons for this journey</h2>
   </div>
 </section>
+<h3>Progress:</h3>
+<div class="progress mb-3">
+  <div class="progress-bar" role="progressbar" style="width: <%= @journey_progress %>%;" aria-valuenow="<%= @journey_progress %>" aria-valuemin="0" aria-valuemax="100"><%= @journey_progress %>%</div>
+</div>
 
 <% @journey_lessons.each do |journey_lesson| %>
     <%= link_to lesson_path(journey_lesson.lesson) do %>
