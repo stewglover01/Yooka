@@ -8,26 +8,26 @@
       transform: translate3D(0,-1px,0) scale(1.01);
     }
   }
-  
+
   .card-trip-index > img {
     height: 200px;
     width: 100%;
     object-fit: cover;
   }
-  
+
   .card-trip-index h2 {
     font-size: 16px;
     font-weight: bold;
     margin: 0;
   }
-  
+
   .card-trip-index p {
     font-size: 12px;
     opacity: .7;
     margin: 0;
   }
-  
-  
+
+
   .card-trip-index .card-trip-infos {
     padding: 16px;
     display: flex;
@@ -35,7 +35,7 @@
     align-items: flex-end;
     position: relative;
   }
-  
+
   .card-trip-infos-index .card-trip-user {
     position: absolute;
     right: 16px;
