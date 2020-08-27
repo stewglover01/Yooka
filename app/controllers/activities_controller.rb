@@ -1,7 +1,8 @@
 class ActivitiesController < ApplicationController
   def show
     @activity = Activity.find(params[:id])
-    @unanswered_questions = @activity.questions.select {|q| q.response.nil?}
+    @responses = @activity.responses.where(user: current_user)
+    @unanswered_questions = @activity.questions - @responses.map { |r| r.question}
     @response = Response.new
 
   end

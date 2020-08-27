@@ -30,3 +30,39 @@
 .lesson-card .lesson-card-infos {
   padding: 16px;
 }
+
+.lesson-card-complete {
+  overflow: hidden;
+  height: 120px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  opacity: 50;
+}
+
+.lesson-card-complete img {
+  height: 100px;
+  width: 120px;
+  object-fit: cover;
+}
+
+.lesson-card-complete h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.lesson-card-complete p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.lesson-card-complete .lesson-card-infos {
+  padding: 16px;
+}
+
+

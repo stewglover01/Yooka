@@ -6,10 +6,14 @@
   <% if @unanswered_questions.empty? %>
     <h3>You have answered all questions</h3>
   <% else %>
-  <h1>hello</h1>
+    <p><%= @unanswered_questions.first.question %></p>
     <%= simple_form_for [@unanswered_questions.first, @response] do |f| %>
-      <%= f.input :content %>
-      <%= f.button :submit %>
+      <% if @unanswered_questions.first.correct_answer.nil? %>
+        <%= f.input :content %>
+      <% else %>
+        <%= f.input :content, as: :radio_buttons, collection: ['female','male']%>
+      <% end %>
+        <%= f.button :submit %>
     <% end %>
   <% end %>
 

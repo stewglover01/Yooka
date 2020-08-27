@@ -23,14 +23,26 @@
 
 
    <% @lesson.activities.each do |activity| %>
-   <%= link_to lesson_activity_path(@lesson, activity) do  %>
-      <div class="lesson-card mb-2">
-        <img src="https://images.unsplash.com/photo-1579273166152-d725a4e2b755?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
-        <div class="lesson-card-infos">
-          <h2> <%= activity.name %> </h2>
-          <p> <%= activity.description %></p>
+    <% user_responses = activity.responses.where(user: current_user) %>
+    <% unanswered_questions = activity.questions - user_responses.map { |r| r.question} %> 
+    <% if unanswered_questions.count == 0 %>
+        <div class="lesson-card-complete mb-2">
+          <img src="https://images.unsplash.com/photo-1579273166152-d725a4e2b755?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
+          <div class="lesson-card-infos">
+            <h2> <%= activity.name %> </h2>
+            <p> <%= activity.description %></p>
+          </div>
         </div>
-      </div>
+      <% else %>
+        <%= link_to lesson_activity_path(@lesson, activity) do  %>
+            <div class="lesson-card mb-2">
+              <img src="https://images.unsplash.com/photo-1579273166152-d725a4e2b755?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
+              <div class="lesson-card-infos">
+                <h2> <%= activity.name %> </h2>
+                <p> <%= activity.description %></p>
+              </div>
+            </div>
+            <% end %>
       <% end %>
     <% end %>
 
