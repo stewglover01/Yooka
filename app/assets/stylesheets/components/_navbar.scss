@@ -40,16 +40,20 @@ body {
     text-decoration: none;
     -webkit-tap-highlight-color: transparent;
     transition: background-color 0.1s ease-in-out;
+    text-decoration: none;
 }
 
 .nav__link:hover {
     background-color: #eeeeee;
+    text-decoration: none;
 }
 
 .nav__link--active {
     color: #36b8b2;
+    text-decoration: none;
 }
 
 .nav__icon {
     font-size: 18px;
+    text-decoration: none;
 }
