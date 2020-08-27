@@ -2,6 +2,10 @@ class UsersController < ApplicationController
   def home
     @short_leaderboard = User.order('xp DESC').limit(4)
     @journeys = current_user.journeys
+    @journey = @journeys.last
+    @journey_lessons = @journey.journey_lessons
+    @completed_lessons = @journey_lessons.where(complete: true)
+    @journey_progress = ((@completed_lessons.length.to_f / @journey_lessons.length)*100).to_i
     @user_badges = BadgeUser.where(user: current_user)
     @journey_habits = JourneyHabit.where(journey: @journeys.last).order('created_at DESC')
     @daily_mood = DailyMood.find_by(created_at: Date.today.beginning_of_day..Date.today.end_of_day, user: current_user)

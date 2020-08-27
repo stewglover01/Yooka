@@ -6,7 +6,9 @@
 .banner {
   width: 100vw;
   margin-top: -50px;
-
+  position: absolute;
+  top: 0;
+  z-index: -1;
 }
 
 .absolute-header {
