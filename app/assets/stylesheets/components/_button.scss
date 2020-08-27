@@ -1,0 +1,40 @@
+.btn-main {
+  background-color: #0069FF;
+  color: white;
+  border: 1px solid #0069FF;
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-weight: lighter;
+  transition: opacity 0.3s ease;
+  margin: 4px;
+}
+
+.btn-main:hover {
+  opacity: 1;
+}
+
+.border {
+  border: 1px solid grey;
+  padding: 10px 24px;
+  border-radius: 16px;
+  background-color: white;
+}
+
+.btn-circle.btn-xl {
+    width: 150px;
+    height: 150px;
+    padding: 10px 16px;
+    border-radius: 50%;
+    font-size: 24px;
+    line-height: 1.33;
+}
+
+.btn-circle {
+    width: 75px;
+    height: 75px;
+    padding: 6px 0px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+}
