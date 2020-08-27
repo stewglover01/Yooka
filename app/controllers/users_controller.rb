@@ -26,7 +26,7 @@ class UsersController < ApplicationController
         counter += 1
     end
     @streak = counter
-    
+
   end
 
   def show
