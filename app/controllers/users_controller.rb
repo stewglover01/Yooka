@@ -31,13 +31,16 @@ class UsersController < ApplicationController
 
   def social
     @leaderboard = User.order('xp DESC').limit(10)
+    @journeys = current_user.journeys
   end
 
   def tools
     @tools = Tool.all
+    @journeys = current_user.journeys
   end
 
   def support
+    @journeys = current_user.journeys
   end
 
 private
