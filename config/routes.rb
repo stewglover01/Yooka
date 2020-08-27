@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'journey_habits/create'
   get 'responses/create'
   get 'moods/checkin'
   get 'moods/checkin2'

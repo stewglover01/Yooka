@@ -1,7 +1,7 @@
 
-<h1><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %>'s Tools Dashboard</h1>
+<h1 class="absolute-header"><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %>'s Tools Dashboard</h1>
 
-<% @tools.each do |tool| %>	
+<% @tools.each do |tool| %>
 
 
 <div class="card-trip-index">
@@ -10,7 +10,7 @@
       <h2><%= link_to "#{tool.name}", tool_path(tool) %></h2>
     </div>
 </div>
-<% end %>	
+<% end %>
 
 
 <%= link_to 'Back', :back %>
