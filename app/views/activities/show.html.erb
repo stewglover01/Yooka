@@ -11,7 +11,7 @@
     <% @badgesearned.each do |user_badge| %>
       <p>You also earnt this badge<%= image_tag "badges/#{user_badge.badge.name.gsub(/\s+/, "")}.png", alt: user_badge.badge.name %></p>
     <% end %>
-    <%= link_to 'Head home', journey_path(@journeys.last) %>
+    <%= link_to 'Head back to lesson page', lesson_path(@activity.lesson) %>
   <% else %>
     <p><strong><%= @unanswered_questions.first.question %></strong></p>
 
