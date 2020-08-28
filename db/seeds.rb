@@ -42,7 +42,7 @@ end
 
 puts "creating moods"
 
-moods = %w(happy joyful content silly sad angry scared worried confused surprised hurt embarrassed)
+moods = %w(😊 😃 😌 🙃 🙁 😡 😰 😯 🤒 🤕 🥱 😳)
 moods.each do |mood|
     puts "creating #{mood}"
     Mood.create(name: mood)
@@ -874,7 +874,7 @@ counter = 0
 4.times do
   user = User.new(
     first_name: first_names[counter],
-    last_name: last_names[counter],    
+    last_name: last_names[counter],
     year_level: 10,
     school_name: "Cherrybrook High School",
     school_class: "Year 10 C",
