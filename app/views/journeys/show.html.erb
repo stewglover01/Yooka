@@ -23,6 +23,7 @@
             </div> 
         <% end %>
     <% elsif journey_lesson.lesson == @next_lesson_to_complete %>
+
         <%= link_to lesson_path(journey_lesson.lesson) do %>
             <div class="lesson-card mb-3 " >
                 <%= image_tag journey_lesson.lesson.photo %>
