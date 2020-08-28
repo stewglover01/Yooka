@@ -29,7 +29,18 @@ class JourneysController < ApplicationController
         journey_lesson.save!
       end
     end
-    @last_lesson_completed = @complete_journey_lessons.flatten.last.lesson
-    @next_lesson_to_complete = Lesson.find(@last_lesson_completed.id + 1)
+       
+    if @complete_journey_lessons.empty?
+      @last_lesson_completed = nil
+    else
+     @last_lesson_completed = @complete_journey_lessons.flatten.last.lesson
+    end
+
+    if @last_lesson_completed == nil
+      @next_lesson_to_complete = @journey_lessons.first.lesson
+    else
+      @next_lesson_to_complete = Lesson.find(@last_lesson_completed.id + 1)
+    end
+    
   end
 end
