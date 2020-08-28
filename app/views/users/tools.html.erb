@@ -4,7 +4,7 @@
 <% @tools.each do |tool| %>
 
 
-<div class="card-trip-index">
+<div class="card-trip-index mb-2">
     <%=  image_tag tool.photo %>
     <div class="card-trip-infos">
       <h2><%= link_to "#{tool.name}", tool_path(tool) %></h2>

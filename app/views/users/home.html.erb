@@ -8,15 +8,6 @@
 <%# journey %>
 
 <% if @journeys.length > 0 %>
-    <h2>Your current journey:</h2>
-    <%= link_to journey_path(@journeys.last) do %>
-            <div class="lesson-card">
-                <img src="https://images.unsplash.com/photo-1579273166152-d725a4e2b755?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
-                <div class="lesson-card-infos">
-                    <h2><%= @journeys.last.name %></h2>
-                </div>
-            </div>
-    <% end %>
     <div class="dashboard-element dashboard-progress">
         <div><p>Progress: <%= @journey_progress %>%</p></div>
         <div class="progress">
@@ -89,6 +80,9 @@
         </h4>
  -->
         <%= link_to "Log Sleep", journey_habits_create_path, class: "btn btn-main" %>
+        <% if @journeys.length > 0 %>
+          <%= link_to "Next Activity", journey_path(@journeys.last), class: "btn btn-main" %>
+        <% end %>
     </div>
 
 

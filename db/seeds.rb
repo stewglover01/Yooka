@@ -443,6 +443,65 @@ lesson7 =Lesson.new(
 )
 lesson7.save!
 
+video7 = Video.new(
+    name: "Learn",
+    description: Faker::Quote.yoda,
+    time_to_complete: "10 mins",
+    xp: 30,
+    video: "Footboys.mp4"
+  )
+  video7.lesson = lesson7
+  video7.save!
+
+  activity14 = Activity.new(
+    name: "Relection",
+    description: Faker::Quote.yoda,
+    xp: 15,
+    time_to_complete: "10 mins"
+  )
+  activity14.lesson = lesson7
+  activity14.save!
+
+    questions14 = [Faker::Quote.yoda, Faker::Quote.yoda, Faker::Quote.yoda]
+    questions14.each do |question|
+      question = Question.new(question: question)
+      question.activity = activity14
+      question.save!
+    end
+
+  activity15 = Activity.new(
+      name: "Quiz",
+      description: Faker::Quote.yoda,
+      xp: 15,
+      time_to_complete: "10 mins"
+    )
+    activity15.lesson = lesson7
+    activity15.save!
+
+      questions15 = [Faker::Quote.yoda, Faker::Quote.yoda, Faker::Quote.yoda]
+      questions15.each do |question|
+        question = Question.new(question: question)
+        question.activity = activity15
+        question.save!
+      end
+
+  activity16 = Activity.new(
+    name: "Key Takeaways",
+    description: "What can you takeaway from today?",
+    xp: 10,
+    time_to_complete: "2 mins"
+  )
+  activity16.lesson = lesson7
+  activity16.save!
+
+    questions16 = ["What is your #1 takeaway?","What is your #2 takeaway?"]
+    questions16.each do |question|
+      question = Question.new(question: question)
+      question.activity = activity16
+      question.save!
+    end
+
+
 lesson8 =Lesson.new(
   name: "Exam Nerves",
   description:"How to stop exam nerves.",
@@ -455,6 +514,65 @@ lesson8 =Lesson.new(
 )
 lesson8.save!
 
+video7 = Video.new(
+    name: "Learn",
+    description: Faker::Quote.yoda,
+    time_to_complete: "10 mins",
+    xp: 30,
+    video: "Footboys.mp4"
+  )
+  video7.lesson = lesson8
+  video7.save!
+
+  activity14 = Activity.new(
+    name: "Relection",
+    description: Faker::Quote.yoda,
+    xp: 15,
+    time_to_complete: "10 mins"
+  )
+  activity14.lesson = lesson8
+  activity14.save!
+
+    questions14 = [Faker::Quote.yoda, Faker::Quote.yoda, Faker::Quote.yoda]
+    questions14.each do |question|
+      question = Question.new(question: question)
+      question.activity = activity14
+      question.save!
+    end
+
+  activity15 = Activity.new(
+      name: "Quiz",
+      description: Faker::Quote.yoda,
+      xp: 15,
+      time_to_complete: "10 mins"
+    )
+    activity15.lesson = lesson8
+    activity15.save!
+
+      questions15 = [Faker::Quote.yoda, Faker::Quote.yoda, Faker::Quote.yoda]
+      questions15.each do |question|
+        question = Question.new(question: question)
+        question.activity = activity15
+        question.save!
+      end
+
+  activity16 = Activity.new(
+    name: "Key Takeaways",
+    description: "What can you takeaway from today?",
+    xp: 10,
+    time_to_complete: "2 mins"
+  )
+  activity16.lesson = lesson8
+  activity16.save!
+
+    questions16 = ["What is your #1 takeaway?","What is your #2 takeaway?"]
+    questions16.each do |question|
+      question = Question.new(question: question)
+      question.activity = activity16
+      question.save!
+    end
+
+
 lesson9 =Lesson.new(
   name: "Window of Tolerance",
   description:"What to do when your feeling anxious. Learn how the window of tolerance can help.",
@@ -466,6 +584,64 @@ lesson9 =Lesson.new(
   author_photo: "AlbertBandura.jpg"
 )
 lesson9.save!
+
+video7 = Video.new(
+    name: "Learn",
+    description: Faker::Quote.yoda,
+    time_to_complete: "10 mins",
+    xp: 30,
+    video: "Footboys.mp4"
+  )
+  video7.lesson = lesson9
+  video7.save!
+
+  activity14 = Activity.new(
+    name: "Relection",
+    description: Faker::Quote.yoda,
+    xp: 15,
+    time_to_complete: "10 mins"
+  )
+  activity14.lesson = lesson9
+  activity14.save!
+
+    questions14 = [Faker::Quote.yoda, Faker::Quote.yoda, Faker::Quote.yoda]
+    questions14.each do |question|
+      question = Question.new(question: question)
+      question.activity = activity14
+      question.save!
+    end
+
+  activity15 = Activity.new(
+      name: "Quiz",
+      description: Faker::Quote.yoda,
+      xp: 15,
+      time_to_complete: "10 mins"
+    )
+    activity15.lesson = lesson9
+    activity15.save!
+
+      questions15 = [Faker::Quote.yoda, Faker::Quote.yoda, Faker::Quote.yoda]
+      questions15.each do |question|
+        question = Question.new(question: question)
+        question.activity = activity15
+        question.save!
+      end
+
+  activity16 = Activity.new(
+    name: "Key Takeaways",
+    description: "What can you takeaway from today?",
+    xp: 10,
+    time_to_complete: "2 mins"
+  )
+  activity16.lesson = lesson9
+  activity16.save!
+
+    questions16 = ["What is your #1 takeaway?","What is your #2 takeaway?"]
+    questions16.each do |question|
+      question = Question.new(question: question)
+      question.activity = activity16
+      question.save!
+    end
 
 puts "We now have #{Lesson.count} lessons created"
 
@@ -483,6 +659,64 @@ lesson10 =Lesson.new(
 )
 lesson10.save!
 
+video7 = Video.new(
+    name: "Learn",
+    description: Faker::Quote.yoda,
+    time_to_complete: "10 mins",
+    xp: 30,
+    video: "Footboys.mp4"
+  )
+  video7.lesson = lesson10
+  video7.save!
+
+  activity14 = Activity.new(
+    name: "Relection",
+    description: Faker::Quote.yoda,
+    xp: 15,
+    time_to_complete: "10 mins"
+  )
+  activity14.lesson = lesson10
+  activity14.save!
+
+    questions14 = [Faker::Quote.yoda, Faker::Quote.yoda, Faker::Quote.yoda]
+    questions14.each do |question|
+      question = Question.new(question: question)
+      question.activity = activity14
+      question.save!
+    end
+
+  activity15 = Activity.new(
+      name: "Quiz",
+      description: Faker::Quote.yoda,
+      xp: 15,
+      time_to_complete: "10 mins"
+    )
+    activity15.lesson = lesson10
+    activity15.save!
+
+      questions15 = [Faker::Quote.yoda, Faker::Quote.yoda, Faker::Quote.yoda]
+      questions15.each do |question|
+        question = Question.new(question: question)
+        question.activity = activity15
+        question.save!
+      end
+
+  activity16 = Activity.new(
+    name: "Key Takeaways",
+    description: "What can you takeaway from today?",
+    xp: 10,
+    time_to_complete: "2 mins"
+  )
+  activity16.lesson = lesson10
+  activity16.save!
+
+    questions16 = ["What is your #1 takeaway?","What is your #2 takeaway?"]
+    questions16.each do |question|
+      question = Question.new(question: question)
+      question.activity = activity16
+      question.save!
+    end
+
 lesson11 =Lesson.new(
   name: "Picking yourself back-up",
   description:"Sometimes when you fall what matters is how you respond.",
@@ -495,6 +729,64 @@ lesson11 =Lesson.new(
 )
 lesson11.save!
 
+video7 = Video.new(
+    name: "Learn",
+    description: Faker::Quote.yoda,
+    time_to_complete: "10 mins",
+    xp: 30,
+    video: "Footboys.mp4"
+  )
+  video7.lesson = lesson11
+  video7.save!
+
+  activity14 = Activity.new(
+    name: "Relection",
+    description: Faker::Quote.yoda,
+    xp: 15,
+    time_to_complete: "10 mins"
+  )
+  activity14.lesson = lesson11
+  activity14.save!
+
+    questions14 = [Faker::Quote.yoda, Faker::Quote.yoda, Faker::Quote.yoda]
+    questions14.each do |question|
+      question = Question.new(question: question)
+      question.activity = activity14
+      question.save!
+    end
+
+  activity15 = Activity.new(
+      name: "Quiz",
+      description: Faker::Quote.yoda,
+      xp: 15,
+      time_to_complete: "10 mins"
+    )
+    activity15.lesson = lesson11
+    activity15.save!
+
+      questions15 = [Faker::Quote.yoda, Faker::Quote.yoda, Faker::Quote.yoda]
+      questions15.each do |question|
+        question = Question.new(question: question)
+        question.activity = activity15
+        question.save!
+      end
+
+  activity16 = Activity.new(
+    name: "Key Takeaways",
+    description: "What can you takeaway from today?",
+    xp: 10,
+    time_to_complete: "2 mins"
+  )
+  activity16.lesson = lesson11
+  activity16.save!
+
+    questions16 = ["What is your #1 takeaway?","What is your #2 takeaway?"]
+    questions16.each do |question|
+      question = Question.new(question: question)
+      question.activity = activity16
+      question.save!
+    end
+
 lesson12 =Lesson.new(
   name: "Resilience and failure",
   description:"Learn about the link between failure and resilience. How can you use failure to your advantage?",
@@ -506,6 +798,64 @@ lesson12 =Lesson.new(
   author_photo: "SamanthaGreen.jpg"
 )
 lesson12.save!
+
+video7 = Video.new(
+    name: "Learn",
+    description: Faker::Quote.yoda,
+    time_to_complete: "10 mins",
+    xp: 30,
+    video: "Footboys.mp4"
+  )
+  video7.lesson = lesson12
+  video7.save!
+
+  activity14 = Activity.new(
+    name: "Relection",
+    description: Faker::Quote.yoda,
+    xp: 15,
+    time_to_complete: "10 mins"
+  )
+  activity14.lesson = lesson12
+  activity14.save!
+
+    questions14 = [Faker::Quote.yoda, Faker::Quote.yoda, Faker::Quote.yoda]
+    questions14.each do |question|
+      question = Question.new(question: question)
+      question.activity = activity14
+      question.save!
+    end
+
+  activity15 = Activity.new(
+      name: "Quiz",
+      description: Faker::Quote.yoda,
+      xp: 15,
+      time_to_complete: "10 mins"
+    )
+    activity15.lesson = lesson12
+    activity15.save!
+
+      questions15 = [Faker::Quote.yoda, Faker::Quote.yoda, Faker::Quote.yoda]
+      questions15.each do |question|
+        question = Question.new(question: question)
+        question.activity = activity15
+        question.save!
+      end
+
+  activity16 = Activity.new(
+    name: "Key Takeaways",
+    description: "What can you takeaway from today?",
+    xp: 10,
+    time_to_complete: "2 mins"
+  )
+  activity16.lesson = lesson12
+  activity16.save!
+
+    questions16 = ["What is your #1 takeaway?","What is your #2 takeaway?"]
+    questions16.each do |question|
+      question = Question.new(question: question)
+      question.activity = activity16
+      question.save!
+    end
 
 puts "We now have #{Lesson.count} lessons created"
 

@@ -1,7 +1,10 @@
 
 <div class="container">
+  <div><p>Progress: <%= @activity_progress %>%</p></div>
+  <div class="progress mb-3">
+    <div class="progress-bar" role="progressbar" style="width: <%= @activity_progress %>%" aria-valuenow="<%= @activity_progress %>" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
   <h1 class="absolute-header"><%= @activity.name %></h1>
-  <h4> <%= @activity.description %> </h4>
 
   <% if @unanswered_questions.empty? %>
     <h3>You have answered all questions and earnt <%= @activity.xp%> xp</h3>
@@ -10,16 +13,16 @@
     <% end %>
     <%= link_to 'Head home', journey_path(@journeys.last) %>
   <% else %>
-    <p><%= @unanswered_questions.first.question %></p>
+    <p><strong><%= @unanswered_questions.first.question %></strong></p>
+
   <%= simple_form_for [@unanswered_questions.first, @response] do |f| %>
       <% if @unanswered_questions.first.possible_answers.nil? %>
-        <%= f.input :content %>
+        <%= f.input :content, height: "30px" %>
         
       <% else %>
         <%= f.input :content, as: :radio_buttons, collection: JSON.parse(@unanswered_questions.first.possible_answers)%>
-        <%= f.input :content, as: :range,class: "custom-range", min:"0", max:"5" %>
       <% end %>
-        <%= f.button :submit %>
+        <%= f.button :submit, class: "btn btn-primary" %>
     <% end %>
   <% end %>
  </div>
