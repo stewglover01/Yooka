@@ -5,7 +5,7 @@
   </div>
 </section>
 <h3>Progress:</h3>
-<div class="progress mb-3">
+<div class="progress mb-2">
   <div class="progress-bar" role="progressbar" style="width: <%= @journey_progress %>%;" aria-valuenow="<%= @journey_progress %>" aria-valuemin="0" aria-valuemax="100"><%= @journey_progress %>%</div>
 </div>
 
@@ -24,21 +24,21 @@
         <% journey_lesson.complete = true %>
         <% journey_lesson.save! %>
         <%= link_to lesson_path(journey_lesson.lesson) do %>
-            <div class="lesson-card" style="filter: contrast(60%) opacity(50%)">
+            <div class="lesson-card mb-3" style="filter: contrast(60%) opacity(50%)">
                 <%= image_tag journey_lesson.lesson.photo %>
                 <div class="lesson-card-infos">
                     <h2><%= journey_lesson.lesson.name %></h2>
-                    <p><%= journey_lesson.lesson.description %></p>              
+                    <p><%= journey_lesson.lesson.time_to_complete%> mins</p>              
                 </div>
             </div> 
         <% end %>
     <% else %>
         <%= link_to lesson_path(journey_lesson.lesson) do %>
-            <div class="lesson-card">
+            <div class="lesson-card mb-3">
                 <%= image_tag journey_lesson.lesson.photo %>
                 <div class="lesson-card-infos">
                     <h2><%= journey_lesson.lesson.name %></h2>
-                    <p><%= journey_lesson.lesson.description %></p>                 
+                    <p><%= journey_lesson.lesson.time_to_complete%> mins</p>                  
                 </div>
             </div> 
         <% end %>
