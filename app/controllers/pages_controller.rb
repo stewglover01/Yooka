@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  before_action :no_banner
+
   def home
     if current_user
       @journeys = current_user.journeys

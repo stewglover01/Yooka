@@ -1,7 +1,23 @@
 class ApplicationController < ActionController::Base
-    
-  
+
+  before_action :set_banner
   before_action :configure_permitted_parameters, if: :devise_controller?
+
+  def set_banner
+    @show_banner = "orange" unless devise_controller?
+  end
+
+  def blue_banner
+    @show_banner = "blue"
+  end
+
+  def curved_blue_banner
+    @show_banner = "curved-blue"
+  end
+
+  def no_banner
+    @show_banner = false
+  end
 
     def configure_permitted_parameters
       # For additional fields in app/views/devise/registrations/new.html.erb
