@@ -24,6 +24,7 @@ Question.delete_all
 Activity.delete_all
 Video.delete_all
 JourneyLesson.delete_all
+JourneyHabit.delete_all
 Lesson.delete_all
 Journey.delete_all
 DailyMood.delete_all
