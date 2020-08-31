@@ -137,8 +137,10 @@ lesson2.save!
     counter3 = 0
     questions3 = ["How much sleep a night does a 16 year old need?","Do teenagers need more sleep than adults?", "Select the impacts of great sleep that are true."]
     correct_answers = ["9 hours", "True", "You gain weight"]
+    possible_answers = [["12 hours", "7 hours", "9 hours", "5 hours"],["True", "False"], ["Easier to focus", "You live longer on average", "More resilient to negative life events", "You gain weight"]]
+
     questions3.each do |question|
-      question = Question.new(question: question, correct_answer: correct_answers[counter3])
+      question = Question.new(question: question, correct_answer: correct_answers[counter3], possible_answers: possible_answers[counter3])
       question.activity = activity3
       question.save!
       counter3 +=1
