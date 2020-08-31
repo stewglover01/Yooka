@@ -15,6 +15,21 @@ class ResponsesController < ApplicationController
     else
       render 'activities/show'
     end
+
+
+    # checking if answer correct
+    # check if the content of the response is equal to the correct answer of they related question
+    if @question.correct_answer.present?
+      if @response.content == @question.correct_answer
+      # if it is then mark respons as correct
+        @response.correct = true
+        @response.save!
+      #if it isnt then mark response and incorrect
+      else
+        @response.correct = false
+        @response.save!
+      end
+    end
   end
 
   private
