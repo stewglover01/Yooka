@@ -40,6 +40,11 @@ class UsersController < ApplicationController
   def social
     @leaderboard = User.order('xp DESC').limit(10)
     @journeys = current_user.journeys
+    @students = User.where(teacher: false, school_class:current_user.school_class)
+    @badge_activity = BadgeUser.where(@students.include? :user)
+    @habit_activity = JourneyHabit.where(@students.include? :user)
+    @recent_activity = (@badge_activity+@habit_activity).sort_by { |activity| activity.created_at }.reverse.first(10)
+
   end
 
   def tools
@@ -52,6 +57,5 @@ class UsersController < ApplicationController
   end
 
 private
-
 
 end

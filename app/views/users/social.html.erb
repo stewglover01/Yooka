@@ -13,4 +13,18 @@
         <% end %>
 </table>
 
+
+<div class="-container">
+  <h2>The Feed</h2>
+  <% @recent_activity.each do |activity| %>
+    <div class="comment-container">
+      <% if activity.is_a?(BadgeUser) %>
+      <p> <%= cl_image_tag activity.user.photo.key, :gravity=>"faces", :crop=>"fill", class: "avatar m-1", alt: "avatar-large" %> <%=activity.user.first_name%> has earned "<%=activity.badge.name%>" on <%= activity.created_at.strftime("%A %d %B") %> </p>
+      <% else %>
+      <p> <%= cl_image_tag activity.journey.user.photo.key, :gravity=>"faces", :crop=>"fill", class: "avatar m-1", alt: "avatar-large" %> <%= activity.journey.user.first_name %> logged <%=  activity.habit.name %> on <%= activity.created_at.strftime("%A %d %B") %></p>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
 <%= link_to 'Back', :back %>
