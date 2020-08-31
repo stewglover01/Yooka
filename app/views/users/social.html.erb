@@ -14,17 +14,64 @@
 </table>
 
 
-<div class="-container">
+
   <h2>The Feed</h2>
+
+
   <% @recent_activity.each do |activity| %>
-    <div class="comment-container">
       <% if activity.is_a?(BadgeUser) %>
-      <p> <%= cl_image_tag activity.user.photo.key, :gravity=>"faces", :crop=>"fill", class: "avatar m-1", alt: "avatar-large" %> <%=activity.user.first_name%> has earned "<%=activity.badge.name%>" on <%= activity.created_at.strftime("%A %d %B") %> </p>
+
+        <div class="feed-container my-4">
+          <div class="feed-date d-flex justify-content-start pl-1">
+            <p><%= activity.created_at.strftime("%A %d %B") %></p>
+          </div>
+          <div class="feed-content d-flex flex-wrap justify-content-between">
+            <div class="feed-avatar align-self-center">
+              <%= cl_image_tag activity.user.photo.key, :gravity=>"faces", :crop=>"fill", class: "avatar-large m-2", alt: "avatar-large" %>
+            </div>
+            <div class="feed-info align-self-center">
+              <div class="feed-name d-flex justify-content-start">
+                <p><%= activity.user.first_name %> has earned the <%= activity.badge.name %> badge.</p>
+              </div>
+            </div>
+            <div class="feed-icon">
+              <div class="d-flex align-items-center flex-column user-badge">
+                        <%= image_tag "badges/#{activity.badge.name.gsub(/\s+/, "")}.png", alt: activity.badge.name %>
+                        <p class="mb-auto"><%= activity.badge.name %></p>
+              </div>
+            </div>
+          </div>
+          <div class="feed-kudos d-flex flex-wrap justify-content-center">
+            <p>Give Kudos</p>
+          </div>
+        </div>
       <% else %>
-      <p> <%= cl_image_tag activity.journey.user.photo.key, :gravity=>"faces", :crop=>"fill", class: "avatar m-1", alt: "avatar-large" %> <%= activity.journey.user.first_name %> logged <%=  activity.habit.name %> on <%= activity.created_at.strftime("%A %d %B") %></p>
+        <div class="feed-container my-4">
+          <div class="feed-date d-flex justify-content-start pl-1">
+            <p><%= activity.created_at.strftime("%A %d %B") %></p>
+          </div>
+          <div class="feed-content d-flex flex-wrap justify-content-between">
+            <div class="feed-avatar align-self-center">
+              <%= cl_image_tag activity.journey.user.photo.key, :gravity=>"faces", :crop=>"fill", class: "avatar-large m-2", alt: "avatar-large" %>
+            </div>
+            <div class="feed-info align-self-center">
+              <div class="feed-name d-flex justify-content-start">
+                <p><%= activity.journey.user.first_name %> has logged the <%= activity.habit.name %> habit.</p>
+              </div>
+            </div>
+            <div class="feed-icon">
+              <div class="d-flex align-items-center flex-column user-badge">
+                        
+                        <p class="mb-auto"><%= activity.habit.name %></p>
+              </div>
+            </div>
+          </div>
+          <div class="feed-kudos d-flex flex-wrap justify-content-center">
+            <p>Give Kudos</p>
+          </div>
+        </div>
       <% end %>
-    </div>
   <% end %>
-</div>
 
 <%= link_to 'Back', :back %>
+
