@@ -867,11 +867,11 @@ end
 counter1 = 0
 
 puts "creating 4 users"
-first_names = ["Bill", "Lachlan", "Liam", "Stewart"]
-last_names = ["Bawden", "Oreo", "Barlow", "Glover"]
-emails = ["wabawden@aol.com", "lachlan@hey.com", "liam@gmail.com", "stewart@gmail.com"]
+first_names = ["Bill", "Lachlan", "Liam", "Stewart", "Ben"]
+last_names = ["Bawden", "Oreo", "Barlow", "Glover", "Fanning"]
+emails = ["wabawden@aol.com", "lachlan@hey.com", "liam@gmail.com", "stewart@gmail.com", "Ben@ben.com"]
 counter = 0
-4.times do
+5.times do
   user = User.new(
     first_name: first_names[counter],
     last_name: last_names[counter],

@@ -18,14 +18,49 @@
   <%= simple_form_for [@unanswered_questions.first, @response] do |f| %>
       <% if @unanswered_questions.first.possible_answers.nil? %>
         <%= f.input :content, height: "30px" %>
-        
+
       <% else %>
         <%= f.input :content, as: :radio_buttons, collection: JSON.parse(@unanswered_questions.first.possible_answers)%>
       <% end %>
+      <% if @unanswered_questions.first.correct_answer.nil? %>
         <%= f.button :submit, class: "btn btn-primary" %>
+      <% else %>
+        <button id= "JS-button" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" data-answers= "<%= @unanswered_questions.first.correct_answer %>">Confirm</button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header justify-content-center">
+                <h5 class="modal-title" id="bannertext"></h5>
+              </div>
+              <div class="modal-footer justify-content-center" id="popup-banner">
+                <%= f.button :submit, "Continue", class: "btn-primary" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
  </div>
 
 
+<script>
 
+  document.getElementById('JS-button').addEventListener("click", (event) => {
+    event.preventDefault()
+    const response = document.getElementById('response_content').value
+    const answers = event.currentTarget.dataset.answers
+    const bannertext = document.getElementById('bannertext')
+    // console.log(response)
+    // console.log(answers)
+    document.getElementById('popup-banner').classList.remove("d-none")
+    if (response === answers){
+      bannertext.innerText = "Correct"
+    } else {
+      bannertext.innerText = "You Are Incorrect"
+    }
+  })
+
+</script>
