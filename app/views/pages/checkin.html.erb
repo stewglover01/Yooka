@@ -6,9 +6,11 @@
 
 <div class="cards">
 <% @moods.each do |mood|%>
-    <div class="card-category" style="background-color: #F4F4F4;">
+    <div class="card-category" style="background-color: white; border: 1px solid lightgrey;">
       <%= link_to checkin2_path(mood:mood) do %>
-        <div class="emoji"> <%= mood.name.capitalize %> </div>
+        <div class="emoji text-center">
+          <%= mood.name.capitalize %> <br> <%= mood.description.capitalize %>
+        </div>
       <% end %>
     </div>
   <% end %>

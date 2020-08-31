@@ -43,10 +43,15 @@ end
 puts "creating moods"
 
 moods = %w(😊 😃 😌 🙃 🙁 😡 😰 😯 🤒 🤕 🥱 😳)
+mood_description = %w(joy happy content silly sad angry nervous shocked sick hurt guulty embarrased)
+mood_counter = 0
 moods.each do |mood|
     puts "creating #{mood}"
-    Mood.create(name: mood)
+    Mood.create(name: mood, description: mood_description[mood_counter])
+    mood_counter += 1
 end
+
+
 
 puts "Creating resilience index"
 
