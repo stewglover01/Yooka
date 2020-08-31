@@ -1,6 +1,7 @@
 class JourneysController < ApplicationController
   before_action :curved_blue_banner
 
+
   def show
     @journeys = current_user.journeys
     @journey = @journeys.last
