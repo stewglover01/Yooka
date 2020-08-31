@@ -1,0 +1,16 @@
+.cards-tool {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 12px;
+}
+
+.card-tool-index {
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    transition: all .5s ease;
+    &:hover {
+      transform: translate3D(0,-1px,0) scale(1.01);
+    }
+  }

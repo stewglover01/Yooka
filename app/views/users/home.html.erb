@@ -1,9 +1,6 @@
 
-<h1 class="absolute-header"><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></h1>
+<h2 class="absolute-header"><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %><p>Home</p></h2>
 
-
-
-<%= cl_image_tag current_user.photo.key, :gravity=>"faces", :crop=>"fill", class: "avatar-bordered feature-avatar m-1", alt: "avatar-large" %>
 
 <%# journey %>
 
@@ -66,15 +63,17 @@
             <% end %>
         </h4>
  -->
-        <%= link_to "Log Sleep", journey_habits_create_path, class: "btn btn-main" %>
-        <% if @journeys.length > 0 %>
-          <%= link_to "Next Activity", journey_path(@journeys.last), class: "btn btn-main" %>
-        <% end %>
+        <div class="d-flex justify-content-around">
+          <%= link_to "Log Sleep", journey_habits_create_path, class: "btn btn-main" %>
+          <% if @journeys.length > 0 %>
+            <%= link_to "Next Activity", journey_path(@journeys.last), class: "btn btn-main" %>
+          <% end %>
+        </div>
     </div>
 
 
     <div class="dashboard-leaderboard dashboard-element">
-        <h4>Challenge Leaderboard</h4>
+        <h4 id="leaderboard-header"> <strong>Challenge Leaderboard</strong></h4>
         <table class="table">
             <tr>
                 <th scope="col">User</th><th scope="col">Points</th>

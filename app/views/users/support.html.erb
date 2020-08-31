@@ -1,3 +1,16 @@
-<h1 class="absolute-header"><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %>'s Support Page</h1>
+<h2 class="absolute-header">Support <p class="small-wording">Get support now</p> </h2>
 
+<div class="container-support">
+  <p>Sometimes you just need to speak to someone.
+  That’s OK, we all have times where we just dont feel right!
+  When you feel this way its best to speak to someone you trust.
+  You can reach out to your teacher, someone close to you or services that have friendly
+  people waiting for you. <br><br>
+  What would you prefer?</p>
+</div>
+
+<div class="d-flex flex-column justify-content-center align-items-center">
+ <a class="btn btn-main orange" href="#">Speak to Service</a>
+ <a class="btn btn-main" href="#">Speak to Counsellor</a>
+</div>
 <%= link_to 'Back', :back %>
