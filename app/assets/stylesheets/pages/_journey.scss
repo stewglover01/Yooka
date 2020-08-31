@@ -12,6 +12,10 @@
   background-position: center;
   background-size: cover;
   position: absolute;
+  &:first-of-type {
+    left: calc(50% - 50px) !important;
+    top: 50px !important;
+  }
 
   p {
     margin-top: 100px;
@@ -25,12 +29,14 @@
   }
 }
 
+
 a.duolingo-button {
     &:nth-of-type(1) {
     left: calc(50% - 50px) !important;
     top: 50px !important;
   }
 }
+
 
 .duolingo-right {
   right: 50px;
@@ -52,6 +58,7 @@ a.duolingo-button {
 .duolingo-left-line {
   right: 105px;
 }
+
 .finished {
   filter: contrast(60%) opacity(50%);
 }
