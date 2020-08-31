@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_31_142014) do
+
+ActiveRecord::Schema.define(version: 2020_08_31_140012) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,6 +97,7 @@ ActiveRecord::Schema.define(version: 2020_08_31_142014) do
     t.bigint "journey_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "video_watched"
     t.index ["journey_id"], name: "index_journey_lessons_on_journey_id"
     t.index ["lesson_id"], name: "index_journey_lessons_on_lesson_id"
   end

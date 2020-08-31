@@ -4,8 +4,7 @@ export default class extends Controller {
     static targets = ['count'];
     connect() {
         this.countTarget.addEventListener("ended", () => {
-            console.log("hello")
-            this.buttonTarget.click()
+            window.location.href = window.location.href + "/rewards";
         })
     }
 }

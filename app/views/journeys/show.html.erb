@@ -12,7 +12,89 @@
 <div class="main-duolingo-container d-flex justify-content-center pb-5">
   <div class="duolingo-container">
     <% @journey_lessons.each_with_index do |journey_lessons, index| %>
-      <% if journey_lessons.complete %>
+        <%# <% raise %>
+        <% if  journey_lessons.video_watched == true and @complete_journey_lessons.flatten.include? journey_lessons  %>
+            <% journey_lessons.complete = true %>
+            <% journey_lessons.save! %>
+            <%= link_to lesson_path(journey_lessons.lesson), class: "duolingo-button finished #{index.odd? ? 'duolingo-left' : 'duolingo-right' }", style: "top: #{(index + 1) * 100}px; background-image: url(#{image_path(journey_lessons.lesson.photo)})" do %>
+            <% if index == 0 %>
+                <svg width="59" height="62" viewBox="0 0 59 62" fill="none" class="duolingo-line duolingo-first-line">
+                <path d="M14.9369 40.2153C14.9369 40.2153 11.3886 42.8389 6.86611 49.1945C2.34362 55.5502 1.19287 59.814 1.19287 59.814L4.26197 61.9518C4.26197 61.9518 7.8905 55.1791 10.3163 51.5579C12.7421 47.9367 18.006 42.3532 18.006 42.3532L14.9369 40.2153Z" fill="#C4C4C4"/>
+                <rect x="21" y="33.7495" width="20.4023" height="3.92538" transform="rotate(-46.2974 21 33.7495)" fill="#C4C4C4"/>
+                <rect x="41" y="14.2244" width="20.4023" height="3.92538" transform="rotate(-44.2022 41 14.2244)" fill="#C4C4C4"/>
+                </svg>
+            <% elsif index == (@journey_lessons.length) - 1 %>
+            <% elsif index.odd? %>
+                <svg width="136" height="43" viewBox="0 0 136 43" fill="none" class="duolingo-line duolingo-right-line" >
+                <rect x="74.0046" y="13" width="28" height="3.92538" transform="rotate(14.8286 74.0046 13)" fill="#C4C4C4"/>
+                <rect x="36.8051" y="5" width="28" height="3.92538" transform="rotate(11.8339 36.8051 5)" fill="#C4C4C4"/>
+                <rect x="0.489014" width="28" height="3.92538" transform="rotate(7.15605 0.489014 0)" fill="#C4C4C4"/>
+                <path d="M110.972 24.2336C110.972 24.2336 115.863 25.6273 123.642 30.3965C131.42 35.1657 134.756 39.0092 134.756 39.0092L132.784 42.1832C132.784 42.1832 125.685 36.6939 121.405 33.925C117.124 31.156 109 27.4077 109 27.4077L110.972 24.2336Z" fill="#C4C4C4"/>
+                </svg>
+            <% else %>
+                <svg width="136" height="43" viewBox="0 0 136 43" fill="none" class="duolingo-line duolingo-left-line">
+                <rect width="28.0922" height="3.92629" transform="matrix(-0.966918 0.255089 0.256772 0.966472 61.7345 13)" fill="#C4C4C4"/>
+                <rect width="28.0946" height="3.92596" transform="matrix(-0.978891 0.204385 0.205767 0.978601 99.0652 5)" fill="#C4C4C4"/>
+                <rect width="28.0972" height="3.9256" transform="matrix(-0.992265 0.124141 0.125004 0.992156 135.509 0)" fill="#C4C4C4"/>
+                <path d="M24.637 24.2336C24.637 24.2336 19.7282 25.6273 11.9225 30.3965C4.11672 35.1657 0.769083 39.0092 0.769083 39.0092L2.74785 42.1832C2.74785 42.1832 9.87147 36.6939 14.1675 33.925C18.4635 31.156 26.6158 27.4077 26.6158 27.4077L24.637 24.2336Z" fill="#C4C4C4"/>
+                </svg>
+            <% end %>
+                <p><%= journey_lessons.lesson.name %></p>
+            <% end %>
+        <% elsif journey_lessons.lesson == @next_lesson_to_complete %>
+            <%= link_to lesson_path(journey_lessons.lesson), class: "duolingo-button #{index.odd? ? 'duolingo-left' : 'duolingo-right' }", style: "top: #{(index + 1) * 100}px; background-image: url(#{image_path(journey_lessons.lesson.photo)})" do %>
+            <% if index == 0 %>
+                <svg width="59" height="62" viewBox="0 0 59 62" fill="none" class="duolingo-line duolingo-first-line">
+                <path d="M14.9369 40.2153C14.9369 40.2153 11.3886 42.8389 6.86611 49.1945C2.34362 55.5502 1.19287 59.814 1.19287 59.814L4.26197 61.9518C4.26197 61.9518 7.8905 55.1791 10.3163 51.5579C12.7421 47.9367 18.006 42.3532 18.006 42.3532L14.9369 40.2153Z" fill="#C4C4C4"/>
+                <rect x="21" y="33.7495" width="20.4023" height="3.92538" transform="rotate(-46.2974 21 33.7495)" fill="#C4C4C4"/>
+                <rect x="41" y="14.2244" width="20.4023" height="3.92538" transform="rotate(-44.2022 41 14.2244)" fill="#C4C4C4"/>
+                </svg>
+            <% elsif index == (@journey_lessons.length) - 1 %>
+            <% elsif index.odd? %>
+                <svg width="136" height="43" viewBox="0 0 136 43" fill="none" class="duolingo-line duolingo-right-line" >
+                <rect x="74.0046" y="13" width="28" height="3.92538" transform="rotate(14.8286 74.0046 13)" fill="#C4C4C4"/>
+                <rect x="36.8051" y="5" width="28" height="3.92538" transform="rotate(11.8339 36.8051 5)" fill="#C4C4C4"/>
+                <rect x="0.489014" width="28" height="3.92538" transform="rotate(7.15605 0.489014 0)" fill="#C4C4C4"/>
+                <path d="M110.972 24.2336C110.972 24.2336 115.863 25.6273 123.642 30.3965C131.42 35.1657 134.756 39.0092 134.756 39.0092L132.784 42.1832C132.784 42.1832 125.685 36.6939 121.405 33.925C117.124 31.156 109 27.4077 109 27.4077L110.972 24.2336Z" fill="#C4C4C4"/>
+                </svg>
+            <% else %>
+                <svg width="136" height="43" viewBox="0 0 136 43" fill="none" class="duolingo-line duolingo-left-line">
+                <rect width="28.0922" height="3.92629" transform="matrix(-0.966918 0.255089 0.256772 0.966472 61.7345 13)" fill="#C4C4C4"/>
+                <rect width="28.0946" height="3.92596" transform="matrix(-0.978891 0.204385 0.205767 0.978601 99.0652 5)" fill="#C4C4C4"/>
+                <rect width="28.0972" height="3.9256" transform="matrix(-0.992265 0.124141 0.125004 0.992156 135.509 0)" fill="#C4C4C4"/>
+                <path d="M24.637 24.2336C24.637 24.2336 19.7282 25.6273 11.9225 30.3965C4.11672 35.1657 0.769083 39.0092 0.769083 39.0092L2.74785 42.1832C2.74785 42.1832 9.87147 36.6939 14.1675 33.925C18.4635 31.156 26.6158 27.4077 26.6158 27.4077L24.637 24.2336Z" fill="#C4C4C4"/>
+                </svg>
+            <% end %>
+                <p><%= journey_lessons.lesson.name %></p>
+            <% end %>
+            <% else %>
+            <div class= "duolingo-button <%= index.odd? ? 'duolingo-left' : 'duolingo-right' %>", style= "top: <%= (index + 1) * 100 %>px; background-image: url(<%= image_path(journey_lessons.lesson.photo)%>)">
+            <% if index == 0 %>
+                <svg width="59" height="62" viewBox="0 0 59 62" fill="none" class="duolingo-line duolingo-first-line">
+                <path d="M14.9369 40.2153C14.9369 40.2153 11.3886 42.8389 6.86611 49.1945C2.34362 55.5502 1.19287 59.814 1.19287 59.814L4.26197 61.9518C4.26197 61.9518 7.8905 55.1791 10.3163 51.5579C12.7421 47.9367 18.006 42.3532 18.006 42.3532L14.9369 40.2153Z" fill="#C4C4C4"/>
+                <rect x="21" y="33.7495" width="20.4023" height="3.92538" transform="rotate(-46.2974 21 33.7495)" fill="#C4C4C4"/>
+                <rect x="41" y="14.2244" width="20.4023" height="3.92538" transform="rotate(-44.2022 41 14.2244)" fill="#C4C4C4"/>
+                </svg>
+            <% elsif index == (@journey_lessons.length) - 1 %>
+            <% elsif index.odd? %>
+                <svg width="136" height="43" viewBox="0 0 136 43" fill="none" class="duolingo-line duolingo-right-line" >
+                <rect x="74.0046" y="13" width="28" height="3.92538" transform="rotate(14.8286 74.0046 13)" fill="#C4C4C4"/>
+                <rect x="36.8051" y="5" width="28" height="3.92538" transform="rotate(11.8339 36.8051 5)" fill="#C4C4C4"/>
+                <rect x="0.489014" width="28" height="3.92538" transform="rotate(7.15605 0.489014 0)" fill="#C4C4C4"/>
+                <path d="M110.972 24.2336C110.972 24.2336 115.863 25.6273 123.642 30.3965C131.42 35.1657 134.756 39.0092 134.756 39.0092L132.784 42.1832C132.784 42.1832 125.685 36.6939 121.405 33.925C117.124 31.156 109 27.4077 109 27.4077L110.972 24.2336Z" fill="#C4C4C4"/>
+                </svg>
+            <% else %>
+                <svg width="136" height="43" viewBox="0 0 136 43" fill="none" class="duolingo-line duolingo-left-line">
+                <rect width="28.0922" height="3.92629" transform="matrix(-0.966918 0.255089 0.256772 0.966472 61.7345 13)" fill="#C4C4C4"/>
+                <rect width="28.0946" height="3.92596" transform="matrix(-0.978891 0.204385 0.205767 0.978601 99.0652 5)" fill="#C4C4C4"/>
+                <rect width="28.0972" height="3.9256" transform="matrix(-0.992265 0.124141 0.125004 0.992156 135.509 0)" fill="#C4C4C4"/>
+                <path d="M24.637 24.2336C24.637 24.2336 19.7282 25.6273 11.9225 30.3965C4.11672 35.1657 0.769083 39.0092 0.769083 39.0092L2.74785 42.1832C2.74785 42.1832 9.87147 36.6939 14.1675 33.925C18.4635 31.156 26.6158 27.4077 26.6158 27.4077L24.637 24.2336Z" fill="#C4C4C4"/>
+                </svg>
+            <% end %>
+                <p><%= journey_lessons.lesson.name %></p>
+            </div>
+
+<!--       <% if journey_lessons.complete %>
         <%= link_to lesson_path(journey_lessons.lesson), class: "duolingo-button finished #{index.odd? ? 'duolingo-left' : 'duolingo-right' }", style: "top: #{(index + 1) * 100}px; background-image: url(#{image_path(journey_lessons.lesson.photo)})" do %>
           <% if index == 0 %>
             <svg width="59" height="62" viewBox="0 0 59 62" fill="none" class="duolingo-line duolingo-first-line">
@@ -36,8 +118,9 @@
               <path d="M24.637 24.2336C24.637 24.2336 19.7282 25.6273 11.9225 30.3965C4.11672 35.1657 0.769083 39.0092 0.769083 39.0092L2.74785 42.1832C2.74785 42.1832 9.87147 36.6939 14.1675 33.925C18.4635 31.156 26.6158 27.4077 26.6158 27.4077L24.637 24.2336Z" fill="#C4C4C4"/>
             </svg>
           <% end %>
-            <p><%= journey_lessons.lesson.name %></p>
-        <% end %>
+            <p><%= journey_lessons.lesson.name %></p> -->
+
+<!--         <% end %>
       <% else %>
         <%= link_to lesson_path(journey_lessons.lesson), class: "duolingo-button #{index.odd? ? 'duolingo-left' : 'duolingo-right' }", style: "top: #{(index + 1) * 100}px; background-image: url(#{image_path(journey_lessons.lesson.photo)})" do %>
           <% if index == 0 %>
@@ -63,7 +146,7 @@
             </svg>
           <% end %>
             <p><%= journey_lessons.lesson.name %></p>
-        <% end %>
+        <% end %> -->
       <% end %>
     <% end %>
   </div>
