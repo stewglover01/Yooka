@@ -1,0 +1,6 @@
+
+<h3 class="mt-5">You have watched the video and earnt <%= @video.xp%> xp</h3>
+<% @badgesearned.each do |user_badge| %>
+    <p>You also earnt this badge<%= image_tag "badges/#{user_badge.badge.name.gsub(/\s+/, "")}.png", alt: user_badge.badge.name %></p>
+<% end %>
+<%= link_to 'Head back to lesson page', lesson_path(@video.lesson) %>

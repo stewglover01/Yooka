@@ -12,7 +12,8 @@
 <div class="main-duolingo-container d-flex justify-content-center pb-5">
   <div class="duolingo-container">
     <% @journey_lessons.each_with_index do |journey_lessons, index| %>
-        <% if @complete_journey_lessons.flatten.include? journey_lessons %>
+        <%# <% raise %>
+        <% if  journey_lessons.video_watched == true and @complete_journey_lessons.flatten.include? journey_lessons  %>
             <% journey_lessons.complete = true %>
             <% journey_lessons.save! %>
             <%= link_to lesson_path(journey_lessons.lesson), class: "duolingo-button finished #{index.odd? ? 'duolingo-left' : 'duolingo-right' }", style: "top: #{(index + 1) * 100}px; background-image: url(#{image_path(journey_lessons.lesson.photo)})" do %>
