@@ -18,3 +18,30 @@
         border-color: blue;
         background-color: lightblue;
     }
+
+.feed-container {
+    overflow: hidden;
+    width: -webkit-fill-available;;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 4px;
+}
+
+.feed-date {
+    background-color: #F3A26F;
+    color: white;
+    height: 22px
+}
+
+.feed-kudos {
+    background-color: #F47D31;
+    color: white;
+    height: 22px; 
+}
+
+.feed-kudos:hover {
+    background-color: #F3A26F;
+}
+
+.feed-name {
+    width: 160px;
+}

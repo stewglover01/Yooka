@@ -10,7 +10,11 @@
     <h3>You have answered all questions and earnt <%= @activity.xp%> xp</h3>
     <p>You scored <%= @quiz_score%>/<%= @number_of_quiz_questions %> on this quiz!</p>
     <% @badgesearned.each do |user_badge| %>
-      <p>You also earnt this badge<%= image_tag "badges/#{user_badge.badge.name.gsub(/\s+/, "")}.png", alt: user_badge.badge.name %></p>
+      <p>You also earnt this badge</p>
+      <div class="d-flex align-items-center flex-column user-badge">
+                        <%= image_tag "badges/#{user_badge.badge.name.gsub(/\s+/, "")}.png", alt: user_badge.badge.name %>
+                        <p class="mb-auto"><%= user_badge.badge.name %></p>
+              </div>
     <% end %>
     <%= link_to 'Head back to lesson page', lesson_path(@activity.lesson) %>
   <% else %>
