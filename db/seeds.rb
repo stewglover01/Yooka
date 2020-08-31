@@ -866,6 +866,26 @@ video7 = Video.new(
 
 puts "We now have #{Lesson.count} lessons created"
 
+puts "Creating a habit"
+
+habit = Habit.new(name: "Sleep", )
+  habit.save!
+    habit_questions = ["Select the things you did yesterday", "How did you sleep?", "What time did you go to bed?", "What time did you wake up?", "How do you feel today?"]
+    possible_answers = ["Coffee after 4pm", "Exercised late", "Ate after 8:30pm", "Phone in room"]
+
+      habit_questions.each_with_index do |question, index|
+        if index == 0
+          question = Question.new(question: question, possible_answers: possible_answers)
+          question.habit = habit
+          question.save!
+        else
+          question = Question.new(question: question)
+          question.habit = habit
+          question.save!  
+        end
+      end
+
+
 headshots = []
 api_call = Unsplash::Photo.search('headshot', page = 1, per_page = 30)
 api_call.each do |photo|
@@ -903,6 +923,12 @@ counter = 0
   )
   journey.save!
   puts "created #{journey.name}"
+
+  journey_habit = JourneyHabit.new(
+    journey_id: journey.id,
+    habit_id: habit.id
+  )
+
   journeylesson1 = JourneyLesson.new(
       journey_id: journey.id,
       lesson_id: lesson1.id
@@ -975,3 +1001,4 @@ tools.each do |tool|
   )
 toolobject.save!
 end
+

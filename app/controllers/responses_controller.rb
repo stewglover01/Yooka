@@ -4,16 +4,22 @@ class ResponsesController < ApplicationController
     @response = Response.new(response_params)
     @response.question = @question
     @response.user = current_user
+
     @activity = @question.activity
     @responses = @activity.responses.where(user: current_user)
     @unanswered_questions = @activity.questions - @responses.map { |r| r.question}
+
+    # @habit = Habit.find(params[:id])
+    # @response = Response.new
+    # @habit_questions = @habit.questions
+
     if @response.save && @unanswered_questions.count == 0
+      redirect_to lesson_activity_path(@activity.lesson, @activity)
       raise
-      redirect_to lesson_activity_path(@activity.lesson, @activity)
-    elsif @response.save
-      redirect_to lesson_activity_path(@activity.lesson, @activity)
-    else
+    elsif @response.question.habit_id.nil?
       render 'activities/show'
+    else
+      render 'habits/show'
     end
 
 
@@ -37,5 +43,6 @@ class ResponsesController < ApplicationController
   def response_params
     params.require(:response).permit(:content)
   end
+
 end
 # 

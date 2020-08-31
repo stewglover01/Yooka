@@ -29,6 +29,7 @@ Rails.application.routes.draw do
 
   resources :journeys, only: [:show]
   resources :tools, only: [:show]
+  resources :habits, only: [:show, :create]
   resources :lessons, only: [:show] do
     resources :activities, only: [:show]
     resources :videos, only: [:show]

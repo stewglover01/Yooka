@@ -24,7 +24,7 @@ class ActivitiesController < ApplicationController
 
     # calculating quiz score
     # ifany of the activities questions have a correct answer do this
-    if @activity.questions.select {|question| question.correct_answer.present? }
+    if @activity.questions.select {|question| question.correct_answer.present? }.count > 0
       #declare a variable called quiz_score
       @quiz_score = 0
       #declare a varible called number_of_quiz_questions
