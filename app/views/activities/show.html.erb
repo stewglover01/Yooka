@@ -49,19 +49,36 @@
 
 <script>
 
-  document.getElementById('JS-button').addEventListener("click", (event) => {
-    event.preventDefault()
-    const response = document.getElementById('response_content').value
-    const answers = event.currentTarget.dataset.answers
-    const bannertext = document.getElementById('bannertext')
-    // console.log(response)
-    // console.log(answers)
-    document.getElementById('popup-banner').classList.remove("d-none")
-    if (response === answers){
-      bannertext.innerText = "Correct"
-    } else {
-      bannertext.innerText = "You Are Incorrect"
-    }
-  })
+  const jsButton = document.getElementById('JS-button')
+  const answers = jsButton.dataset.answers
+  const bannertext = document.getElementById('bannertext')
+
+  if (document.getElementById('response_content')){
+    jsButton.addEventListener("click", (event) => {
+      event.preventDefault()
+      const response = document.getElementById('response_content').value
+      if (response === answers){
+        bannertext.innerText = "Correct"
+      } else {
+        bannertext.innerText = "You Are Incorrect"
+      }
+    })
+  } else {
+    let selected = ""
+    const options = document.querySelectorAll(".form-check")
+    options.forEach((option) => {
+      option.addEventListener("click", (event) => {
+        selected = event.currentTarget.children[0].value
+        jsButton.addEventListener("click", (event) => {
+          if (selected === answers){
+            bannertext.innerText = "Correct"
+          } else {
+            bannertext.innerText = "You Are Incorrect"
+          }
+        })
+      })
+    })
+  }
+
 
 </script>
