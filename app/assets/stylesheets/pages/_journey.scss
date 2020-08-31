@@ -1,0 +1,64 @@
+.duolingo-container {
+  width: 400px;
+  height: 1500px;
+  background-color: #FAFAFA;
+  position: absolute;
+}
+.duolingo-button {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #C4C4C4;
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  &:first-of-type {
+    left: calc(50% - 50px) !important;
+    top: 50px !important;
+  }
+
+  p {
+    margin-top: 100px;
+    text-align: center;
+    text-decoration: none;
+    font-size: small;
+    color: black;
+  }
+  a {
+    text-decoration: none;
+  }
+}
+
+
+a.duolingo-button {
+    &:nth-of-type(1) {
+    left: calc(50% - 50px) !important;
+    top: 50px !important;
+  }
+}
+
+
+.duolingo-right {
+  right: 50px;
+}
+.duolingo-left {
+  left: 50px;
+}
+.duolingo-line {
+  position: absolute;
+  top: 50px;
+}
+.duolingo-first-line {
+  right: 100px;
+  top: 80px;
+}
+.duolingo-right-line {
+  left: 105px;
+}
+.duolingo-left-line {
+  right: 105px;
+}
+
+.finished {
+  filter: contrast(60%) opacity(50%);
+}
