@@ -9,6 +9,8 @@ class ActivitiesController < ApplicationController
     @badgesearned = []
     @journeys = current_user.journeys
     @activity_progress = ((@answered_questions.length.to_f / @all_questions.length)*100).to_i
+
+    # assigning XP and badges
     if @unanswered_questions.empty?
       current_user.xp += @activity.xp
       current_user.save
@@ -19,5 +21,28 @@ class ActivitiesController < ApplicationController
       badgeuser.save
       @badgesearned << badgeuser
     end
+
+    # calculating quiz score
+    # ifany of the activities questions have a correct answer do this
+    if @activity.questions.select {|question| question.correct_answer.present? }
+      #declare a variable called quiz_score
+      @quiz_score = 0
+      #declare a varible called number_of_quiz_questions
+      @number_of_quiz_questions = @all_questions.count
+      # get the responses associated with the question in this activity and put them in an array
+        @responses.each do |response|
+        # iterate over that array and if a response is marked as correct add 1 to quiz score and 1 to the number of quiz questions
+        if response.correct == true
+          @quiz_score += 1
+        # if response is inccorect just add one to number of quiz questions
+        elsif response.correct == false
+          # do nothing
+        end
+      end
+    end
+
+
+    
+
   end
 end

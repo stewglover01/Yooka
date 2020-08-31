@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'users/social'
   get 'users/tools'
   get 'users/support'
+  get 'users/teacherhome'
   root to: 'pages#home'
   get 'checkin', to: 'pages#checkin'
   get 'checkin2', to: 'pages#checkin2'

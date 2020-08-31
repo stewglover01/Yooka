@@ -1,11 +1,12 @@
-<h1 class="absolute-header"><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %>'s Social Dashboard</h1>
+<h2 class="absolute-header"><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %>'s Social Dashboard</h2>
 <h2>Challenge Leaderboard</h2>
-<table style="width: 50%" class="table table-dark">
+<table style="width: 100%" class="table table-dark">
     <tr>
-        <th scope="col">User</th><th scope="col">XP</th>
+        <th scope="col"></th><th scope="col">User</th><th scope="col">XP</th>
     </tr>
         <% @leaderboard.each do |user| %>
             <tr>
+                <td><%= cl_image_tag user.photo.key, :gravity=>"faces", :crop=>"fill", class: "avatar m-1", alt: "avatar-large" %></td>
                 <td><%= user.first_name %></td>
                 <td><%= user.xp %></td>
             </tr>

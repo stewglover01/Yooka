@@ -1,14 +1,14 @@
-<div class="container text-center">
-  <h1>Hey <%= current_user.first_name.capitalize %></h1>
+<div class="text-center mt-5 mb-3">
+  <h1>Hey <%= current_user.first_name.capitalize %>!</h1>
   <h2>How are you feeling today?</h2>
 </div>
 
 
 <div class="cards">
 <% @moods.each do |mood|%>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2))">
+    <div class="card-category" style="background-color: #F4F4F4;">
       <%= link_to checkin2_path(mood:mood) do %>
-        <%= mood.name.capitalize %>
+        <div class="emoji"> <%= mood.name.capitalize %> </div>
       <% end %>
     </div>
   <% end %>

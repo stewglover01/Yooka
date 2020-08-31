@@ -18,9 +18,12 @@
 
   <body class="<%= "background-brand-color" if devise_controller? %>">
     <%= render "shared/top-navbar" %>
-    <div class="container extra-margin">
-      <%= yield %>
-    </div>
+
+      <div class="container">
+        <%= yield %>
+
+      </div>
+
     <%= render "shared/navbar" %>
   </body>
 </html>
