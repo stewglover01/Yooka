@@ -1,0 +1,41 @@
+<h2 class="absolute-header"><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %><p>Teacher Dashboard</p></h2>
+
+<p>You have <%= @students.count %> students in <%= current_user.school_class %>.</p>
+<h4>Student Activity</h4>
+
+<% @recent_activity.each do |activity| %>
+    
+     <p><% if activity.class == BadgeUser %>
+            <div class="activity badge-activity">
+                <%= activity.user.first_name %> earned the <%= activity.badge.name %> badge on <%= activity.created_at.strftime("%A %d %B")%>
+            </div>
+     <% elsif activity.class == JourneyHabit %>
+            <div class="activity habit-activity">
+                <%= activity.journey.user.first_name %> logged the <%= activity.habit.name %> habit on <%= activity.created_at.strftime("%A %d %B")%>
+            </div>
+     <% elsif activity.class == DailyMood %>
+            <div class="activity mood-activity">
+                <%= activity.user.first_name %> logged the <%= activity.mood.name %> mood on <%= activity.created_at.strftime("%A %d %B")%>
+            </div>
+     <% end %></p>
+<% end %>
+
+<div id="chart" style="width: 600px; height: 400px;"></div>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<%= javascript_tag do -%>
+  google.charts.load('current', {'packages':['bar']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+    var data = JSON.parse('<%= @habit_data.to_json.html_safe -%>');
+    data = [['Student', 'Habits Logged']].concat(data);
+    data = google.visualization.arrayToDataTable(data);
+    var options = {
+      title: 'Habits logged by students'
+    };
+
+    var chart = new google.charts.Bar(document.getElementById('chart'));
+    chart.draw(data, google.charts.Bar.convertOptions(options));
+  }
+<% end -%>
