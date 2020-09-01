@@ -12,20 +12,22 @@
     <% @badgesearned.each do |user_badge| %>
       <p>You also earnt this badge</p>
       <div class="d-flex align-items-center flex-column user-badge">
-                        <%= image_tag "badges/#{user_badge.badge.name.gsub(/\s+/, "")}.png", alt: user_badge.badge.name %>
-                        <p class="mb-auto"><%= user_badge.badge.name %></p>
-              </div>
+        <%= image_tag "badges/#{user_badge.badge.name.gsub(/\s+/, "")}.png", alt: user_badge.badge.name %>
+        <p class="mb-auto"><%= user_badge.badge.name %></p>
+      </div>
     <% end %>
     <%= link_to 'Head back to lesson page', lesson_path(@activity.lesson) %>
   <% elsif @unanswered_questions.empty? %>
-    <h3>You have answered all questions and earnt <%= @activity.xp%> xp</h3>
+    <h3>You have answered all questions and earned <%= @activity.xp%> xp</h3>
+    <% if @badgesearned.length > 0 %>
+    <p>You have earned the following badges</p>
     <% @badgesearned.each do |user_badge| %>
-      <p>You also earnt this badge</p>
-      <div class="d-flex align-items-center flex-column user-badge">
-                        <%= image_tag "badges/#{user_badge.badge.name.gsub(/\s+/, "")}.png", alt: user_badge.badge.name %>
-                        <p class="mb-auto"><%= user_badge.badge.name %></p>
-              </div>
+            <div class="d-flex align-items-center flex-column user-badge">
+                <%= image_tag "badges/#{user_badge.badge.name.gsub(/\s+/, "")}.png", alt: user_badge.badge.name %>
+                <p class="mb-auto"><%= user_badge.badge.name %></p>
+            </div>
     <% end %>
+<% end %>
     <%= link_to 'Head back to lesson page', lesson_path(@activity.lesson) %>
   <% else %>
     <p><strong><%= @unanswered_questions.first.question %></strong></p>

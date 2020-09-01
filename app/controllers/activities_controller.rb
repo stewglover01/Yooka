@@ -15,12 +15,62 @@ class ActivitiesController < ApplicationController
       current_user.xp += @activity.xp
       current_user.save
     end
-    if current_user.xp > 10
-      @badge = Badge.last
+    if current_user.xp >= 15
+      @badge = Badge.find_by(name:"hot streak")
       badgeuser = BadgeUser.new(user: current_user, badge: @badge)
       badgeuser.save
+      if badgeuser.save
       @badgesearned << badgeuser
+      end
     end
+    if current_user.xp >= 65
+      @badge = Badge.find_by(name:"sleep master")
+      badgeuser = BadgeUser.new(user: current_user, badge: @badge)
+      badgeuser.save
+      if badgeuser.save
+        @badgesearned << badgeuser
+      end
+    end
+    if current_user.xp >= 115
+      @badge = Badge.find_by(name:"mindfulness guru")
+      badgeuser = BadgeUser.new(user: current_user, badge: @badge)
+      badgeuser.save
+      if badgeuser.save
+        @badgesearned << badgeuser
+      end
+    end
+    if current_user.xp >= 165
+      @badge = Badge.find_by(name:"sleep master")
+      badgeuser = BadgeUser.new(user: current_user, badge: @badge)
+      badgeuser.save
+      if badgeuser.save
+        @badgesearned << badgeuser
+      end
+    end
+    if current_user.xp >= 215
+      @badge = Badge.find_by(name:"stress buster")
+      badgeuser = BadgeUser.new(user: current_user, badge: @badge)
+      badgeuser.save
+      if badgeuser.save
+        @badgesearned << badgeuser
+      end
+    end
+    if current_user.xp >= 265
+      @badge = Badge.find_by(name:"mentor")
+      badgeuser = BadgeUser.new(user: current_user, badge: @badge)
+      badgeuser.save
+      if badgeuser.save
+        @badgesearned << badgeuser
+      end
+    end
+
+
+
+
+
+
+
+
 
     # calculating quiz score
     # ifany of the activities questions have a correct answer do this
