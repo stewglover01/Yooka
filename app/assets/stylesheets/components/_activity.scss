@@ -22,7 +22,9 @@
 .feed-container {
     overflow: hidden;
     width: -webkit-fill-available;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-color: lightgray;
+    border-style: solid;
+    border-width: 0.5px;
     border-radius: 4px;
 }
 
