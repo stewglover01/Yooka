@@ -1,7 +1,9 @@
 .leaderboard td {
     text-align: left;
     vertical-align: middle;
+    padding: 8px;
 }
+
 
 .leaderboard-current-user {
     background-color: #80D288;
@@ -12,12 +14,20 @@
     font-weight: bold;
     font-size: large;
     width: 10px;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
 }
+    
 
 .leaderboard-xp {
     font-weight: bold;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
 }
 
+
 .leaderboard-avatar {
+    padding: 4px;
     width: 56px;
 }
+

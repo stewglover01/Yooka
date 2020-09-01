@@ -11,7 +11,7 @@
         <% @leaderboard.each do |user| %>
             <tr class=<%="leaderboard-current-user" if user == current_user %>>
                 <td class="leaderboard-position"><%= counter %></td>
-                <td class="leaderboard-avatar"><%= cl_image_tag user.photo.key, :gravity=>"faces", :crop=>"fill", class: "avatar m-1", alt: "avatar-large" %></td>
+                <td class="leaderboard-avatar"><%= cl_image_tag user.photo.key, :gravity=>"faces", :crop=>"fill", class: "avatar", alt: "avatar-large" %></td>
                 <td><%= user.first_name %></td>
                 <td class="leaderboard-xp"><%= user.xp %> XP</td>
                 <% counter += 1 %>
@@ -50,7 +50,7 @@
             </div>
           </div>
           <div class="feed-kudos d-flex flex-wrap justify-content-center">
-            <p>Give Kudos</p>
+            <p>Give Kudos 🙌</p>
           </div>
         </div>
       <% else %>
@@ -77,7 +77,7 @@
             </div>
           </div>
           <div class="feed-kudos d-flex flex-wrap justify-content-center">
-            <p>Give Kudos</p>
+            <p>Give Kudos 🙌</p>
           </div>
         </div>
       <% end %>
