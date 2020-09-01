@@ -21,27 +21,26 @@
 
 .feed-container {
     overflow: hidden;
-    width: -webkit-fill-available;;
+    width: -webkit-fill-available;
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
     border-radius: 4px;
 }
 
 .feed-date {
-    background-color: #F3A26F;
-    color: white;
-    height: 22px
+    color: gray;
 }
 
 .feed-kudos {
-    background-color: #F47D31;
+    background-color: #80D288;
     color: white;
     height: 22px; 
 }
 
 .feed-kudos:hover {
-    background-color: #F3A26F;
+    background-color: #35B842;
 }
 
 .feed-name {
-    width: 160px;
+    max-width: 350px;
+    width: -webkit-fill-available;
 }

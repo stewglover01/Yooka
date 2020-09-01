@@ -27,7 +27,6 @@ JourneyLesson.delete_all
 JourneyHabit.delete_all
 Lesson.delete_all
 Journey.delete_all
-DailyMood.delete_all
 Mood.delete_all
 BadgeUser.delete_all
 Badge.delete_all
@@ -866,6 +865,26 @@ video7 = Video.new(
 
 puts "We now have #{Lesson.count} lessons created"
 
+puts "Creating a habit"
+
+habit = Habit.new(name: "Sleep", )
+  habit.save!
+    habit_questions = ["Select the things you did yesterday", "How did you sleep?", "What time did you go to bed?", "What time did you wake up?", "How do you feel today?"]
+    possible_answers = ["Coffee after 4pm", "Exercised late", "Ate after 8:30pm", "Phone in room"]
+
+      habit_questions.each_with_index do |question, index|
+        if index == 0
+          question = Question.new(question: question, possible_answers: possible_answers)
+          question.habit = habit
+          question.save!
+        else
+          question = Question.new(question: question)
+          question.habit = habit
+          question.save!  
+        end
+      end
+
+
 headshots = []
 api_call = Unsplash::Photo.search('headshot', page = 1, per_page = 30)
 api_call.each do |photo|
@@ -903,6 +922,12 @@ counter = 0
   )
   journey.save!
   puts "created #{journey.name}"
+
+  journey_habit = JourneyHabit.new(
+    journey_id: journey.id,
+    habit_id: habit.id
+  )
+
   journeylesson1 = JourneyLesson.new(
       journey_id: journey.id,
       lesson_id: lesson1.id
@@ -975,3 +1000,128 @@ tools.each do |tool|
   )
 toolobject.save!
 end
+
+puts "Creating Mr Gilbert...."
+teacher = User.new(email:"mrgilbert@rudgepark.com", password:"123456", teacher:true, first_name:"Phil", last_name:"Gilbert", school_class:"Year 10 C")
+teacher.save
+
+puts "generating fake badge activity.............."
+
+badge = Badge.all.sample
+user = User.where(teacher: false).sample
+badgeuser = BadgeUser.create(user:user, badge:badge)
+badgeuser.created_at = "Mon, 24 Aug 2020 13:03:49 UTC +00:00"
+badgeuser.save
+
+badge = Badge.all.sample
+user = User.where(teacher: false).sample
+badgeuser = BadgeUser.create(user:user, badge:badge)
+badgeuser.created_at = "Tue, 25 Aug 2020 13:03:49 UTC +00:00"
+badgeuser.save
+
+badge = Badge.all.sample
+user = User.where(teacher: false).sample
+badgeuser = BadgeUser.create(user:user, badge:badge)
+badgeuser.created_at = "Wed, 26 Aug 2020 13:03:49 UTC +00:00"
+badgeuser.save
+
+badge = Badge.all.sample
+user = User.where(teacher: false).sample
+badgeuser = BadgeUser.create(user:user, badge:badge)
+badgeuser.created_at = "Thu, 27 Aug 2020 13:03:49 UTC +00:00"
+badgeuser.save
+
+badge = Badge.all.sample
+user = User.where(teacher: false).sample
+badgeuser = BadgeUser.create(user:user, badge:badge)
+badgeuser.created_at = "Fri, 28 Aug 2020 13:03:49 UTC +00:00"
+badgeuser.save
+
+badge = Badge.all.sample
+user = User.where(teacher: false).sample
+badgeuser = BadgeUser.create(user:user, badge:badge)
+badgeuser.created_at = "Sat, 29 Aug 2020 13:03:49 UTC +00:00"
+badgeuser.save
+
+puts "generating fake mood activity.............."
+
+mood = Mood.all.sample
+user = User.where(teacher: false).sample
+dailymood = DailyMood.create(user:user, mood:mood)
+dailymood.created_at = "Mon, 24 Aug 2020 13:03:49 UTC +00:00"
+dailymood.save
+
+mood = Mood.all.sample
+user = User.where(teacher: false).sample
+dailymood = DailyMood.create(user:user, mood:mood)
+dailymood.created_at = "Tue, 25 Aug 2020 13:03:49 UTC +00:00"
+dailymood.save
+
+mood = Mood.all.sample
+user = User.where(teacher: false).sample
+dailymood = DailyMood.create(user:user, mood:mood)
+dailymood.created_at = "Wed, 26 Aug 2020 13:03:49 UTC +00:00"
+dailymood.save
+
+mood = Mood.all.sample
+user = User.where(teacher: false).sample
+dailymood = DailyMood.create(user:user, mood:mood)
+dailymood.created_at = "Thu, 27 Aug 2020 13:03:49 UTC +00:00"
+dailymood.save
+
+mood = Mood.all.sample
+user = User.where(teacher: false).sample
+dailymood = DailyMood.create(user:user, mood:mood)
+dailymood.created_at = "Fri, 28 Aug 2020 13:03:49 UTC +00:00"
+dailymood.save
+
+mood = Mood.all.sample
+user = User.where(teacher: false).sample
+dailymood = DailyMood.create(user:user, mood:mood)
+dailymood.created_at = "Sat, 29 Aug 2020 13:03:49 UTC +00:00"
+dailymood.save
+
+puts "generating fake habit activity.............."
+
+habit = Habit.first
+user = User.where(teacher: false).sample
+journey = user.journeys.first
+journeyhabit = JourneyHabit.create(journey:journey, habit:habit)
+journeyhabit.created_at = "Mon, 24 Aug 2020 13:03:49 UTC +00:00"
+journeyhabit.save
+
+habit = Habit.first
+user = User.where(teacher: false).sample
+journey = user.journeys.first
+journeyhabit = JourneyHabit.create(journey:journey, habit:habit)
+journeyhabit.created_at = "Tue, 25 Aug 2020 13:03:49 UTC +00:00"
+journeyhabit.save
+
+habit = Habit.first
+user = User.where(teacher: false).sample
+journey = user.journeys.first
+journeyhabit = JourneyHabit.create(journey:journey, habit:habit)
+journeyhabit.created_at = "Wed, 26 Aug 2020 13:03:49 UTC +00:00"
+journeyhabit.save
+
+habit = Habit.first
+user = User.where(teacher: false).sample
+journey = user.journeys.first
+journeyhabit = JourneyHabit.create(journey:journey, habit:habit)
+journeyhabit.created_at = "Thu, 27 Aug 2020 13:03:49 UTC +00:00"
+journeyhabit.save
+
+habit = Habit.first
+user = User.where(teacher: false).sample
+journey = user.journeys.first
+journeyhabit = JourneyHabit.create(journey:journey, habit:habit)
+journeyhabit.created_at = "Fri, 28 Aug 2020 13:03:49 UTC +00:00"
+journeyhabit.save
+
+habit = Habit.first
+user = User.where(teacher: false).sample
+journey = user.journeys.first
+journeyhabit = JourneyHabit.create(journey:journey, habit:habit)
+journeyhabit.created_at = "Sat, 29 Aug 2020 13:03:49 UTC +00:00"
+journeyhabit.save
+

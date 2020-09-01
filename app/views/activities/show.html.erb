@@ -6,9 +6,19 @@
   </div>
   <h2 class="absolute-header"><%= @activity.name %></h2>
 
-  <% if @unanswered_questions.empty? %>
+  <% if @unanswered_questions.empty? && @activity.questions.select {|question| question.correct_answer.present? }.count > 0%>
     <h3>You have answered all questions and earnt <%= @activity.xp%> xp</h3>
     <p>You scored <%= @quiz_score%>/<%= @number_of_quiz_questions %> on this quiz!</p>
+    <% @badgesearned.each do |user_badge| %>
+      <p>You also earnt this badge</p>
+      <div class="d-flex align-items-center flex-column user-badge">
+                        <%= image_tag "badges/#{user_badge.badge.name.gsub(/\s+/, "")}.png", alt: user_badge.badge.name %>
+                        <p class="mb-auto"><%= user_badge.badge.name %></p>
+              </div>
+    <% end %>
+    <%= link_to 'Head back to lesson page', lesson_path(@activity.lesson) %>
+  <% elsif @unanswered_questions.empty? %>
+    <h3>You have answered all questions and earnt <%= @activity.xp%> xp</h3>
     <% @badgesearned.each do |user_badge| %>
       <p>You also earnt this badge</p>
       <div class="d-flex align-items-center flex-column user-badge">

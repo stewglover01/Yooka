@@ -79,19 +79,18 @@
 
     <div class="dashboard-leaderboard dashboard-element">
         <h4 id="leaderboard-header"> <strong>Challenge Leaderboard</strong></h4>
-        <table class="table">
-            <tr>
-                <th scope="col">User</th><th scope="col">Points</th>
-            </tr>
-                <% leaderboard_counter = 1 %>
+            <table style="width: 100%" class="table leaderboard">
+                <% counter = 1 %>
                 <% @short_leaderboard.each do |user| %>
-                    <tr>
-                        <td><%= leaderboard_counter %>. <%= user.first_name %></td>
-                        <td><%= user.xp %></td>
-                        <% leaderboard_counter += 1 %>
+                    <tr class=<%="leaderboard-current-user" if user == current_user %>>
+                        <td class="leaderboard-position"><%= counter %></td>
+                        <td class="leaderboard-avatar"><%= cl_image_tag user.photo.key, :gravity=>"faces", :crop=>"fill", class: "avatar m-1", alt: "avatar-large" %></td>
+                        <td><%= user.first_name %></td>
+                        <td class="leaderboard-xp"><%= user.xp %> XP</td>
+                        <% counter += 1 %>
                     </tr>
                 <% end %>
-        </table>
+            </table>
     </div>
 </div>
 

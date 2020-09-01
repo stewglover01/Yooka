@@ -38,4 +38,3 @@ class ResponsesController < ApplicationController
     params.require(:response).permit(:content)
   end
 end
-# 
