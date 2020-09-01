@@ -11,11 +11,11 @@
 .banner-orange-header {
   width: 100vw;
   margin-top: -70px;
-  height: 350px;
+  height: 335px;
 }
 .absolute-header {
   position: absolute;
-  top: 67px;
+  top: 60px;
   left: 0;
   right: 0;
   text-align: center;
@@ -23,4 +23,18 @@
 }
 .small-wording{
   font-size: 12px;
+}
+
+.header-bg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-bottom: 52%;
+  background-size:cover;
+  position: relative;
+}
+
+.grey {
+  color:#7D7D7D;
 }

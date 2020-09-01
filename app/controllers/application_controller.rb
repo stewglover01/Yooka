@@ -1,10 +1,17 @@
 class ApplicationController < ActionController::Base
-
   before_action :set_banner
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def set_banner
     @show_banner = "orange" unless devise_controller?
+  end
+
+  def green_banner
+    @show_banner = 'green'
+  end
+
+  def cream_banner
+    @show_banner = 'cream'
   end
 
   def blue_banner

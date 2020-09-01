@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :green_banner, only: :social
+  before_action :cream_banner, only: :tools
+
   def home
     @short_leaderboard = User.where(teacher:false).order('xp DESC').limit(4)
     if current_user.teacher
@@ -17,8 +20,8 @@ class UsersController < ApplicationController
       unless @daily_mood  || current_user.teacher
         redirect_to '/checkin'
       end
-    
-      
+
+
     # streak logic
     unless current_user.teacher
       counter = 0

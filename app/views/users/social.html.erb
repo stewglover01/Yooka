@@ -1,5 +1,10 @@
-<h2 class="absolute-header"><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %>'s Social Dashboard</h2>
-<h2>Challenge Leaderboard</h2>
+<div class="absolute-header">
+  <h3>Social Dashboard</h3>
+  <p>View all challenge points</p>
+</div>
+
+
+<h4>Challenge Leaderboard</h4>
 <table style="width: 100%" class="table table-dark">
     <tr>
         <th scope="col"></th><th scope="col">User</th><th scope="col">XP</th>
@@ -61,7 +66,7 @@
             </div>
             <div class="feed-icon">
               <div class="d-flex align-items-center flex-column user-badge">
-                        
+
                         <p class="mb-auto"><%= activity.habit.name %></p>
               </div>
             </div>

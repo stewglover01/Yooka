@@ -1,9 +1,14 @@
+<div class="absolute-header">
+  <h3>Home</h3>
+  <p>Challenge control center</p>
+</div>
 
-<h2 class="absolute-header"><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %><p>Home</p></h2>
-
+<div class="week-header text-center mb-3">
+  <h4><strong>Week 1 of 6</strong></h4>
+</div>
 
 <%# journey %>
-
+<h5>Challenge Statistics</h5>
 <% if @journeys.length > 0 %>
     <div class="dashboard-element dashboard-progress">
         <div><p>Progress: <%= @journey_progress %>%</p></div>
