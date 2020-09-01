@@ -1,11 +1,8 @@
-<div class="container p-0">
- <div class="d-flex flex-column justify-content-center">
-
-
+<div class="container p-0" style="max-height: 100vh;">
     <div class="progress ml-5 mt-4 mb-4">
       <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <%= @activity_progress %>%" aria-valuenow="<%= @activity_progress %>" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
-
+ <div class="d-flex flex-column min-vh-90">
     <% if @unanswered_questions.empty? && @activity.questions.select {|question| question.correct_answer.present? }.count > 0%>
       <h3>You have answered all questions and earnt <%= @activity.xp%> xp</h3>
       <p>You scored <%= @quiz_score%>/<%= @number_of_quiz_questions %> on this quiz!</p>
@@ -27,18 +24,32 @@
                   <p class="mb-auto"><%= user_badge.badge.name %></p>
               </div>
       <% end %>
-  <% end %>
-      <%= link_to 'Head back to lesson page', lesson_path(@activity.lesson) %>
+    <% end %>
+    <% if @activities.last == @activity%>
+        <%= link_to 'Head to your journey', journey_path(current_user.journeys.first) %>
     <% else %>
-    <h3><strong><%= @unanswered_questions.first.question %></strong></h3>
-    <%= simple_form_for [@unanswered_questions.first, @response], html: {class: "d-flex flex-column"}  do |f| %>
+        <%= link_to 'Head back to lesson page', lesson_path(@activity.lesson) %>
+    <% end %>
+  <% else %>
+    <div class="text-center">
+      <h1>💤</h1>
+    </div>
+    <div class="pl-5 pr-5 text-center">
+      <h2><strong><%= @unanswered_questions.first.question %></strong></h2>
+    </div>
+    <%= simple_form_for [@unanswered_questions.first, @response], html: {class: "d-flex flex-column flex-grow-1 "}  do |f| %>
         <% if @unanswered_questions.first.possible_answers.nil? %>
-          <%= f.input_field :content, height: "30px", class: :textbox %>
+          <%= f.input_field :content, as: :text, height: "30px", class: "textbox flex-grow-1 p-3" %>
         <% else %>
           <%= f.input_field :content, as: :radio_buttons, collection: JSON.parse(@unanswered_questions.first.possible_answers) %>
         <% end %>
         <% if @unanswered_questions.first.correct_answer.nil? %>
+        <div class="d-flex justify-content-center align-items-center flex-grow-2">
+          <div>
           <%= f.button :submit, 'Continue', class: "btn-main mt-4"%>
+          </div>
+        </div>
+
         <% else %>
           <button id= "JS-button" type="button" class="btn-main w-50 mt-4 text-center" data-toggle="modal" data-target="#exampleModalCenter" data-answers= "<%= @unanswered_questions.first.correct_answer %>">Check Answer</button>
           <!-- Modal -->

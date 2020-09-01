@@ -3,6 +3,7 @@ class ActivitiesController < ApplicationController
 
   def show
     @activity = Activity.find(params[:id])
+    @activities = @activity.lesson.activities
     @responses = @activity.responses.where(user: current_user)
     @lesson = @activity.lesson
     @unanswered_questions = @activity.questions - @responses.map { |r| r.question}

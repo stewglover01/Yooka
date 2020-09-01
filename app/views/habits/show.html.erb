@@ -19,9 +19,9 @@
     <p><strong><%= @unanswered_questions.first.question %></strong></p>
     <%= simple_form_for [@unanswered_questions.first, @response] do |f| %>
       <% if @unanswered_questions.first.possible_answers.nil? %>
-        <%= f.input :content, height: "30px" %>
+        <%= f.input_field :content, as: :range, collection: 1..10 %>
       <% else %>
-        <%= f.input :content, as: :radio_buttons, collection: JSON.parse(@unanswered_questions.first.possible_answers)%>
+        <%= f.input_field :content, as: :radio_buttons, collection: JSON.parse(@unanswered_questions.first.possible_answers)%>
       <% end %>
         <%= f.button :submit, class: "btn btn-primary" %>
     <% end %>
