@@ -1,14 +1,19 @@
-<div class="top-navbar-container">
-  <% unless params[:controller]=="journeys" && params[:action]=="show" ||
-    params[:controller]=="users" || params[:controller]=="devise/sessions" ||
-    params[:controller]=="devise/registrations"%>
-    <%= link_to :back, class: "back-item" do %>
-      <i class="material-icons md-36">keyboard_backspace</i>
+<% unless params[:controller]=="devise/sessions" ||
+    params[:controller]=="devise/registrations" %>
+
+  <div class="top-navbar-container">
+    <% unless params[:controller]=="journeys" && params[:action]=="show" ||
+      params[:controller]=="users" || params[:controller]=="devise/sessions" ||
+      params[:controller]=="devise/registrations"%>
+      <%= link_to :back, class: "back-item" do %>
+        <i class="material-icons md-36">keyboard_backspace</i>
+      <% end %>
+    <% else %>
+    <div></div>
     <% end %>
-  <% else %>
-  <div></div>
-  <% end %>
-  <%= link_to "/users/support", class: "support-item" do %>
-    <i class="material-icons md-36">support</i>
-  <% end %>
-</div>
+    <%= link_to "/users/support", class: "support-item" do %>
+      <i class="material-icons md-36">support</i>
+    <% end %>
+  </div>
+
+<% end %>
