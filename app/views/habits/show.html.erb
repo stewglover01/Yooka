@@ -1,19 +1,29 @@
-
-<p class ="mt-5">This is a habit page</p>
-
-<%= simple_form_for [@habit_questions.first, @response] do |f| %>
-  <% @habit_questions.each_with_index do |question, index| %>
-
-    <% if question.possible_answers.nil?  %>
-
-            <p><%= question.question %></p>
-      <%= f.input :content, height: "30px" %>
-    <% else%>
-      <p><%= question.question %></p>
-      <%= f.input :content, as: :check_boxes, collection: JSON.parse(question.possible_answers)%>
+<div class="container mt-5">
+  <div><p>Progress: <%= @habit_progress %>%</p></div>
+  <div class="progress mb-3">
+    <div class="progress-bar" role="progressbar" style="width: <%= @habit_progress %>%" aria-valuenow="<%= @habit_progress %>" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+  <% if @unanswered_questions.empty?%>
+    
+    <h3>You have logged your habit and earnt <%= @habit.xp%> xp</h3>
+    <p>You scored <%= @quiz_score%>/<%= @number_of_quiz_questions %> on this quiz!</p>
+    <% @badgesearned.each do |user_badge| %>
+      <p>You also earnt this badge</p>
+      <div class="d-flex align-items-center flex-column user-badge">
+                        <%= image_tag "badges/#{user_badge.badge.name.gsub(/\s+/, "")}.png", alt: user_badge.badge.name %>
+                        <p class="mb-auto"><%= user_badge.badge.name %></p>
+              </div>
+    <% end %>
+    <%= link_to 'Head back to home', users_home_path%>
+  <% else %>
+    <p><strong><%= @unanswered_questions.first.question %></strong></p>
+    <%= simple_form_for [@unanswered_questions.first, @response] do |f| %>
+      <% if @unanswered_questions.first.possible_answers.nil? %>
+        <%= f.input :content, height: "30px" %>
+      <% else %>
+        <%= f.input :content, as: :radio_buttons, collection: JSON.parse(@unanswered_questions.first.possible_answers)%>
+      <% end %>
+        <%= f.button :submit, class: "btn btn-primary" %>
     <% end %>
   <% end %>
-<%= f.button :submit, class: "btn btn-primary" %>
-<% end %>
-<%# JSON.parse(question.possible_answers) %>
- <%# question.possible_answers.length > 3 %>
+
