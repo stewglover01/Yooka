@@ -1,14 +1,17 @@
 <h2 class="absolute-header"><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %>'s Social Dashboard</h2>
+
+
+
 <h2>Challenge Leaderboard</h2>
-<table style="width: 100%" class="table table-dark">
-    <tr>
-        <th scope="col"></th><th scope="col">User</th><th scope="col">XP</th>
-    </tr>
+<table style="width: 100%" class="table leaderboard">
+        <% counter = 1 %>
         <% @leaderboard.each do |user| %>
-            <tr>
-                <td><%= cl_image_tag user.photo.key, :gravity=>"faces", :crop=>"fill", class: "avatar m-1", alt: "avatar-large" %></td>
+            <tr class=<%="leaderboard-current-user" if user == current_user %>>
+                <td class="leaderboard-position"><%= counter %></td>
+                <td class="leaderboard-avatar"><%= cl_image_tag user.photo.key, :gravity=>"faces", :crop=>"fill", class: "avatar m-1", alt: "avatar-large" %></td>
                 <td><%= user.first_name %></td>
-                <td><%= user.xp %></td>
+                <td class="leaderboard-xp"><%= user.xp %> XP</td>
+                <% counter += 1 %>
             </tr>
         <% end %>
 </table>
@@ -23,14 +26,16 @@
 
         <div class="feed-container my-4">
           <div class="feed-content d-flex justify-content-between">
-            <div class="feed-avatar align-self-center">
-              <%= cl_image_tag activity.user.photo.key, :gravity=>"faces", :crop=>"fill", class: "avatar-large m-2", alt: "avatar-large" %>
-            </div>
-            <div class="feed-info align-self-center">
-              <div class="feed-name d-flex justify-content-start">
-                <div>
-                  <p><%= activity.user.first_name %> has earned the <%= activity.badge.name %> badge.</p>
-                  <p class="feed-date"><%= activity.created_at.strftime("%A %d %B") %></p>
+            <div class="d-flex justify-content-start">
+              <div class="feed-avatar align-self-start">
+                <%= cl_image_tag activity.user.photo.key, :gravity=>"faces", :crop=>"fill", class: "avatar-large m-2", alt: "avatar-large" %>
+              </div>
+              <div class="feed-info align-self-center">
+                <div class="feed-name d-flex justify-content-start flex-grow-1">
+                  <div>
+                    <p><%= activity.user.first_name %> has earned the <%= activity.badge.name %> badge.</p>
+                    <p class="feed-date"><%= activity.created_at.strftime("%A %d %B") %></p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -48,14 +53,16 @@
       <% else %>
         <div class="feed-container my-4">
           <div class="feed-content d-flex justify-content-between">
-            <div class="feed-avatar align-self-center">
-              <%= cl_image_tag activity.journey.user.photo.key, :gravity=>"faces", :crop=>"fill", class: "avatar-large m-2", alt: "avatar-large" %>
-            </div>
-            <div class="feed-info align-self-center">
-              <div class="feed-name d-flex justify-content-start">
-                <div>
-                  <p><%= activity.journey.user.first_name %> has logged the <%= activity.habit.name %> habit.</p>
-                  <p class="feed-date"><%= activity.created_at.strftime("%A %d %B") %></p>
+            <div class="d-flex justify-content-start">
+              <div class="feed-avatar align-self-start">
+                <%= cl_image_tag activity.journey.user.photo.key, :gravity=>"faces", :crop=>"fill", class: "avatar-large m-2", alt: "avatar-large" %>
+              </div>
+              <div class="feed-info align-self-center">
+                <div class="feed-name d-flex justify-content-start flex-grow-1">
+                  <div>
+                    <p><%= activity.journey.user.first_name %> has logged the <%= activity.habit.name %> habit.</p>
+                    <p class="feed-date"><%= activity.created_at.strftime("%A %d %B") %></p>
+                  </div>
                 </div>
               </div>
             </div>

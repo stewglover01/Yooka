@@ -26,7 +26,7 @@ class JourneysController < ApplicationController
         @all_lesson_questions << activity.questions
       end
       @unanswered_questions = @all_lesson_questions.flatten - @user_responses.flatten.map { |response| response.question }
-      if @unanswered_questions.count == 0
+      if @unanswered_questions.count == 0 && journey_lesson.video_watched == true
         @complete_journey_lessons << journey_lesson 
         journey_lesson.complete = true
         journey_lesson.save!

@@ -42,10 +42,15 @@ end
 puts "creating moods"
 
 moods = %w(😊 😃 😌 🙃 🙁 😡 😰 😯 🤒 🤕 🥱 😳)
+mood_description = %w(joy happy content silly sad angry nervous shocked sick hurt guulty embarrased)
+mood_counter = 0
 moods.each do |mood|
     puts "creating #{mood}"
-    Mood.create(name: mood)
+    Mood.create(name: mood, description: mood_description[mood_counter])
+    mood_counter += 1
 end
+
+
 
 puts "Creating resilience index"
 
@@ -868,11 +873,11 @@ end
 counter1 = 0
 
 puts "creating 4 users"
-first_names = ["Bill", "Lachlan", "Liam", "Stewart"]
-last_names = ["Bawden", "Oreo", "Barlow", "Glover"]
-emails = ["wabawden@aol.com", "lachlan@hey.com", "liam@gmail.com", "stewart@gmail.com"]
+first_names = ["Bill", "Lachlan", "Liam", "Stewart", "Ben"]
+last_names = ["Bawden", "Oreo", "Barlow", "Glover", "Fanning"]
+emails = ["wabawden@aol.com", "lachlan@hey.com", "liam@gmail.com", "stewart@gmail.com", "Ben@ben.com"]
 counter = 0
-4.times do
+5.times do
   user = User.new(
     first_name: first_names[counter],
     last_name: last_names[counter],
