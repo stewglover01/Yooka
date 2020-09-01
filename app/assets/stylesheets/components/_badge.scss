@@ -26,3 +26,8 @@
 .user-badge:hover {
     transform: translate3D(0, -1px, 0) scale(1.05);
 }
+
+.badge-card-text .grey {
+    font-style: italic;
+    color: gray;
+}
