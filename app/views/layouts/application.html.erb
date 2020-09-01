@@ -28,9 +28,9 @@
   <%= render "shared/banner" %>
 
   <body class="<%= "background-brand-color" if devise_controller? %>">
-    <%= render "shared/top-navbar" %>
+    <%= render "shared/top-navbar" unless @home %>
 
-      <div class="container">
+      <div class=" <%= "home-" if @home %>container">
         <%= yield %>
 
       </div>

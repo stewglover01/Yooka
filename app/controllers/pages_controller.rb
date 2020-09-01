@@ -2,12 +2,13 @@ class PagesController < ApplicationController
   before_action :no_banner
 
   def home
+    @home = true
     if current_user
       @journeys = current_user.journeys
       @current_journey = @journeys.last
       redirect_to users_home_path
-    else
-      redirect_to new_user_session_path
+    # else
+    #   redirect_to new_user_session_path
     end
   end
 
