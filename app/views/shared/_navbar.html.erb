@@ -1,6 +1,8 @@
 <% unless params[:controller]=="devise/sessions" ||
     params[:controller]=="devise/registrations" ||
-    params[:controller]=="activities" %>
+    params[:controller]=="activities" ||
+    params[:controller]=="videos" ||
+    params[:controller]=="habits" %>
 
   <nav class="nav">
     <% if current_user %>
