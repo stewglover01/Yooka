@@ -1,17 +1,27 @@
-  <% if @show_banner=='blue'%>
-    <svg class="banner" width="558" height="316" viewBox="0 0 558 316" fill="none" xmlns="http://www.w3.org/2000/svg">
-     <rect width="558" height="190" fill="#0069FF" fill-opacity="0.63"/>
-     <path class="banner-svg" d="M0 272.765V107.544C0 107.544 50.3789 133.337 104.16 172.203C157.941 211.068 272.304 162.31 345.96 76.2493C419.616 -9.81166 558 76.2493 558 76.2493V272.765C369.212 359.887 10.5059 291.519 0 272.765Z" fill="#0069FF"/>
-   </svg>
-   <% elsif @show_banner=='orange' %>
-  <svg class ="banner-orange-header" width="692" height="362" viewBox="0 0 692 362" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M692 0H0V252H692V0Z" fill="#F47D31" fill-opacity="0.68"/>
-    <path d="M0 362V142.423C0 142.423 62.4771 176.703 129.173 228.354C195.869 280.005 337.696 215.208 429.04 100.833C520.384 -13.5411 692 100.833 692 100.833V362C692 362 343.232 228.354 0 362Z" fill="#F47D31"/>
+<% if @show_banner=='blue'%>
+  <svg class="banner" width="558" height="316" viewBox="0 0 558 316" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="558" height="190" fill="#0069FF" fill-opacity="0.63"/>
+    <path class="banner-svg" d="M0 272.765V107.544C0 107.544 50.3789 133.337 104.16 172.203C157.941 211.068 272.304 162.31 345.96 76.2493C419.616 -9.81166 558 76.2493 558 76.2493V272.765C369.212 359.887 10.5059 291.519 0 272.765Z" fill="#0069FF"/>
   </svg>
-  <% elsif @show_banner == 'curved-blue' %>
-    <svg class="banner-orange-header" width="963" height="459" viewBox="0 0 963 459" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect width="963" height="320" fill="#0069FF" fill-opacity="0.63"/>
-      <path d="M0 459V181.714C0 181.714 86.9442 225.002 179.76 290.229C272.576 355.455 469.944 273.627 597.06 129.193C724.176 -15.2411 963 129.193 963 129.193V459C963 459 477.648 290.229 0 459Z" fill="#0069FF"/>
+  <% elsif @show_banner=='orange' %>
+    <svg width="375" height="191" viewBox="0 0 375 191" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect y="0.284027" width="375" height="132.309" fill="#F47D31" fill-opacity="0.68"/>
+      <path d="M0 190.284V75.3119C0 75.3119 33.8568 93.2608 70 120.306C106.143 147.351 183 113.422 232.5 53.5349C282 -6.3523 375 53.5349 375 53.5349V190.284C375 190.284 186 120.306 0 190.284Z" fill="#F47D31"/>
     </svg>
-  <% end %>
+  <% elsif @show_banner == 'curved-blue' %>
+    <svg width="388" height="190" viewBox="0 0 388 190" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="388" height="132.309" fill="#0069FF" fill-opacity="0.63"/>
+      <path d="M0 190V75.0278C0 75.0278 35.0305 92.9767 72.4267 120.022C109.823 147.067 189.344 113.138 240.56 53.2508C291.776 -6.63634 388 53.2509 388 53.2509V190C388 190 192.448 120.022 0 190Z" fill="#0069FF"/>
+    </svg>
+  <% elsif @show_banner == 'green' %>
+    <svg width="388" height="190" viewBox="0 0 388 190" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="388" height="132.309" fill="#35B842" fill-opacity="0.63"/>
+      <path d="M0 190V75.0279C0 75.0279 35.0305 92.9768 72.4267 120.022C109.823 147.067 189.344 113.138 240.56 53.2509C291.776 -6.63629 388 53.2509 388 53.2509V190C388 190 192.448 120.022 0 190Z" fill="#35B842"/>
+    </svg>
+  <% elsif @show_banner == 'cream' %>
+    <svg width="375" height="190" viewBox="0 0 375 190" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="375" height="132.309" fill="#F7E7A1" fill-opacity="0.63"/>
+      <path d="M0 190V75.0278C0 75.0278 33.8568 92.9767 70 120.022C106.143 147.067 183 113.138 232.5 53.2508C282 -6.63636 375 53.2509 375 53.2509V190C375 190 186 120.022 0 190Z" fill="#F7E7A1"/>
+  </svg>
+<% end %>
 

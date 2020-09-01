@@ -4,7 +4,7 @@
   <div class="progress mb-3">
     <div class="progress-bar" role="progressbar" style="width: <%= @activity_progress %>%" aria-valuenow="<%= @activity_progress %>" aria-valuemin="0" aria-valuemax="100"></div>
   </div>
-  <h1 class="absolute-header"><%= @activity.name %></h1>
+  <h2 class="absolute-header"><%= @activity.name %></h2>
 
   <% if @unanswered_questions.empty? && @activity.questions.select {|question| question.correct_answer.present? }.count > 0%>
     <h3>You have answered all questions and earnt <%= @activity.xp%> xp</h3>

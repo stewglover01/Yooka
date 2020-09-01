@@ -42,7 +42,7 @@ end
 puts "creating moods"
 
 moods = %w(😊 😃 😌 🙃 🙁 😡 😰 😯 🤒 🤕 🥱 😳)
-mood_description = %w(joy happy content silly sad angry nervous shocked sick hurt guulty embarrased)
+mood_description = %w(joy happy content silly sad angry nervous shocked sick hurt guilty embarrased)
 mood_counter = 0
 moods.each do |mood|
     puts "creating #{mood}"
