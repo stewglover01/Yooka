@@ -25,6 +25,7 @@ Activity.delete_all
 Video.delete_all
 JourneyLesson.delete_all
 JourneyHabit.delete_all
+Habit.delete_all
 Lesson.delete_all
 Journey.delete_all
 Mood.delete_all
@@ -867,7 +868,7 @@ puts "We now have #{Lesson.count} lessons created"
 
 puts "Creating a habit"
 
-habit = Habit.new(name: "Sleep", )
+habit = Habit.new(name: "Sleep", xp: 50)
   habit.save!
     habit_questions = ["Select the things you did yesterday", "How did you sleep?", "What time did you go to bed?", "What time did you wake up?", "How do you feel today?"]
     possible_answers = ["Coffee after 4pm", "Exercised late", "Ate after 8:30pm", "Phone in room"]

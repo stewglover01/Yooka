@@ -69,7 +69,14 @@
         </h4>
  -->
         <div class="d-flex justify-content-around">
-          <%= link_to "Log Sleep", journey_habits_create_path, class: "btn btn-main" %>
+          <% sleep_habit = Habit.last %>
+          <% if current_user.journey_habits.empty? %>
+          <%= link_to "Log Sleep", habit_path(sleep_habit), class: "btn btn-main" %>
+          <% elsif current_user.journey_habits.last.created_at.to_date != Date.current %>
+          <%= link_to "Log Sleep", habit_path(sleep_habit), class: "btn btn-main" %>
+          <% else %>
+          <div class="btn btn-main" style="opacity: .5;" >Log Sleep </div>
+          <% end %>
           <% if @journeys.length > 0 %>
             <%= link_to "Next Activity", journey_path(@journeys.last), class: "btn btn-main" %>
           <% end %>

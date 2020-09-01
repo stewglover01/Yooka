@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'videos/show'
   get 'lessons/show'
   get 'lessons/:id/videos/:id/rewards', to: 'videos#rewards'
+  get 'habits/:id//rewards', to: 'habits#rewards'
   get 'journeys/show'
   get 'users/home'
   get 'users/show'
