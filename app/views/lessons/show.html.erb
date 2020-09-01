@@ -1,8 +1,12 @@
+<div class="absolute-header">
+  <h3><%= @lesson.topic.capitalize %></h3>
+  <p><%= @lesson.name.capitalize %></p>
+</div>
 
-<h2 class="absolute-header"><%= @lesson.topic.capitalize %></h2>
-<h3><%= @lesson.name.capitalize %></h3>
-<h5>Time to complete lesson - <%= @lesson.time_to_complete %> mins</h5>
-<p><%= @lesson.description %></p>
+<div class="mt-5">
+  <p><%= @lesson.description %></p>
+  <p>Time to complete lesson - <%= @lesson.time_to_complete %> mins</p>
+</div>
 
 <div class="author-background">
   <div class="d-flex">
