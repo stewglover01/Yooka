@@ -1,0 +1,19 @@
+
+<p class ="mt-5">This is a habit page</p>
+
+<%= simple_form_for [@habit_questions.first, @response] do |f| %>
+  <% @habit_questions.each_with_index do |question, index| %>
+
+    <% if question.possible_answers.nil?  %>
+
+            <p><%= question.question %></p>
+      <%= f.input :content, height: "30px" %>
+    <% else%>
+      <p><%= question.question %></p>
+      <%= f.input :content, as: :check_boxes, collection: JSON.parse(question.possible_answers)%>
+    <% end %>
+  <% end %>
+<%= f.button :submit, class: "btn btn-primary" %>
+<% end %>
+<%# JSON.parse(question.possible_answers) %>
+ <%# question.possible_answers.length > 3 %>

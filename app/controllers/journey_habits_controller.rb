@@ -5,4 +5,5 @@ class JourneyHabitsController < ApplicationController
     @journey_habit.save
     redirect_to users_home_path
   end
+
 end
