@@ -1,0 +1,15 @@
+.modal-position {
+   position: absolute;
+   top: 10px;
+   right: 100px;
+   bottom: 400px;
+   left: 0;
+   z-index: 10040;
+   overflow: auto;
+   overflow-y: auto;
+
+}
+
+.modal-correct {
+  background-color: green;
+}

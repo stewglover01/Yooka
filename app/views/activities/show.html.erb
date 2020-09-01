@@ -1,7 +1,6 @@
 <div class="container">
-  <div><p>Progress: <%= @activity_progress %>%</p></div>
-  <div class="progress mb-3">
-    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: <%= @activity_progress %>%" aria-valuenow="<%= @activity_progress %>" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress ml-4 mt-4 mb-4">
+    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <%= @activity_progress %>%" aria-valuenow="<%= @activity_progress %>" aria-valuemin="0" aria-valuemax="100"></div>
   </div>
 
   <% if @unanswered_questions.empty? && @activity.questions.select {|question| question.correct_answer.present? }.count > 0%>
@@ -32,25 +31,23 @@
 
   <%= simple_form_for [@unanswered_questions.first, @response] do |f| %>
       <% if @unanswered_questions.first.possible_answers.nil? %>
-        <%= f.input :content, height: "30px" %>
-
+        <%= f.input_field :content, height: "30px", class: :textbox %>
       <% else %>
-        <%= f.input :content, as: :radio_buttons, collection: JSON.parse(@unanswered_questions.first.possible_answers)%>
+        <%= f.input_field :content, as: :radio_buttons, collection: JSON.parse(@unanswered_questions.first.possible_answers) %>
       <% end %>
       <% if @unanswered_questions.first.correct_answer.nil? %>
-        <%= f.button :submit, class: "btn btn-primary" %>
+        <%= f.button :submit, class: "btn-main" %>
       <% else %>
-        <button id= "JS-button" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" data-answers= "<%= @unanswered_questions.first.correct_answer %>">Confirm</button>
-
+        <button id= "JS-button" type="button" class="btn-main w-50 mt-4 text-center" data-toggle="modal" data-target="#exampleModalCenter" data-answers= "<%= @unanswered_questions.first.correct_answer %>">Check Answer</button>
         <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal fade modal-position" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-header justify-content-center">
                 <h5 class="modal-title" id="bannertext"></h5>
               </div>
               <div class="modal-footer justify-content-center" id="popup-banner">
-                <%= f.button :submit, "Continue", class: "btn-primary" %>
+                <%= f.button :submit, "Continue", class: "btn-main w-50" %>
               </div>
             </div>
           </div>
@@ -66,13 +63,15 @@
   const jsButton = document.getElementById('JS-button')
   const answers = jsButton.dataset.answers
   const bannertext = document.getElementById('bannertext')
-
+  const modal = document.getElementById('exampleModalCenter')
+  
   if (document.getElementById('response_content')){
     jsButton.addEventListener("click", (event) => {
       event.preventDefault()
       const response = document.getElementById('response_content').value
       if (response === answers){
         bannertext.innerText = "Correct"
+        modal.classList.add("modal-correct");
       } else {
         bannertext.innerText = "You Are Incorrect"
       }
