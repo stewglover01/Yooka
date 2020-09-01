@@ -19,6 +19,7 @@ require "json"
 puts "Deleting everything!!!"
 DailyMood.delete_all
 Mood.delete_all
+Tool.delete_all
 Response.delete_all
 Question.delete_all
 Activity.delete_all
@@ -881,7 +882,7 @@ habit = Habit.new(name: "Sleep", xp: 50)
         else
           question = Question.new(question: question)
           question.habit = habit
-          question.save!  
+          question.save!
         end
       end
 
@@ -997,7 +998,7 @@ tools = ["Meditation", "Sleep Sounds", "CBT Therapy", "Noting", "Exam Planner", 
 tools.each do |tool|
   toolobject = Tool.new(
     name: tool,
-    photo: "mailbox.svg"
+    photo: "relax.svg"
   )
 toolobject.save!
 end
