@@ -4,16 +4,22 @@
 </div>
 
 
-<div class="cards-tool">
-<% @tools.each do |tool| %>
-  <div class="card-trip-index mb-2">
-                  <%=  image_tag tool.photo %>
-      <div class="card-trip-infos">
-        <h2><%= link_to "#{tool.name}", tool_path(tool) %></h2>
-      </div>
-  </div>
-  <% end %>
+
+<div class="d-flex justify-content-center mb-3 mt-4">
+ <a class="btn button-blue" href="#">By Emotion</a>
+ <a class="btn button-white" href="#">By Tool</a>
 </div>
 
 
-<%= link_to 'Back', :back %>
+  <div class="cards-tool">
+    <% @tools.each do |tool| %>
+    <div class="card-trip-index mb-2">
+        <%=  image_tag tool.photo %>
+      <div class="card-trip-infos">
+        <p><%= link_to "#{tool.name}", tool_path(tool), class: "no-decoration"%></p>
+      </div>
+    </div>
+    <% end %>
+  </div>
+
+

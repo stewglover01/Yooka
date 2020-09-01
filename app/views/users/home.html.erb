@@ -10,96 +10,90 @@
 
 <%# journey %>
 <% if @journeys.length > 0 %>
-    <div class="dashboard-element dashboard-progress">
-        <div><p>Progress: <%= @journey_progress %>%</p></div>
-        <div class="progress">
+    <div class="dashboard-element dashboard-progress d-flex align-items-center">
+        <div><p class="mb-0">Progress: <%= @journey_progress %>%</p></div>
+        <div class="progress dashboard-progressbar ml-2">
             <div class="progress-bar" role="progressbar" style="width: <%= @journey_progress %>%" aria-valuenow="<%= @journey_progress %>" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
     </div>
 <% end %>
-
-<div class="d-flex flex-wrap">
+<div class="d-flex flex-wrap justify-content-center">
+    <%# xp %>
+    <div class="d-flex xp-streak">
+        <div class="dashboard-element streak">
+            <h4 class="m-0"><%= image_tag "007-star.svg", :height=>"30px" %> <strong><%= @user_badges.length %></strong> badges</h4>
+        </div>
+        <div class="dashboard-element xp">
+            <h4 class="m-0"><%= image_tag "095-diamond.svg", :height=>"30px" %>
+                <% if current_user.xp %>
+                    <strong><%= current_user.xp %></strong>
+                <% else %>
+                    <strong>0</strong>
+                <% end %>
+                points
+            </h4>
+        </div>
+    </div>
+    <div class="dashboard-element streak d-flex align-items-center">
+        <h4 class="m-0 mr-2"><strong><%= @streak %></strong> day streak</h4>
+        <% @streak.times do%>
+            <%= image_tag "009-fire.svg", :height=>"30px" %>
+        <% end %>
+    </div>
+    <div class="d-flex justify-content-around">
+      <% if @journeys.length > 0 %>
+        <%= link_to "Next Activity", journey_path(@journeys.last), class: "btn btn-main" %>
+      <% end %>
+      <% sleep_habit = Habit.last %>
+      <% if current_user.journey_habits.empty? %>
+        <%= link_to "Log Sleep", habit_path(sleep_habit), class: "btn btn-main" %>
+      <% elsif current_user.journey_habits.last.created_at.to_date != Date.current %>
+        <%= link_to "Log Sleep", habit_path(sleep_habit), class: "btn btn-main" %>
+      <% else %>
+        <div class="btn btn-main" style="opacity: .5;" >Log Sleep </div>
+      <% end %>
+    </div>
+</div>
+<div class="dashboard-leaderboard dashboard-element">
+    <h4 id="leaderboard-header"> <strong>Challenge Leaderboard</strong></h4>
+        <table style="width: 100%" class="table leaderboard">
+            <% counter = 1 %>
+            <% @short_leaderboard.each do |user| %>
+                <tr class=<%="leaderboard-current-user" if user == current_user %>>
+                    <td class="leaderboard-position"><%= counter %></td>
+                    <td class="leaderboard-avatar"><%= cl_image_tag user.photo.key, :gravity=>"faces", :crop=>"fill", class: "avatar m-1", alt: "avatar-large" %></td>
+                    <td><%= user.first_name %></td>
+                    <td class="leaderboard-xp"><%= user.xp %> XP</td>
+                    <% counter += 1 %>
+                </tr>
+            <% end %>
+        </table>
+</div>
 <%# badges %>
-    <div class="dashboard-element">
-        <% if  @user_badges %>
-
-
-
+<div class="dashboard-element">
+    <% if  @user_badges %>
         <% if  @user_badges.length > 0 %>
             <h2>Badges:</h2>
             <div class="user-badges d-flex flex-wrap justify-content-start">
                 <% @user_badges.each do |user_badge| %>
-                    <div class="d-flex align-items-center flex-column user-badge">
-                        <%= image_tag "badges/#{user_badge.badge.name.gsub(/\s+/, "")}.png", alt: user_badge.badge.name %>
-                        <p class="mb-auto"><%= user_badge.badge.name %></p>
+                    <div class="badge-card d-flex">
+                        <div class="d-flex align-items-center flex-column user-badge">
+                            <%= image_tag "badges/#{user_badge.badge.name.gsub(/\s+/, "")}.png", alt: user_badge.badge.name %>
+                            <p class="mb-auto"><%= user_badge.badge.name %></p>
+                        </div>
+                        <div class="badge-card-text ml-2">
+                            <p><strong><%= user_badge.badge.name.capitalize %></strong></p>
+                            <p class="grey">You earned this badge on <%= user_badge.created_at.strftime("%A %d %B") %></p>
+                        </div>
                     </div>
                 <% end %>
             </div>
         <% else %>
             <h3>You currently have no badges</h3>
-
-
         <% end %>
-        <% end %>
-        <%# xp %>
-
-        <div class="d-flex xp-streak">
-            <div class="dashboard-element xp">
-                <h4><i class="fas fa-gem"></i> points:
-                    <% if current_user.xp %>
-                        <%= current_user.xp %>
-                    <% else %>
-                        0
-                    <% end %>
-                </h4>
-            </div>
-            <div class="dashboard-element streak">
-                <h4><i class="fas fa-fire-alt"></i> <%= @streak %> day streak</h4>
-            </div>
-        </div>
-<!--
-<div class="d-flex xp-streak">
-    <div class="dashboard-element xp">
-        <h4><i class="fas fa-gem"></i> points:
-            <% if current_user.xp %>
-                <%= current_user.xp %>
-            <% else %>
-                0
-            <% end %>
-        </h4>
- -->
-        <div class="d-flex justify-content-around">
-          <% sleep_habit = Habit.last %>
-          <% if current_user.journey_habits.empty? %>
-          <%= link_to "Log Sleep", habit_path(sleep_habit), class: "btn btn-main" %>
-          <% elsif current_user.journey_habits.last.created_at.to_date != Date.current %>
-          <%= link_to "Log Sleep", habit_path(sleep_habit), class: "btn btn-main" %>
-          <% else %>
-          <div class="btn btn-main" style="opacity: .5;" >Log Sleep </div>
-          <% end %>
-          <% if @journeys.length > 0 %>
-            <%= link_to "Next Activity", journey_path(@journeys.last), class: "btn btn-main" %>
-          <% end %>
-        </div>
-    </div>
-
-
-    <div class="dashboard-leaderboard dashboard-element">
-        <h4 id="leaderboard-header"> <strong>Challenge Leaderboard</strong></h4>
-            <table style="width: 100%" class="table leaderboard">
-                <% counter = 1 %>
-                <% @short_leaderboard.each do |user| %>
-                    <tr class=<%="leaderboard-current-user" if user == current_user %>>
-                        <td class="leaderboard-position"><%= counter %></td>
-                        <td class="leaderboard-avatar"><%= cl_image_tag user.photo.key, :gravity=>"faces", :crop=>"fill", class: "avatar m-1", alt: "avatar-large" %></td>
-                        <td><%= user.first_name %></td>
-                        <td class="leaderboard-xp"><%= user.xp %> XP</td>
-                        <% counter += 1 %>
-                    </tr>
-                <% end %>
-            </table>
-    </div>
+    <% end %>
 </div>
+
 
 
 
