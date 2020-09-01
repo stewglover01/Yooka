@@ -1,4 +1,6 @@
 class ActivitiesController < ApplicationController
+  before_action :no_banner
+  
   def show
     @activity = Activity.find(params[:id])
     @responses = @activity.responses.where(user: current_user)
