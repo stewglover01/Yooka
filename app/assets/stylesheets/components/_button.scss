@@ -49,3 +49,26 @@
     font-size: 12px;
     line-height: 1.42857;
 }
+
+.btn-light {
+  background-color: #FFFFFF;
+  color: white;
+  border: 1px solid #0069FF;
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-weight: lighter;
+  transition: opacity 0.3s ease;
+  margin: 4px;
+}
+
+.btn-light:hover {
+  opacity: 1;
+}
+
+.button-home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  top: 280px;
+}

@@ -1,0 +1,54 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-self: center;
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 34.9%), #F8A773;
+}
+
+.home-title {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  position: relative;
+  top: 60px;
+}
+
+.home-title h1 {
+  font-size: 4.5rem;
+}
+
+.home-logo {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  position: relative;
+  top: 190px;
+}
+
+.home-slogan {
+  color: white;
+  position: relative;
+  top: 240px;
+}
+
+h3 {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.btn-main a {
+  color: white;
+}
+
+.teacher-login p {
+  margin-bottom: 0rem;
+}
+
+.student-login p {
+  margin-bottom: 0rem;
+}

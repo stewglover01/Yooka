@@ -42,10 +42,15 @@ end
 puts "creating moods"
 
 moods = %w(😊 😃 😌 🙃 🙁 😡 😰 😯 🤒 🤕 🥱 😳)
+mood_description = %w(joy happy content silly sad angry nervous shocked sick hurt guulty embarrased)
+mood_counter = 0
 moods.each do |mood|
     puts "creating #{mood}"
-    Mood.create(name: mood)
+    Mood.create(name: mood, description: mood_description[mood_counter])
+    mood_counter += 1
 end
+
+
 
 puts "Creating resilience index"
 
@@ -860,6 +865,26 @@ video7 = Video.new(
 
 puts "We now have #{Lesson.count} lessons created"
 
+puts "Creating a habit"
+
+habit = Habit.new(name: "Sleep", )
+  habit.save!
+    habit_questions = ["Select the things you did yesterday", "How did you sleep?", "What time did you go to bed?", "What time did you wake up?", "How do you feel today?"]
+    possible_answers = ["Coffee after 4pm", "Exercised late", "Ate after 8:30pm", "Phone in room"]
+
+      habit_questions.each_with_index do |question, index|
+        if index == 0
+          question = Question.new(question: question, possible_answers: possible_answers)
+          question.habit = habit
+          question.save!
+        else
+          question = Question.new(question: question)
+          question.habit = habit
+          question.save!  
+        end
+      end
+
+
 headshots = []
 api_call = Unsplash::Photo.search('headshot', page = 1, per_page = 30)
 api_call.each do |photo|
@@ -868,11 +893,11 @@ end
 counter1 = 0
 
 puts "creating 4 users"
-first_names = ["Bill", "Lachlan", "Liam", "Stewart"]
-last_names = ["Bawden", "Oreo", "Barlow", "Glover"]
-emails = ["wabawden@aol.com", "lachlan@hey.com", "liam@gmail.com", "stewart@gmail.com"]
+first_names = ["Bill", "Lachlan", "Liam", "Stewart", "Ben"]
+last_names = ["Bawden", "Oreo", "Barlow", "Glover", "Fanning"]
+emails = ["wabawden@aol.com", "lachlan@hey.com", "liam@gmail.com", "stewart@gmail.com", "Ben@ben.com"]
 counter = 0
-4.times do
+5.times do
   user = User.new(
     first_name: first_names[counter],
     last_name: last_names[counter],
@@ -897,6 +922,12 @@ counter = 0
   )
   journey.save!
   puts "created #{journey.name}"
+
+  journey_habit = JourneyHabit.new(
+    journey_id: journey.id,
+    habit_id: habit.id
+  )
+
   journeylesson1 = JourneyLesson.new(
       journey_id: journey.id,
       lesson_id: lesson1.id
@@ -1093,3 +1124,4 @@ journey = user.journeys.first
 journeyhabit = JourneyHabit.create(journey:journey, habit:habit)
 journeyhabit.created_at = "Sat, 29 Aug 2020 13:03:49 UTC +00:00"
 journeyhabit.save
+

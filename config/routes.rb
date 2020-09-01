@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'activities/show'
   get 'videos/show'
   get 'lessons/show'
+  get 'lessons/:id/videos/:id/rewards', to: 'videos#rewards'
   get 'journeys/show'
   get 'users/home'
   get 'users/show'
@@ -28,9 +29,10 @@ Rails.application.routes.draw do
 
   resources :journeys, only: [:show]
   resources :tools, only: [:show]
+  resources :habits, only: [:show, :create]
   resources :lessons, only: [:show] do
-    resources :videos, only: [:show]
     resources :activities, only: [:show]
+    resources :videos, only: [:show]
   end
 
   resources :questions, only: [] do
