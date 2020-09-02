@@ -11,6 +11,21 @@
 
 }
 
+.btn-main-activities {
+  background-color: $blue;
+  color: white;
+  border: 1px solid #0069FF;
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-weight: lighter;
+  transition: opacity 0.3s ease;
+  margin: 4px auto;
+  width: 150px;
+  position: fixed;
+  bottom:24px;
+  right: 0;
+  left: 0;
+}
 
 .btn-main:hover {
   opacity: 1;

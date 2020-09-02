@@ -28,10 +28,16 @@ import "bootstrap";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
-
+import { radioButton } from '../components/radio_button';
+import { checkButton } from '../components/check_boxes';
+import { radioButtonNumbers } from '../components/radio_button_numbers';
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  radioButtonNumbers()
+  radioButton()
+  checkButton()
 });
 
 import "controllers"
+
