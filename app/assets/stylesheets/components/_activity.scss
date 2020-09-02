@@ -1,23 +1,29 @@
 .activity {
     border-style: solid;
     border-width: 1px;
-    border-radius: 3px;
+    border-radius: 6px;
 }
 
 .badge-activity {
-        border-color: green;
-        background-color: rgb(167, 255, 167);
+        border-style: none;
+        background-color: rgb(220, 253, 220);
     }
 
 .habit-activity {
-        border-color: hotpink;
-        background-color: lightpink;
+        border-style: none;
+        background-color: rgb(202, 224, 231);
     }
 
 .mood-activity {
-        border-color: blue;
-        background-color: lightblue;
+        border-style: none;
+        background-color: rgb(255, 220, 226);
     }
+
+.attention {
+    border-style: solid;
+    border-color: red;
+    border-width: 2px;
+}
 
 .feed-container {
     overflow: hidden;

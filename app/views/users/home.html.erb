@@ -6,7 +6,7 @@
 <div class="week-header text-center mb-3 mr-3">
   <h4><strong>Week 1 of 6</strong></h4>
 </div>
-<h5 style="margin-left: 6px;">Challenge Statistics</h5>
+<h4 style="margin-left: 6px;">Challenge Statistics</h4>
 
 <%# journey %>
 <% if @journeys.length > 0 %>
@@ -73,7 +73,7 @@
 <div class="dashboard-element">
     <% if  @user_badges %>
         <% if  @user_badges.length > 0 %>
-            <h2>Badges:</h2>
+            <h4>Badges:</h4>
             <div class="user-badges d-flex flex-wrap justify-content-start">
                 <% @user_badges.each do |user_badge| %>
                     <div class="badge-card d-flex">
