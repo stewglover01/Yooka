@@ -1,5 +1,17 @@
+.journey-title {
+  font-family: Gudea;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
 .duolingo-container {
-  width: 400px;
+  width: 100vw;
   height: 1500px;
   background-color: #FAFAFA;
   position: absolute;
@@ -8,10 +20,11 @@
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  background-color: #C4C4C4;
+  background-color: white;
   background-position: center;
   background-size: cover;
   position: absolute;
+  border:5px solid grey;
   /*&:first-of-type {
     left: calc(50% - 50px) !important;
     top: 50px !important;
@@ -60,5 +73,17 @@ a.duolingo-button {
 }
 
 .finished {
+  /*filter: contrast(60%) opacity(50%);*/
+  border: 5px solid #80d288;
+  .duolingo-first-line,
+  .duolingo-right-line,
+  .duolingo-left-line {
+    path, rect {
+    fill: #80d288;
+    }
+  }
+}
+
+.greyed-out {
   filter: contrast(60%) opacity(50%);
 }
