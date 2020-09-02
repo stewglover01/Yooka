@@ -1,6 +1,10 @@
 .author-background {
-  margin-bottom: 8px;
+  display: flex;
+  align-content: center;
+  justify-content: left;
+  margin-bottom: 16px;
   background-color: #FBF0C3;
   border-radius: 16px;
   padding-top: 8px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }

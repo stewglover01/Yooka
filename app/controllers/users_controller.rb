@@ -74,6 +74,7 @@ class UsersController < ApplicationController
     @habit_activity = JourneyHabit.where(@students.include? :user)
     @recent_activity = (@badge_activity+@mood_activity+@habit_activity).sort_by { |activity| activity.created_at }.reverse.first(10)
     @habit_data = JourneyHabit.totals_by_user(current_user)
+    @negative_moods = %w(🙁 😡 😰 😯 🤕)
   end
 private
 

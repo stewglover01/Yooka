@@ -1,7 +1,7 @@
 <% unless params[:controller]=="devise/sessions" ||
     params[:controller]=="devise/registrations" %>
 
-  <div class="top-navbar-container">
+  <div class="top-navbar-container fixed-top">
     <% unless params[:controller]=="journeys" && params[:action]=="show" ||
       params[:controller]=="users" || params[:controller]=="devise/sessions" ||
       params[:controller]=="devise/registrations"%>
