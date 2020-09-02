@@ -13,8 +13,6 @@
 <% @tools.each do |tool| %>
   <div class="card-trip-index mb-2">
                   <%=  image_tag("tools/#{tool.photo}") %>
-
-
       <div class="card-trip-infos">
         <p><%= link_to "#{tool.name}", tool_path(tool), class: "no-decoration"%></p>
       </div>
