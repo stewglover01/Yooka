@@ -1,3 +1,4 @@
+
 <div class="container p-0 vh-100 flex-column">
     <div class="progress ml-5 mt-4 mb-4">
       <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <%= @activity_progress %>%" aria-valuenow="<%= @activity_progress %>" aria-valuemin="0" aria-valuemax="100"></div>
@@ -15,6 +16,7 @@
       <% end %>
       <%= link_to 'Head back to lesson page', lesson_path(@activity.lesson) %>
     <% elsif @unanswered_questions.empty? %>
+      <canvas id="my-canvas" class="container-overlay"></canvas>
       <h3>You have answered all questions and earned <%= @activity.xp%> xp</h3>
       <% if @badgesearned.length > 0 %>
       <p>You have earned the following badges</p>
@@ -63,12 +65,14 @@
           <button id= "JS-button" type="button" class="btn-main-activities mt-4 w-50" data-toggle="modal" data-target="#exampleModalCenter" data-answers= "<%= @unanswered_questions.first.correct_answer %>">Check Answer</button>
           <!-- Modal -->
           <div class="modal fade modal-position" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
                 <div class="modal-header justify-content-center">
                   <h5 class="modal-title" id="bannertext"></h5>
                 </div>
                 <div class="modal-footer justify-content-center" id="popup-banner">
+
                   <%= f.button :submit, "Continue", class: "btn-main w-50" %>
                 </div>
               </div>
@@ -79,6 +83,8 @@
     <% end %>
   <%# </div> %>
 </div>
+
+
 
 
 <script>

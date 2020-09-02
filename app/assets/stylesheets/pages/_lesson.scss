@@ -2,3 +2,66 @@
   margin-bottom: 100px;
   margin-top: 0px;
 }
+
+.lesson-name {
+  font-size: larger;
+}
+
+.author {
+  position: relative;
+  top: 15px;
+}
+
+#author-img {
+  top: -7px;
+  position: relative;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.author-name {
+  font-family: Gudea;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 17px;
+  display: flex;
+  align-items: center;
+}
+
+.author-description {
+  font-family: Gudea;
+  font-style: normal;
+  font-weight: lighter;
+  font-size: 12px;
+  line-height: 17px;
+  display: flex;
+  align-items: center;
+}
+
+.lesson-name {
+  font-family: Gudea;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.lesson-description {
+  font-family: Gudea;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.lesson-time {
+  font-family: Gudea;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  opacity: .7px;
+}

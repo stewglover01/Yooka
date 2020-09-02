@@ -993,18 +993,29 @@ counter = 0
   journeylesson12.save!
 end
 puts "creating tools"
+def tool_picture(tool)
+  case tool
+  when "Meditation" then "meditation.svg"
+  when "Sleep Sounds" then "sleep_sounds.svg"
+  when "CBT Therapy" then "cbt.svg"
+  when "Noting" then "noting.svg"
+  when "Exam Planner" then "exam_planner.svg"
+  when "Calm Counter" then "calm_counter.svg"
+  when "Sleep Tracker" then "sleep_tracker.svg"
+  when "Hydration Monitor" then "hydration_monitor.svg"
+  when "Yoga" then "yoga.svg"
+  when "Stories" then "stories.svg"
+  end
+end
 
-tools = ["Meditation", "Sleep Sounds", "CBT Therapy", "Noting", "Exam Planner", "Calm Counter", "Sleep Tracker", "Hydration monitor", "Yoga", "Stories" ]
+tools = ["Meditation", "Sleep Sounds", "CBT Therapy", "Noting", "Exam Planner", "Calm Counter", "Sleep Tracker", "Hydration Monitor", "Yoga", "Stories" ]
 tools.each do |tool|
-  toolobject = Tool.new(
-    name: tool,
-    photo: "relax.svg"
-  )
-toolobject.save!
+  toolobject = Tool.new(name: tool, photo: tool_picture(tool))
+  toolobject.save!
 end
 
 puts "Creating Mr Gilbert...."
-teacher = User.new(email:"mrgilbert@rudgepark.com", password:"123456", teacher:true, first_name:"Phil", last_name:"Gilbert", school_class:"Year 10 C")
+teacher = User.new(email:"mrgilbert@rudgepark.com", password:"123456", teacher:true, first_name:"Phil", last_name:"Gilbert", school_name:"Rudge Park School", school_class:"Year 10 C")
 teacher.save
 
 puts "generating fake badge activity.............."

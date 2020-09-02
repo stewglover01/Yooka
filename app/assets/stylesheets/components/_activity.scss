@@ -1,39 +1,48 @@
 .activity {
     border-style: solid;
     border-width: 1px;
-    border-radius: 3px;
+    border-radius: 6px;
 }
 
 .badge-activity {
-        border-color: green;
-        background-color: rgb(167, 255, 167);
+        border-style: none;
+        background-color: rgb(220, 253, 220);
     }
 
 .habit-activity {
-        border-color: hotpink;
-        background-color: lightpink;
+        border-style: none;
+        background-color: rgb(202, 224, 231);
     }
 
 .mood-activity {
-        border-color: blue;
-        background-color: lightblue;
+        border-style: none;
+        background-color: rgb(255, 220, 226);
     }
+
+.attention {
+    border-style: solid;
+    border-color: red;
+    border-width: 2px;
+}
 
 .feed-container {
     overflow: hidden;
     width: -webkit-fill-available;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    border-radius: 4px;
+    border-color: lightgray;
+    border-style: solid;
+    border-width: 0.5px;
+    border-radius: 8px;
 }
 
 .feed-date {
     color: gray;
+    margin-bottom: 0;
 }
 
 .feed-kudos {
     background-color: #80D288;
     color: white;
-    height: 22px; 
+    height: 30px; 
 }
 
 .feed-kudos:hover {

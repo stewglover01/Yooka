@@ -1,20 +1,20 @@
 <div class="absolute-header">
   <h3><%= @lesson.topic.capitalize %></h3>
-  <p><%= @lesson.name.capitalize %></p>
 </div>
 
-<div class="mt-5">
-  <p><%= @lesson.description %></p>
-  <p>Time to complete lesson - <%= @lesson.time_to_complete %> mins</p>
+<div class="lesson-main-description mt-4">
+  <p class="lesson-name"><%= @lesson.name.capitalize %></p>
+  <p class="lesson-description"><%= @lesson.description %></p>
+  <p class="lesson-time">- Time to complete lesson - <%= @lesson.time_to_complete %> mins</p>
 </div>
 
 <div class="author-background">
   <div class="d-flex">
-    <%= image_tag @lesson.author_photo, class: "avatar-large m-3" %>
+    <%= image_tag @lesson.author_photo, class: "avatar-large m-3", id: "author-img" %>
     <div>
-      <div>
-        <h5><%= @lesson.author.capitalize %></h5>
-        <p><%= @lesson.author_description %></p>
+      <div class="author">
+        <h5 class="author-name"><%= @lesson.author.capitalize %></h5>
+        <p class="author-description"><%= @lesson.author_description.truncate(44) %></p>
       </div>
     </div>
   </div>
@@ -22,7 +22,7 @@
 
 <% @lesson.videos.each do |video| %>
   <% if video.lesson.journey_lessons.find { |jl| jl.journey.user_id == current_user.id }.video_watched == true %>
-    <div class="lesson-card mb-2">
+    <div class="lesson-card-complete mb-3">
       <img src="https://images.unsplash.com/photo-1579273166152-d725a4e2b755?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
       <div class="lesson-card-infos">
         <h2> Video: <%= video.name %> </h2>
@@ -31,7 +31,7 @@
     </div>
   <% else %>
     <%= link_to lesson_video_path(@lesson, video) do  %>
-      <div class="lesson-card mb-2">
+      <div class="lesson-card mb-3">
         <img src="https://images.unsplash.com/photo-1579273166152-d725a4e2b755?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
         <div class="lesson-card-infos">
           <h2> Video: <%= video.name %> </h2>
@@ -49,7 +49,8 @@
         <div class="lesson-card-complete mb-2">
           <img src="https://images.unsplash.com/photo-1579273166152-d725a4e2b755?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
           <div class="lesson-card-infos">
-            <h2>Activity • <%= activity.time_to_complete %> mins</h2>
+            <h2> <%= activity.name %> </h2>
+            <p>Activity • <%= activity.time_to_complete %> mins</p>
           </div>
         </div>
       <% else %>

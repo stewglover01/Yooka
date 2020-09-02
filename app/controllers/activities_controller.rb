@@ -1,4 +1,5 @@
 class ActivitiesController < ApplicationController
+
   before_action :no_banner
 
   def show
@@ -96,7 +97,7 @@ class ActivitiesController < ApplicationController
     end
 
 
-    
+
 
   end
 end
