@@ -1003,7 +1003,7 @@ toolobject.save!
 end
 
 puts "Creating Mr Gilbert...."
-teacher = User.new(email:"mrgilbert@rudgepark.com", password:"123456", teacher:true, first_name:"Phil", last_name:"Gilbert", school_class:"Year 10 C")
+teacher = User.new(email:"mrgilbert@rudgepark.com", password:"123456", teacher:true, first_name:"Phil", last_name:"Gilbert", school_name:"Rudge Park School", school_class:"Year 10 C")
 teacher.save
 
 puts "generating fake badge activity.............."
