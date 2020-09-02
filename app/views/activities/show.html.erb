@@ -1,12 +1,9 @@
-<!-- <canvas id="my-canvas"> -->
-  <div class="container">
 
-    <div><p>Progress: <%= @activity_progress %>%</p></div>
-    <div class="progress mb-3">
-      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: <%= @activity_progress %>%" aria-valuenow="<%= @activity_progress %>" aria-valuemin="0" aria-valuemax="100"></div>
+<div class="container p-0 vh-100 flex-column">
+    <div class="progress ml-5 mt-4 mb-4">
+      <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <%= @activity_progress %>%" aria-valuenow="<%= @activity_progress %>" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
-
-
+ <%# <div class="d-flex flex-column"> %>
     <% if @unanswered_questions.empty? && @activity.questions.select {|question| question.correct_answer.present? }.count > 0%>
       <h3>You have answered all questions and earnt <%= @activity.xp%> xp</h3>
       <p>You scored <%= @quiz_score%>/<%= @number_of_quiz_questions %> on this quiz!</p>
@@ -17,9 +14,9 @@
           <p class="mb-auto"><%= user_badge.badge.name %></p>
         </div>
       <% end %>
-      <%= link_to 'Back to lesson page', lesson_path(@activity.lesson), class: "btn btn-main" %>
+      <%= link_to 'Head back to lesson page', lesson_path(@activity.lesson) %>
     <% elsif @unanswered_questions.empty? %>
-    <canvas id="my-canvas" class="container-overlay"></canvas>
+      <canvas id="my-canvas" class="container-overlay"></canvas>
       <h3>You have answered all questions and earned <%= @activity.xp%> xp</h3>
       <% if @badgesearned.length > 0 %>
       <p>You have earned the following badges</p>
@@ -29,32 +26,54 @@
                   <p class="mb-auto"><%= user_badge.badge.name %></p>
               </div>
       <% end %>
-  <% end %>
-      <%= link_to 'Back to lesson page', lesson_path(@activity.lesson), class: "btn btn-main" %>
+    <% end %>
+    <% if @activities.last == @activity%>
+        <%= link_to 'Head to your journey', journey_path(current_user.journeys.first) %>
     <% else %>
-      <p><strong><%= @unanswered_questions.first.question %></strong></p>
-
-    <%= simple_form_for [@unanswered_questions.first, @response] do |f| %>
+        <%= link_to 'Head back to lesson page', lesson_path(@activity.lesson) %>
+    <% end %>
+  <% else %>
+    <div class="text-center">
+      <h1>💤</h1>
+    </div>
+    <div class="pl-5 pr-5 text-center">
+      <h2><strong><%= @unanswered_questions.first.question %></strong></h2>
+    </div>
+    <%= simple_form_for [@unanswered_questions.first, @response], html: {class: "d-flex flex-column flex-grow-1"}  do |f| %>
         <% if @unanswered_questions.first.possible_answers.nil? %>
-          <%= f.input :content, height: "30px" %>
-
+          <%= f.input_field :content, as: :text, height: "30px", class: "textbox p-3" %>
         <% else %>
-          <%= f.input :content, as: :radio_buttons, collection: JSON.parse(@unanswered_questions.first.possible_answers)%>
+          <%# <%= f.input_field :content, as: :check_boxes, collection: JSON.parse(@unanswered_questions.first.possible_answers) %>
+          <div class="choices">
+          <% JSON.parse(@unanswered_questions.first.possible_answers).each do |answer| %> 
+
+              <label class="choice collection_radio_buttons" for="response_content_<%=answer%>"><%=answer%>
+                <input class ="hiddenRadioButton" type="radio" value="<%=answer%>" name="response[content]" id="response_content_<%=answer%>">
+              </label>
+
+          <% end %>
+          </div>
         <% end %>
         <% if @unanswered_questions.first.correct_answer.nil? %>
-          <%= f.button :submit, class: "btn btn-primary" %>
-        <% else %>
-          <button id= "JS-button" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" data-answers= "<%= @unanswered_questions.first.correct_answer %>">Confirm</button>
+        <div class="d-flex justify-content-center align-items-center">
+          <div>
+          <%= f.button :submit, 'Continue', class: "btn-main-activities mt-4 w-50"%>
+          </div>
+        </div>
 
+        <% else %>
+          <button id= "JS-button" type="button" class="btn-main-activities mt-4 w-50" data-toggle="modal" data-target="#exampleModalCenter" data-answers= "<%= @unanswered_questions.first.correct_answer %>">Check Answer</button>
           <!-- Modal -->
-          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal fade modal-position" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
                 <div class="modal-header justify-content-center">
                   <h5 class="modal-title" id="bannertext"></h5>
                 </div>
                 <div class="modal-footer justify-content-center" id="popup-banner">
-                  <%= f.button :submit, "Continue", class: "btn-primary" %>
+
+                  <%= f.button :submit, "Continue", class: "btn-main w-50" %>
                 </div>
               </div>
             </div>
@@ -62,8 +81,10 @@
         <% end %>
       <% end %>
     <% end %>
-   </div>
-<!-- </canvas> -->
+  <%# </div> %>
+</div>
+
+
 
 
 <script>
@@ -71,13 +92,15 @@
   const jsButton = document.getElementById('JS-button')
   const answers = jsButton.dataset.answers
   const bannertext = document.getElementById('bannertext')
-
+  const modal = document.getElementById('exampleModalCenter')
+  
   if (document.getElementById('response_content')){
     jsButton.addEventListener("click", (event) => {
       event.preventDefault()
       const response = document.getElementById('response_content').value
       if (response === answers){
-        bannertext.innerText = "Correct"
+        bannertext.innerText = "Correct!"
+        modal.classList.add("modal-correct");
       } else {
         bannertext.innerText = "You Are Incorrect"
       }

@@ -1,0 +1,86 @@
+
+.hiddenRadioButton {
+    display: none;
+}
+
+.choices {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 24px 0;
+}
+
+.choice {
+  flex: 0 0 49%;
+  background: $light-gray;
+  padding: 20px;
+  border-radius: 8px;
+  opacity: 1;
+  min-height: 150px;
+  text-align: center;
+  color: black;
+  margin-bottom: 8px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+
+}
+
+.check-choice {
+  flex: 0 0 49%;
+  background: $light-gray;
+  padding: 20px;
+  border-radius: 8px;
+  opacity: 1;
+  min-height: 150px;
+  text-align: center;
+  color: black;
+  margin-bottom: 8px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+
+}
+.choice-number {
+  flex: 0 0 31%;
+  background: $light-gray;
+  padding: 20px;
+  border-radius: 8px;
+  opacity: 1;
+  min-height: 100px;
+  text-align: center;
+  color: black;
+  margin-bottom: 8px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+
+}
+
+.active-number {
+  flex: 0 0 31%;
+  padding: 20px;
+  border-radius: 8px;
+  opacity: .4;
+  min-height: 100px;
+  text-align: center;
+  align-items: center;
+  background: $orange;
+  opacity: 1;
+  color: white;
+
+}
+
+.active {
+  flex: 0 0 49%;
+  padding: 20px;
+  border-radius: 8px;
+  opacity: .4;
+  min-height: 150px;
+  text-align: center;
+  align-items: center;
+  background: $orange;
+  opacity: 1;
+  color: white;
+  }
+

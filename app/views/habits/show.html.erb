@@ -1,10 +1,8 @@
-<div class="container mt-5">
-  <div><p>Progress: <%= @habit_progress %>%</p></div>
-  <div class="progress mb-3">
-    <div class="progress-bar" role="progressbar" style="width: <%= @habit_progress %>%" aria-valuenow="<%= @habit_progress %>" aria-valuemin="0" aria-valuemax="100"></div>
-  </div>
+<div class="container p-0 vh-100 flex-column">
+    <div class="progress ml-5 mt-4 mb-4">
+      <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <%= @activity_progress %>%" aria-valuenow="<%= @activity_progress %>" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
   <% if @unanswered_questions.empty?%>
-    
     <h3>You have logged your habit and earnt <%= @habit.xp%> xp</h3>
     <p>You scored <%= @quiz_score%>/<%= @number_of_quiz_questions %> on this quiz!</p>
     <% @badgesearned.each do |user_badge| %>
@@ -16,14 +14,49 @@
     <% end %>
     <%= link_to 'Head back to home', users_home_path%>
   <% else %>
-    <p><strong><%= @unanswered_questions.first.question %></strong></p>
+    <div class="text-center">
+      <h1>💤</h1>
+    </div>
+    <div class="pl-5 pr-5 text-center">
+      <h2><strong><%= @unanswered_questions.first.question %></strong></h2>
+    </div>
     <%= simple_form_for [@unanswered_questions.first, @response] do |f| %>
-      <% if @unanswered_questions.first.possible_answers.nil? %>
-        <%= f.input :content, height: "30px" %>
+      <% if @unanswered_questions.first.question == "What time did you wake up?" %>
+        <div class="choices">
+        <% numbers = ["5 am", "5:30","6 am", "6:30","7 am", "7:30","8 am", "8:30","9 am", "9:30","10 am", "10:30 +",] %>
+        <% numbers.each do |answer| %>
+              <label class="choice-number collection_radio_buttons" for="response_content_<%=answer%>"><%=answer%>
+                <input class ="hiddenRadioButton" type="radio" value="<%=answer%>" name="response[content]" id="response_content_<%=answer%>">
+              </label>
+        <% end %>
+      <% elsif @unanswered_questions.first.question == "What time did you go to bed?" %>
+        <div class="choices">
+        <% numbers = ["8 pm", "8:30","9 pm", "9:30","10 pm", "10:30","11 pm", "11:30","12 am", "12:30","1 am", "1:30 +",] %>
+        <% numbers.each do |answer| %>
+              <label class="choice-number collection_radio_buttons" for="response_content_<%=answer%>"><%=answer%>
+                <input class ="hiddenRadioButton" type="radio" value="<%=answer%>" name="response[content]" id="response_content_<%=answer%>">
+              </label>
+        <% end %>
+      <% elsif @unanswered_questions.first.possible_answers.nil? %>
+        <div class="choices">
+        <% numbers = %w[1/10 2/10 3/10 4/10 5/10 6/10 7/10 8/10 9/10 10/10] %>
+        <% numbers.each do |answer| %>
+              <label class="choice-number collection_radio_buttons" for="response_content_<%=answer%>"><%=answer%>
+                <input class ="hiddenRadioButton" type="radio" value="<%=answer%>" name="response[content]" id="response_content_<%=answer%>">
+              </label>
+        <% end %>
+      </div>
       <% else %>
-        <%= f.input :content, as: :radio_buttons, collection: JSON.parse(@unanswered_questions.first.possible_answers)%>
+      <div class="choices">
+        <% JSON.parse(@unanswered_questions.first.possible_answers).each do |answer| %>
+          <label class="check-choice collection_check_boxes" for="response_content_<%=answer%>"><%=answer%>
+            <input class="hiddenRadioButton" type="checkbox" value="<%=answer%>" name="response[content]" id="response_content_<%=answer%>">
+          </label>
+        <% end %>
+      </div>
+        
       <% end %>
-        <%= f.button :submit, class: "btn btn-primary" %>
+        <%= f.button :submit, "Continue", class: "btn-main-activities mt-4 w-50" %>
     <% end %>
   <% end %>
 

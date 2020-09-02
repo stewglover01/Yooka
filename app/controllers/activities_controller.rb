@@ -1,10 +1,12 @@
 class ActivitiesController < ApplicationController
-  before_action :curved_blue_banner, only: :show
 
+  before_action :no_banner
 
   def show
     @activity = Activity.find(params[:id])
+    @activities = @activity.lesson.activities
     @responses = @activity.responses.where(user: current_user)
+    @lesson = @activity.lesson
     @unanswered_questions = @activity.questions - @responses.map { |r| r.question}
     @answered_questions = @responses.map { |r| r.question}
     @all_questions = @activity.questions
