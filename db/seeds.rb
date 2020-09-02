@@ -19,6 +19,7 @@ require "json"
 puts "Deleting everything!!!"
 DailyMood.delete_all
 Mood.delete_all
+Tool.delete_all
 Response.delete_all
 Question.delete_all
 Activity.delete_all
@@ -63,7 +64,7 @@ lesson1 = Lesson.new(
   time_to_complete: "10 mins",
   photo: "mailbox.svg",
   author_photo: "MartinSelligman.jpg",
-  author_description: "Commonly known as the founder of Positive Psychology, Martin Seligman is a leading authority in the fields of Positive Psychology, resilience, learned helplessness, depression, optimism and pessimism."
+  author_description: "Martin is known as the founder of Positive Psychology."
 )
 lesson1.save!
   video1 = Video.new(
@@ -83,7 +84,7 @@ lesson1.save!
   )
   activity1.lesson = lesson1
   activity1.save!
-    questions = ["How often did you feel tired out for no good reason?", "How often excited to tackle your school work?", "How often did you feel so nervous that nothing could calm you down?", "How often do you feel like you cant achieve your goals?", "How often do you feel like you its not your fault when you fail?", "How often do you feel like you have slept well?", "How often did you feel that you can cheer yourself up?", "How often did you feel your cool under-pressure", "How many hours sleep should you get a night?", "How many hours sleep  do you think you get a night?"]
+    questions = ["How often did you feel tired out for no good reason?", "How often excited to tackle your school work?", "How often did you feel so nervous that nothing could calm you down?"]
     possible_answers = ["Never", "Rarely", "Sometimes", "Often", "Always"]
       questions.each do |question|
       question = Question.new(question: question, possible_answers: possible_answers)
@@ -881,7 +882,7 @@ habit = Habit.new(name: "Sleep", xp: 50)
         else
           question = Question.new(question: question)
           question.habit = habit
-          question.save!  
+          question.save!
         end
       end
 
