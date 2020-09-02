@@ -21,18 +21,18 @@ class JourneysController < ApplicationController
           @user_responses << activity.responses.where(user: current_user)
 
       end
-      @all_lesson_questions = [] 
+      @all_lesson_questions = []
       journey_lesson.lesson.activities.each do |activity|
         @all_lesson_questions << activity.questions
       end
       @unanswered_questions = @all_lesson_questions.flatten - @user_responses.flatten.map { |response| response.question }
       if @unanswered_questions.count == 0 && journey_lesson.video_watched == true
-        @complete_journey_lessons << journey_lesson 
+        @complete_journey_lessons << journey_lesson
         journey_lesson.complete = true
         journey_lesson.save!
       end
     end
-       
+
     if @complete_journey_lessons.empty?
       @last_lesson_completed = nil
     else
@@ -44,6 +44,6 @@ class JourneysController < ApplicationController
     else
       @next_lesson_to_complete = Lesson.find(@last_lesson_completed.id + 1)
     end
-    
+
   end
 end

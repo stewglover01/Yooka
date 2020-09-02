@@ -23,11 +23,11 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <body>
 
+<body class="<%= "background-brand-color" if devise_controller? %>">
   <%= render "shared/banner" %>
 
-  <body class="<%= "background-brand-color" if devise_controller? %>">
+
     <%= render "shared/top-navbar" unless @home %>
 
       <div class=" <%= "home-" if @home %>container">
