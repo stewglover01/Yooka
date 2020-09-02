@@ -1,12 +1,12 @@
 <div class="absolute-header">
-  <h3>Home</h3>
+  <h1>Home</h1>
   <p>Challenge control center</p>
 </div>
 
 <div class="week-header text-center mb-3 mr-3">
-  <h4><strong>Week 1 of 6</strong></h4>
+  <h2>Week 1 of 6</h2>
 </div>
-<h4 style="margin-left: 6px;">Challenge Statistics</h4>
+<h3>Challenge Statistics</h3>
 
 <%# journey %>
 <% if @journeys.length > 0 %>
@@ -17,13 +17,13 @@
         </div>
     </div>
 <% end %>
-<div class="d-flex flex-wrap justify-content-center">
+<div class="d-flex flex-wrap justify-content-center mb-4">
     <%# xp %>
     <div class="d-flex xp-streak">
-        <div class="dashboard-element streak">
+        <div class="dashboard-element streak mr-2">
             <h4 class="m-0"><%= image_tag "007-star.svg", :height=>"30px" %> <strong><%= @user_badges.length %></strong> badges</h4>
         </div>
-        <div class="dashboard-element xp">
+        <div class="dashboard-element xp ml-2">
             <h4 class="m-0"><%= image_tag "095-diamond.svg", :height=>"30px" %>
                 <% if current_user.xp %>
                     <strong><%= current_user.xp %></strong>
@@ -40,7 +40,7 @@
             <%= image_tag "009-fire.svg", :height=>"30px" %>
         <% end %>
     </div>
-    <div class="d-flex justify-content-around">
+    <div class="d-flex justify-content-around mr-2">
       <% if @journeys.length > 0 %>
         <%= link_to "Next Activity", journey_path(@journeys.last), class: "btn btn-main" %>
       <% end %>
@@ -50,13 +50,13 @@
       <% elsif current_user.journey_habits.last.created_at.to_date != Date.current %>
         <%= link_to "Log Sleep", habit_path(sleep_habit), class: "btn btn-main" %>
       <% else %>
-        <div class="btn btn-main" style="opacity: .5;" >Log Sleep </div>
+        <div class="btn btn-main ml-2" style="opacity: .5;" >Log Sleep </div>
       <% end %>
     </div>
 </div>
-<div class="dashboard-leaderboard dashboard-element">
-    <h4 id="leaderboard-header"> <strong>Challenge Leaderboard</strong></h4>
-        <table style="width: 100%" class="table leaderboard">
+    <h3 id="leaderboard-header">Challenge Leaderboard</h3>
+<div class="dashboard-leaderboard dashboard-element mb-4">
+        <table style="width: 100%" class="table leaderboard mb-0">
             <% counter = 1 %>
             <% @short_leaderboard.each do |user| %>
                 <tr class=<%="leaderboard-current-user" if user == current_user %>>
@@ -70,20 +70,20 @@
         </table>
 </div>
 <%# badges %>
+            <h3>Badges:</h3>
 <div class="dashboard-element">
     <% if  @user_badges %>
         <% if  @user_badges.length > 0 %>
-            <h4>Badges:</h4>
             <div class="user-badges d-flex flex-wrap justify-content-start">
                 <% @user_badges.each do |user_badge| %>
-                    <div class="badge-card d-flex">
+                    <div class="badge-card d-flex align-items-center">
                         <div class="d-flex align-items-center flex-column user-badge">
                             <%= image_tag "badges/#{user_badge.badge.name.gsub(/\s+/, "")}.png", alt: user_badge.badge.name %>
                             <p class="mb-auto"><%= user_badge.badge.name %></p>
                         </div>
                         <div class="badge-card-text ml-2">
                             <p><strong><%= user_badge.badge.name.capitalize %></strong></p>
-                            <p class="grey">You earned this badge on <%= user_badge.created_at.strftime("%A %d %B") %></p>
+                            <p class="grey sml-text">You earned this badge on <%= user_badge.created_at.strftime("%A %d %B") %></p>
                         </div>
                     </div>
                 <% end %>
@@ -93,7 +93,7 @@
         <% end %>
     <% end %>
 </div>
-
+<div style="height:50px;"></div>
 
 
 
