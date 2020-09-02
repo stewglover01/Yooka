@@ -1,7 +1,8 @@
 
 <h3 class="mt-5">You have watched the video and earned <%= @video.xp%> xp</h3>
-
+<canvas id="my-canvas" class="container-overlay"></canvas>
 <% if @badgesearned.length > 0 %>
+
     <p>You have earned the following badges</p>
     <% @badgesearned.each do |user_badge| %>
             <div class="d-flex align-items-center flex-column user-badge">

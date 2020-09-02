@@ -1,6 +1,7 @@
 class ActivitiesController < ApplicationController
-  before_action :no_banner
-  
+  before_action :curved_blue_banner, only: :show
+
+
   def show
     @activity = Activity.find(params[:id])
     @responses = @activity.responses.where(user: current_user)
@@ -94,7 +95,7 @@ class ActivitiesController < ApplicationController
     end
 
 
-    
+
 
   end
 end
