@@ -1,14 +1,13 @@
 .top-navbar-container {
   display: flex;
   justify-content: space-between;
-  position: absolute;
-  top: 0;
   width: 100%;
   padding-right: 15px;
   padding-top: 15px;
   padding-left: 15px;
-  // background-color: #f4f4f4;
+  padding-bottom: 15px;
   background-color: transparent;
+  transition: 0.5s background-color ease;
 
 }
 
@@ -20,4 +19,8 @@
 .back-item {
   text-emphasis: none;
   color: black;
+}
+
+.top-navbar-white {
+  background-color: white;
 }
