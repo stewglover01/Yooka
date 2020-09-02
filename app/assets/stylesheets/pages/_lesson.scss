@@ -2,3 +2,24 @@
   margin-bottom: 100px;
   margin-top: 0px;
 }
+
+.lesson-name {
+  font-size: larger;
+}
+
+#author-img {
+  top: -15px;
+  position: relative;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.author-name {
+  font-weight: bold;
+  font-size: large;
+}
+
+.author-description {
+  font-weight: 100;
+  font-size: smaller;
+  margin-right: 10px;
+}
