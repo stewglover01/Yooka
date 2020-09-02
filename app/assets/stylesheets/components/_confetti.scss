@@ -1,0 +1,11 @@
+.container-overlay {
+  position: absolute;
+  top: -50px;
+  z-index: 1;
+  pointer-events: none;
+  width: 90vw;
+  height: 100vh;
+}
+.custom-container {
+  position: relative;
+}

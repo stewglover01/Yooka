@@ -4,24 +4,25 @@
   <p>View all challenge points</p>
 </div>
 
-<h2>Challenge Leaderboard</h2>
-<table style="width: 100%" class="table leaderboard">
-        <% counter = 1 %>
+<h3>Challenge Leaderboard</h3>
+<div class="dashboard-element mb-4">
+  <table style="width: 100%" class="table leaderboard mb-0">
+          <% counter = 1 %>
 
-        <% @leaderboard.each do |user| %>
-            <tr class=<%="leaderboard-current-user" if user == current_user %>>
-                <td class="leaderboard-position"><%= counter %></td>
-                <td class="leaderboard-avatar"><%= cl_image_tag user.photo.key, :gravity=>"faces", :crop=>"fill", class: "avatar", alt: "avatar-large" %></td>
-                <td><%= user.first_name %></td>
-                <td class="leaderboard-xp"><%= user.xp %> XP</td>
-                <% counter += 1 %>
-            </tr>
-        <% end %>
-</table>
+          <% @leaderboard.each do |user| %>
+              <tr class=<%="leaderboard-current-user" if user == current_user %>>
+                  <td class="leaderboard-position"><%= counter %></td>
+                  <td class="leaderboard-avatar"><%= cl_image_tag user.photo.key, :gravity=>"faces", :crop=>"fill", class: "avatar", alt: "avatar-large" %></td>
+                  <td><%= user.first_name %></td>
+                  <td class="leaderboard-xp"><%= user.xp %> XP</td>
+                  <% counter += 1 %>
+              </tr>
+          <% end %>
+  </table>
+</div>
 
 
-
-  <h2>The Feed</h2>
+  <h3>The Feed</h3>
 
 
   <% @recent_activity.each do |activity| %>
@@ -49,7 +50,7 @@
               </div>
             </div>
           </div>
-          <div class="feed-kudos d-flex flex-wrap justify-content-center">
+          <div class="feed-kudos d-flex flex-wrap justify-content-center py-1">
             <p>Give Kudos 🙌</p>
           </div>
         </div>
@@ -76,12 +77,10 @@
               </div>
             </div>
           </div>
-          <div class="feed-kudos d-flex flex-wrap justify-content-center">
+          <div class="feed-kudos d-flex flex-wrap justify-content-center py-1">
             <p>Give Kudos 🙌</p>
           </div>
         </div>
       <% end %>
   <% end %>
-
-<%= link_to 'Back', :back %>
-
+<div style="height:50px;"></div>
