@@ -49,21 +49,30 @@
     border: 1px solid lightgrey;
     border-radius: 12px;
     padding: 6px;
-    margin: 6px;
     width: -webkit-fill-available;
+    margin-bottom: 12px;
   }
+
+  .dashboard-element td {
+      display: table-cell;
+  }
+  
 
   .dashboard-element h4 {
     font-size: 0.5cm;
   }
 
+  .dashboard-element p {
+    margin: 0;
+  }
+
   .dashboard-progressbar {
-    width: 200px;
+    width: 220px;
     border-radius: 8px;
   }
 
   .dashboard-progress {
-    height: 32px;
+    height: 44px;
   }
 
   .xp-streak {
