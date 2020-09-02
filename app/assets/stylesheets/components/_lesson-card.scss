@@ -2,7 +2,7 @@
   overflow: hidden;
   height: 120px;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   display: flex;
   align-items: center;
   border-radius: 16px;
@@ -13,6 +13,8 @@
   width: 120px;
   object-fit: cover;
   border-radius: 8px;
+  margin-left: 8px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 .lesson-card h2 {
@@ -31,32 +33,50 @@
 
 .lesson-card .lesson-card-infos {
   padding: 16px;
+  text-decoration: none;
+  color: black;
+  text-align: left;
 }
 
 .lesson-card-complete {
   overflow: hidden;
+  position: relative;
   height: 120px;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   display: flex;
   align-items: center;
+  border-radius: 16px;
   opacity: 50;
+  z-index: 0;
+}
+
+.lesson-card-complete::after {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  content: "";
+  z-index: 1;
+  border-right: 10px solid #80d288;
 }
 
 .lesson-card-complete img {
   height: 100px;
   width: 120px;
   object-fit: cover;
+  border-radius: 8px;
+  margin-left: 8px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 .lesson-card-complete h2 {
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 12px;
+  font-weight: lighter;
   margin: 0;
 }
 
 .lesson-card-complete p {
-  font-size: 12px;
+  font-size: 10px;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
