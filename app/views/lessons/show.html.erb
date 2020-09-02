@@ -3,16 +3,16 @@
 </div>
 
 <div class="lesson-main-description mt-4">
-  <p class="lesson-name" style="font-weight: bold"><%= @lesson.name.capitalize %></p>
-  <p class="lesson-description "style="font-size: small"><%= @lesson.description %></p>
-  <p class="lesson-time"style="font-size: smaller; font-style: italic; opacity: .7;">- Time to complete lesson - <%= @lesson.time_to_complete %> mins</p>
+  <p class="lesson-name"><%= @lesson.name.capitalize %></p>
+  <p class="lesson-description"><%= @lesson.description %></p>
+  <p class="lesson-time">- Time to complete lesson - <%= @lesson.time_to_complete %> mins</p>
 </div>
 
 <div class="author-background">
   <div class="d-flex">
     <%= image_tag @lesson.author_photo, class: "avatar-large m-3", id: "author-img" %>
     <div>
-      <div>
+      <div class="author">
         <h5 class="author-name"><%= @lesson.author.capitalize %></h5>
         <p class="author-description"><%= @lesson.author_description.truncate(44) %></p>
       </div>
