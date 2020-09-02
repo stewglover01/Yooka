@@ -36,7 +36,10 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   // ConfettiGenerator();
+  const canvas = document.getElementById('my-canvas');
+ if (canvas) {
   dropConfetti();
+  };
   initUpdateNavbarOnScroll();
 });
 
