@@ -1,8 +1,8 @@
-<div class="brand-color-background extra-margin-login">
+<div class="background-brand-color extra-margin-login">
+  <%= image_tag "login/login-background", alt: "login-background", style: "position: absolute; z-index: -1; left: 0;" %>
   <div class="container form-login">
     <div class="row">
       <div class="col-xs-12 col-sm-4 col-sm-offset-4">
-        <!-- Insert form here -->
         <h2>Log in</h2>
 
         <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>

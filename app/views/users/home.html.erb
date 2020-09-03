@@ -1,12 +1,12 @@
 <div class="absolute-header">
   <h1>Home</h1>
-  <p>Challenge control center</p>
+  <p>Challenge overview</p>
 </div>
 
 <div class="week-header text-center mb-3 mr-3">
   <h2>Week 1 of 6</h2>
 </div>
-<h3>Challenge Statistics</h3>
+<h3><strong>Challenge Statistics</strong></h3>
 
 <%# journey %>
 <% if @journeys.length > 0 %>
@@ -40,21 +40,27 @@
             <%= image_tag "009-fire.svg", :height=>"30px" %>
         <% end %>
     </div>
-    <div class="d-flex justify-content-around mr-2">
+    <div class="d-flex">
       <% if @journeys.length > 0 %>
-        <%= link_to "Next Activity", journey_path(@journeys.last), class: "btn btn-main" %>
+        <div class="mr-3">
+          <%= link_to "Next Activity", journey_path(@journeys.last), class: "btn btn-main" %>
+        </div>
       <% end %>
       <% sleep_habit = Habit.last %>
       <% if current_user.journey_habits.empty? %>
-        <%= link_to "Log Sleep", habit_path(sleep_habit), class: "btn btn-main" %>
+        <div class="ml-3">
+          <%= link_to "Log Sleep", habit_path(sleep_habit), class: "btn btn-main" %>
+        </div>
       <% elsif current_user.journey_habits.last.created_at.to_date != Date.current %>
-        <%= link_to "Log Sleep", habit_path(sleep_habit), class: "btn btn-main" %>
+        <div class="ml-3">
+          <%= link_to "Log Sleep", habit_path(sleep_habit), class: "btn btn-main" %>
+        </div>
       <% else %>
-        <div class="btn btn-main ml-2" style="opacity: .5;" >Log Sleep </div>
+        <div class="btn btn-main ml-3" style="opacity: .5;" >Log Sleep </div>
       <% end %>
     </div>
 </div>
-    <h3 id="leaderboard-header">Challenge Leaderboard</h3>
+    <h3 id="leaderboard-header"><strong>Challenge Leaderboard</strong></h3>
 <div class="dashboard-leaderboard dashboard-element mb-4">
         <table style="width: 100%" class="table leaderboard mb-0">
             <% counter = 1 %>
@@ -70,7 +76,9 @@
         </table>
 </div>
 <%# badges %>
+
             <h3>Badges</h3>
+
 <div class="dashboard-element">
     <% if  @user_badges %>
         <% if  @user_badges.length > 0 %>

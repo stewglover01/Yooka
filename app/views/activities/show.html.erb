@@ -2,6 +2,7 @@
 <div class="container p-0 vh-100 flex-column">
     
  <%# <div class="d-flex flex-column"> %>
+
     <% if @unanswered_questions.empty? && @activity.questions.select {|question| question.correct_answer.present? }.count > 0 %>
       <div class="d-flex align-items-center" style="height:85vh">
           <div class="d-flex flex-column align-items-center">
@@ -27,6 +28,7 @@
               <%= link_to 'Head back to lesson page', lesson_path(@activity.lesson), class:"btn btn-main center" %>`
           </div>
       </div>
+
     <% elsif @unanswered_questions.empty? %>
       <div class="d-flex align-items-center" style="height:85vh">
           <div class="d-flex flex-column align-items-center">
@@ -57,6 +59,7 @@
       </div>
     
     <% else %>
+
       <div class="progress ml-5 mt-4 mb-4">
         <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <%= @activity_progress %>%" aria-valuenow="<%= @activity_progress %>" aria-valuemin="0" aria-valuemax="100"></div>
       </div>
@@ -73,6 +76,7 @@
             <%# <%= f.input_field :content, as: :check_boxes, collection: JSON.parse(@unanswered_questions.first.possible_answers) %>
             <div class="choices">
             <% JSON.parse(@unanswered_questions.first.possible_answers).each do |answer| %> 
+
 
                 <label class="choice collection_radio_buttons" for="response_content_<%=answer%>"><%=answer%>
                   <input class ="hiddenRadioButton" type="radio" value="<%=answer%>" name="response[content]" id="response_content_<%=answer%>">
@@ -121,7 +125,7 @@
   const answers = jsButton.dataset.answers
   const bannertext = document.getElementById('bannertext')
   const modal = document.getElementById('exampleModalCenter')
-  
+
   if (document.getElementById('response_content')){
     jsButton.addEventListener("click", (event) => {
       event.preventDefault()
