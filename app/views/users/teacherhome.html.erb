@@ -11,7 +11,7 @@
   <% @recent_activity.each do |activity| %>
       
       <p><% if activity.class == BadgeUser %>
-              <div class="activity badge-activity d-flex">
+              <div class="activity badge-activity d-flex mb-1">
                 <div>
                   <%= cl_image_tag activity.user.photo.key, :gravity=>"faces", :crop=>"fill", class: "avatar m-1", alt: "avatar-large" %>
                 </div>
@@ -21,7 +21,7 @@
                 </div>
               </div>
       <% elsif activity.class == JourneyHabit %>
-              <div class="activity habit-activity d-flex">
+              <div class="activity habit-activity d-flex mb-1">
                 <div>
                   <%= cl_image_tag activity.journey.user.photo.key, :gravity=>"faces", :crop=>"fill", class: "avatar m-1", alt: "avatar-large" %>
                 </div>
@@ -31,7 +31,7 @@
                 </div>
               </div>
       <% elsif activity.class == DailyMood %>
-              <div class="activity mood-activity d-flex <%="attention" if @negative_moods.include? activity.mood.name %>">
+              <div class="activity mood-activity d-flex mb-1 <%="attention" if @negative_moods.include? activity.mood.name %>">
                 <div>
                   <%= cl_image_tag activity.user.photo.key, :gravity=>"faces", :crop=>"fill", class: "avatar m-1", alt: "avatar-large" %>
                 </div>
