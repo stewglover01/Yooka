@@ -1,10 +1,9 @@
-<div class="landing-page">
-  <%= image_tag "landing/home-banner", alt: "home-banner" %>
-</div>
-
-<div class="landing-content">
-  <h2>Tailored Mental Health Learning Software</h2>
-  <div class="landing-button">
-    <p><%= link_to 'Start Now', new_user_session_path %></p>
+<div class="home-container">
+  <div class="landing-page">
+    <%= image_tag "homepage.png", alt: "home-banner", class: "banner-width"%>
+  </div>
+  <div class="landing-image text-center mt-5 mb-3">
+    <h2> <strong>Tailored Mental Health Learning Software </strong></h2>
+    <p class="landing-button"><%= link_to 'Start Now', new_user_session_path %></p>
   </div>
 </div>
