@@ -1,14 +1,24 @@
 
-<h3 class="mt-5">You have watched the video and earned <%= @video.xp%> xp</h3>
-<canvas id="my-canvas" class="container-overlay"></canvas>
-<% if @badgesearned.length > 0 %>
-
-    <p>You have earned the following badges</p>
-    <% @badgesearned.each do |user_badge| %>
-            <div class="d-flex align-items-center flex-column user-badge">
-                <%= image_tag "badges/#{user_badge.badge.name.gsub(/\s+/, "")}.png", alt: user_badge.badge.name %>
-                <p class="mb-auto"><%= user_badge.badge.name %></p>
-            </div>
-    <% end %>
-<% end %>
-<%= link_to 'Head back to lesson page', lesson_path(@video.lesson) %>
+<div class="d-flex align-items-center" style="height:85vh">
+    <div class="d-flex flex-column align-items-center">
+        <div class="dashboard-element d-flex flex-column align-items-center">
+            <h1>Congratulations!</h1>
+            <%= image_tag 'winner.svg', alt: "congratulations!", style: "width:100%" %>
+            <h3 class="mt-5">You have watched the video and earned</h3>
+            <h2><%= image_tag "095-diamond.svg", :height=>"30px" %> <strong><%= @video.xp%></strong> xp</h2>
+            <canvas id="my-canvas" class="container-overlay"></canvas>
+            <% if @badgesearned.length > 0 %>
+                <p>You have earned the following badges</p>
+                <div class="user-badges d-flex flex-wrap justify-content-center">
+                    <% @badgesearned.each do |user_badge| %>
+                            <div class="d-flex align-items-center flex-column user-badge">
+                                <%= image_tag "badges/#{user_badge.badge.name.gsub(/\s+/, "")}.png", alt: user_badge.badge.name %>
+                                <p class="mb-auto"><%= user_badge.badge.name %></p>
+                            </div>
+                    <% end %>
+                </div>
+            <% end %>
+        </div>
+        <%= link_to 'Continue', lesson_path(@video.lesson), class:"btn btn-main center" %>`
+    </div>
+</div>
