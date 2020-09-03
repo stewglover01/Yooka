@@ -16,7 +16,7 @@
   color: white;
   border: 1px solid #0069FF;
   padding: 10px 24px;
-  border-radius: 50px;
+  border-radius: 16px;
   font-weight: lighter;
   transition: opacity 0.3s ease;
   margin: 4px auto;
@@ -40,6 +40,7 @@
 
 .orange {
   background-color: #F47D31;
+  border: 1px solid #F47D31;
 }
 
 .container-support {

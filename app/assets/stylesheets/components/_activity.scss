@@ -32,6 +32,10 @@
     border-style: solid;
     border-width: 0.5px;
     border-radius: 8px;
+    border: 1px solid lightgrey;
+    p {
+        margin: 0;
+    }
 }
 
 .feed-date {
