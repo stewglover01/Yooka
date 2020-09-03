@@ -20,7 +20,9 @@
   height: 100%;
   width: 100%;
   flex: 1;
-  background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 34.9%), #F8A773;
+  position: absolute;
+  z-index: -1;
+  left: 0;
   /*.top-navbar-container {
   }*/
   .material-icons {
