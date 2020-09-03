@@ -5,6 +5,7 @@
     </div>
  <%# <div class="d-flex flex-column"> %>
     <% if @unanswered_questions.empty? && @activity.questions.select {|question| question.correct_answer.present? }.count > 0%>
+      <canvas id="my-canvas" class="container-overlay"></canvas>
       <h3>You have answered all questions and earnt <%= @activity.xp%> xp</h3>
       <p>You scored <%= @quiz_score%>/<%= @number_of_quiz_questions %> on this quiz!</p>
       <% @badgesearned.each do |user_badge| %>
@@ -45,7 +46,7 @@
         <% else %>
           <%# <%= f.input_field :content, as: :check_boxes, collection: JSON.parse(@unanswered_questions.first.possible_answers) %>
           <div class="choices">
-          <% JSON.parse(@unanswered_questions.first.possible_answers).each do |answer| %> 
+          <% JSON.parse(@unanswered_questions.first.possible_answers).each do |answer| %>
 
               <label class="choice collection_radio_buttons" for="response_content_<%=answer%>"><%=answer%>
                 <input class ="hiddenRadioButton" type="radio" value="<%=answer%>" name="response[content]" id="response_content_<%=answer%>">
@@ -93,7 +94,7 @@
   const answers = jsButton.dataset.answers
   const bannertext = document.getElementById('bannertext')
   const modal = document.getElementById('exampleModalCenter')
-  
+
   if (document.getElementById('response_content')){
     jsButton.addEventListener("click", (event) => {
       event.preventDefault()
