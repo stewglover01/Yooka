@@ -78,3 +78,14 @@
   .xp-streak {
     width: 100%;
   }
+
+  .container-reward {
+    // height: ?px;
+    position: relative;
+  }
+  .vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
