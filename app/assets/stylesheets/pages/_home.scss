@@ -26,16 +26,23 @@
   color: #202027;
 }
 
+.landing-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
 .landing-button {
-  position: absolute;
-  left: 10.4%;
-  right: 10.4%;
-  top: 90.52%;
-  bottom: 3.33%;
+  padding-left: 101px;
+  padding-right: 101px;
+  padding-top: 12px;
+  padding-bottom: 12px;
   background-color: #0069FF;
   color: white;
   border: 1px solid #0069FF;
-  padding: 10px 24px;
+  // padding: 10px 24px;
   border-radius: 16px;
   font-weight: lighter;
   transition: opacity 0.3s ease;
