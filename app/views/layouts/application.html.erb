@@ -30,9 +30,9 @@
   <%= render "shared/banner" %>
 
     <%= render "shared/top-navbar" unless @home %>
-        <% if current_page?(controller: 'videos', action: 'show')  %>
-        <%= yield %>
-        <% elsif @home  %>
+        <%# <% if current_page?(controller: 'videos', action: 'show')  %> %>
+        <%# <%= yield %> %>
+        <% if @home  %>
           <div class="home-container">
           <%= yield %>
           </div>
