@@ -1,6 +1,6 @@
 
 <div class="container p-0 vh-100 flex-column">
-    
+
  <%# <div class="d-flex flex-column"> %>
 
     <% if @unanswered_questions.empty? && @activity.questions.select {|question| question.correct_answer.present? }.count > 0 %>
@@ -57,7 +57,7 @@
                 <% end %>
           </div>
       </div>
-    
+
     <% else %>
 
       <div class="progress ml-5 mt-4 mb-4">
@@ -75,7 +75,7 @@
           <% else %>
             <%# <%= f.input_field :content, as: :check_boxes, collection: JSON.parse(@unanswered_questions.first.possible_answers) %>
             <div class="choices">
-            <% JSON.parse(@unanswered_questions.first.possible_answers).each do |answer| %> 
+            <% JSON.parse(@unanswered_questions.first.possible_answers).each do |answer| %>
 
 
                 <label class="choice collection_radio_buttons" for="response_content_<%=answer%>"><%=answer%>
@@ -112,7 +112,7 @@
           <% end %>
       <% end %>
     <% end %>
-  
+
   <%# </div> %>
 </div>
 
@@ -121,38 +121,42 @@
 
 <script>
 
+  document.addEventListener('turbolinks:load', () => {
+
   const jsButton = document.getElementById('JS-button')
   const answers = jsButton.dataset.answers
   const bannertext = document.getElementById('bannertext')
   const modal = document.getElementById('exampleModalCenter')
 
-  if (document.getElementById('response_content')){
+  // if (document.querySelectorAll('.hiddenRadioButton')){
     jsButton.addEventListener("click", (event) => {
       event.preventDefault()
-      const response = document.getElementById('response_content').value
+      const response = document.querySelector('.active').innerText
+      console.log(response)
       if (response === answers){
         bannertext.innerText = "Correct!"
-        modal.classList.add("modal-correct");
+        // modal.classList.add("modal-correct");
       } else {
         bannertext.innerText = "You Are Incorrect"
       }
     })
-  } else {
-    let selected = ""
-    const options = document.querySelectorAll(".form-check")
-    options.forEach((option) => {
-      option.addEventListener("click", (event) => {
-        selected = event.currentTarget.children[0].value
-        jsButton.addEventListener("click", (event) => {
-          if (selected === answers){
-            bannertext.innerText = "Correct"
-          } else {
-            bannertext.innerText = "You Are Incorrect"
-          }
-        })
-      })
-    })
-  }
- end
+  // } else {
+
+  //   let selected = ""
+  //   const options = document.querySelectorAll(".form-check")
+  //   options.forEach((option) => {
+  //     option.addEventListener("click", (event) => {
+  //       selected = event.currentTarget.children[0].value
+  //       jsButton.addEventListener("click", (event) => {
+  //         if (selected === answers){
+  //           bannertext.innerText = "Correct"
+  //         } else {
+  //           bannertext.innerText = "You Are Incorrect"
+  //         }
+  //       })
+  //     })
+  //   })
+
+});
 
 </script>
