@@ -1,19 +1,32 @@
 <div class="container p-0 vh-100 flex-column">
-    <div class="progress ml-5 mt-4 mb-4">
-      <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <%= @activity_progress %>%" aria-valuenow="<%= @activity_progress %>" aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
   <% if @unanswered_questions.empty?%>
-    <h3>You have logged your habit and earnt <%= @habit.xp%> xp</h3>
-    <p>You scored <%= @quiz_score%>/<%= @number_of_quiz_questions %> on this quiz!</p>
-    <% @badgesearned.each do |user_badge| %>
-      <p>You also earnt this badge</p>
-      <div class="d-flex align-items-center flex-column user-badge">
-                        <%= image_tag "badges/#{user_badge.badge.name.gsub(/\s+/, "")}.png", alt: user_badge.badge.name %>
-                        <p class="mb-auto"><%= user_badge.badge.name %></p>
-              </div>
-    <% end %>
-    <%= link_to 'Head back to home', users_home_path%>
+      <div class="d-flex align-items-center" style="height:85vh">
+    <div class="d-flex flex-column align-items-center">
+        <div class="dashboard-element d-flex flex-column align-items-center">
+            <h1>Congratulations!</h1>
+            <%= image_tag 'winner.svg', alt: "congratulations!", style: "width:100%" %>
+            <h3 class="mt-5">You have logged your habit and earned</h3>
+            <h2><%= image_tag "095-diamond.svg", :height=>"30px" %> <strong><%= @habit.xp%></strong> xp</h2>
+            <canvas id="my-canvas" class="container-overlay"></canvas>
+            <% if @badgesearned.length > 0 %>
+                <p>You have earned the following badges</p>
+                <div class="user-badges d-flex flex-wrap justify-content-center">
+                    <% @badgesearned.each do |user_badge| %>
+                            <div class="d-flex align-items-center flex-column user-badge">
+                                <%= image_tag "badges/#{user_badge.badge.name.gsub(/\s+/, "")}.png", alt: user_badge.badge.name %>
+                                <p class="mb-auto"><%= user_badge.badge.name %></p>
+                            </div>
+                    <% end %>
+                </div>
+            <% end %>
+        </div>
+        <%= link_to 'Continue', users_home_path, class:"btn btn-main center" %>`
+    </div>
+</div>
   <% else %>
+    <div class="progress ml-5 mt-4 mb-4">
+        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <%= @activity_progress %>%" aria-valuenow="<%= @activity_progress %>" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
     <div class="text-center">
       <h1>💤</h1>
     </div>
