@@ -1,7 +1,7 @@
 
 <div class="absolute-header">
-  <h3>Social Dashboard</h3>
-  <p>View all challenge points</p>
+  <h1>Social Dashboard</h1>
+  <p>See your friends progress</p>
 </div>
 
 <h3>Challenge Leaderboard</h3>
@@ -38,7 +38,7 @@
                 <div class="feed-name d-flex justify-content-start flex-grow-1">
                   <div>
                     <p><%= activity.user.first_name %> has earned the <%= activity.badge.name %> badge.</p>
-                    <p class="feed-date"><%= activity.created_at.strftime("%A %d %B") %></p>
+                    <p class="feed-date sml-text"><%= activity.created_at.strftime("%A %d %B") %></p>
                   </div>
                 </div>
               </div>
@@ -72,7 +72,7 @@
             </div>
             <div class="feed-icon">
               <div class="d-flex align-items-center flex-column user-badge">
-
+                        <%= image_tag "sleep.png", alt: "sleep", class: "mb-2" %>
                         <p class="mb-auto"><%= activity.habit.name %></p>
               </div>
             </div>

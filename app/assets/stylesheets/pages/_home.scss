@@ -5,56 +5,57 @@
   justify-self: center;
   height: 100vh;
   width: 100vw;
-  background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 34.9%), #F8A773;
 }
 
-.home-title {
-  color: white;
+.landing-content h2 {
+  position: absolute;
+  left: 16.27%;
+  right: 13.6%;
+  top: 76.48%;
+  bottom: 15.39%;
+
+  font-family: Gudea;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 30px;
   display: flex;
-  justify-content: center;
-  align-content: center;
-  position: relative;
-  top: 60px;
+  align-items: center;
+  text-align: center;
+
+  color: #202027;
 }
 
-.home-title h1 {
-  font-size: 4.5rem;
-}
-
-.home-logo {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  position: relative;
-  top: 190px;
-}
-
-.home-slogan {
+.landing-button {
+  position: absolute;
+  left: 10.4%;
+  right: 10.4%;
+  top: 90.52%;
+  bottom: 3.33%;
+  background-color: #0069FF;
   color: white;
-  position: relative;
-  top: 240px;
+  border: 1px solid #0069FF;
+  padding: 10px 24px;
+  border-radius: 16px;
+  font-weight: lighter;
+  transition: opacity 0.3s ease;
+  margin: 4px auto;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.home-container h3 {
+.landing-button a {
   display: flex;
-  justify-content: center;
   align-content: center;
-}
+  justify-content: center;
+  font-family: Gudea;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
 
-.btn-main a {
-  color: white;
+  color: #FFFFFF;
 }
-
-.teacher-login p {
-  margin-bottom: 0rem;
-}
-
-.student-login {
-  background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), #0069FF;
-  p {
-    margin-bottom: 0rem;
-  }
-}
-/*.student-login p {
-  margin-bottom: 0rem;
-}*/

@@ -3,15 +3,17 @@
   <head>
     <title>Yooka</title>
     <meta name="description" content="<%= meta_description %>">
-
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable"  content="yes">
+    <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
     <!-- Facebook Open Graph data -->
     <meta property="og:title" content="<%= meta_title %>" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="<%= request.original_url %>" />
+    <meta property="og:url" content="<%= request.original_url %>"/>
     <meta property="og:image" content="<%= meta_image %>" />
     <meta property="og:description" content="<%= meta_description %>" />
     <meta property="og:site_name" content="<%= meta_title %>" />
-
+     <%= render 'shared/ios_pwa_links' %>
     <%= favicon_link_tag %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -27,13 +29,21 @@
 <body class="<%= "background-brand-color" if devise_controller? %>">
   <%= render "shared/banner" %>
 
-
     <%= render "shared/top-navbar" unless @home %>
+        <%# <% if current_page?(controller: 'videos', action: 'show')  %> %>
+        <%# <%= yield %> %>
+        <% if @home  %>
+          <div class="home-container">
+          <%= yield %>
+          </div>
+        <%  else %>
+         <div class="container">
+         <%= yield %>
+         </div>
+        <%  end %>
+        
 
-      <div class=" <%= "home-" if @home %>container">
-        <%= yield %>
-
-      </div>
+      
 
     <%= render "shared/navbar" unless @home%>
 
