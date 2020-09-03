@@ -26,26 +26,20 @@
   </head>
 
 
-<body class="<%= "background-brand-color" if devise_controller? %>">
-  <%= render "shared/banner" %>
-
+  <body class="<%= "background-brand-color" if devise_controller? %>">
+    <%= render "shared/banner" %>
     <%= render "shared/top-navbar" unless @home %>
-        <%# <% if current_page?(controller: 'videos', action: 'show')  %> %>
-        <%# <%= yield %> %>
-        <% if @home  %>
-          <div class="home-container">
-          <%= yield %>
-          </div>
-        <%  else %>
-         <div class="container">
-         <%= yield %>
-         </div>
-        <%  end %>
-        
-
-      
-
+    <% if controller_name == 'videos' && action_name == 'show'%>
+      <%= yield %>
+    <% elsif @home  %>
+      <div class="home-container">
+        <%= yield %>
+      </div>
+    <%  else %>
+      <div class="container">
+        <%= yield %>
+      </div>
+    <%  end %>
     <%= render "shared/navbar" unless @home%>
-
   </body>
 </html>
