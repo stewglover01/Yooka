@@ -132,6 +132,8 @@
   const answers = jsButton.dataset.answers
   const bannertext = document.getElementById('bannertext')
   const modal = document.getElementById('exampleModalCenter')
+  const modalContent = document.querySelector('.modal-content')
+
 
   // if (document.querySelectorAll('.hiddenRadioButton')){
     jsButton.addEventListener("click", (event) => {
@@ -140,9 +142,11 @@
       console.log(response)
       if (response === answers){
         bannertext.innerText = "Correct!"
+        modalContent.style.border = "5px solid #80d288"
         // modal.classList.add("modal-correct");
       } else {
         bannertext.innerText = "You Are Incorrect"
+        modalContent.style.border = "5px solid red"
       }
     })
   // } else {
