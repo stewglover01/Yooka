@@ -42,3 +42,14 @@
 .banner-width {
   width: 100vw;
 }
+
+.back {
+  z-index: -1;
+}
+
+.home-banner-container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+
+}
