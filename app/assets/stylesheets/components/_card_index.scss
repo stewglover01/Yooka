@@ -10,9 +10,10 @@
   }
 
   .card-trip-index > img {
+    margin-top: 8px;
     height: 80px;
     width: 100%;
-    object-fit: cover;
+    object-fit: contain;
   }
 
   .card-trip-index h2 {

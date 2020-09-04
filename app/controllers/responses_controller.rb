@@ -8,7 +8,7 @@ class ResponsesController < ApplicationController
     # for activities
 
     if @response.question.activity_id != nil
-
+    raise
       @activity = @question.activity
       @responses = @activity.responses.where(user: current_user)
       @unanswered_questions = @activity.questions - @responses.map { |r| r.question}
@@ -41,11 +41,13 @@ class ResponsesController < ApplicationController
       @habit_questions = @habit.questions
       @responses = @habit.responses.where(user: current_user)
       @unanswered_questions = @habit.questions - @responses.map { |r| r.question}
-      if @response.save
+      if @response.save!
         redirect_to habit_path(@habit)
         return
+        
       else
         render 'habits/show'
+        
       end
 
     end

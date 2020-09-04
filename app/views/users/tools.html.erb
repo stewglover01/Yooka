@@ -6,7 +6,7 @@
 <div class="cards-tool mt-4">
 <% @tools.each do |tool| %>
   <div class="card-trip-index mb-2">
-                  <%=  image_tag("tools/#{tool.photo}", style: "object-fit:fill") %>
+                  <%=  image_tag("tools/#{tool.photo}", class: "tool-card") %>
       <div class="card-trip-infos">
         <p><%= link_to "#{tool.name}", tool_path(tool), class: "no-decoration"%></p>
       </div>
