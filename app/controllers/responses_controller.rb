@@ -12,6 +12,21 @@ class ResponsesController < ApplicationController
       @activity = @question.activity
       @responses = @activity.responses.where(user: current_user)
       @unanswered_questions = @activity.questions - @responses.map { |r| r.question}
+      
+      # checking if answer correct
+      # check if the content of the response is equal to the correct answer of they related question
+      if @question.correct_answer.present?
+        if @response.content == @question.correct_answer
+          # if it is then mark respons as correct
+          @response.correct = true
+          @response.save!
+          #if it isnt then mark response and incorrect
+        else
+          @response.correct = false
+          @response.save!
+        end
+      end
+      
       if @response.save 
         redirect_to lesson_activity_path(@activity.lesson, @activity)
         return
@@ -19,21 +34,6 @@ class ResponsesController < ApplicationController
         render 'activities/show'
         return
       end
-
-      # checking if answer correct
-      # check if the content of the response is equal to the correct answer of they related question
-      if @question.correct_answer.present?
-        if @response.content == @question.correct_answer
-        # if it is then mark respons as correct
-          @response.correct = true
-          @response.save!
-        #if it isnt then mark response and incorrect
-        else
-          @response.correct = false
-          @response.save!
-        end
-      end
-
     # for habits
     else
 
