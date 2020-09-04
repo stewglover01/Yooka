@@ -28,7 +28,7 @@
 
   <body class="<%= "background-brand-color" if devise_controller? %>">
     <%= render "shared/banner" %>
-    <%= render "shared/top-navbar" unless @home %>
+    <%= render "shared/top-navbar" unless @home || @user%>
     <% if controller_name == 'videos' && action_name == 'show'%>
       <%= yield %>
     <% elsif @home  %>
@@ -40,6 +40,6 @@
         <%= yield %>
       </div>
     <%  end %>
-    <%= render "shared/navbar" unless @home%>
+    <%= render "shared/navbar" unless @home %>
   </body>
 </html>
