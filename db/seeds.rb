@@ -62,7 +62,7 @@ lesson1 = Lesson.new(
   author: "Martin Selligman",
   topic: "Resilience",
   time_to_complete: "10 mins",
-  photo: "mailbox.svg",
+  photo: "001-muscle.svg",
   author_photo: "MartinSelligman.jpg",
   author_description: "Martin is known as the founder of Positive Psychology."
 )
@@ -71,6 +71,7 @@ lesson1.save!
     name: "Intro to resilience",
     description: "An Introduction to resilience",
     time_to_complete: "2 min",
+    photo: "intro-resilience.svg",
     xp: 15,
     video: "Footboys.mp4"
   )
@@ -80,6 +81,7 @@ lesson1.save!
     name: "Resilience index",
     description: "Learn how your habits and mindset are impacting your ability to bounce back  in tough times.",
     xp: 50,
+    photo: "resilience-index.svg",
     time_to_complete: "10 mins"
   )
   activity1.lesson = lesson1
@@ -100,7 +102,7 @@ lesson2 = Lesson.new(
   author: "Matthew Walker",
   topic: "Sleep",
   time_to_complete: "25 mins",
-  photo: "mailbox.svg",
+  photo: "003-sleep.svg",
   author_photo: "MatthewWalker.jpg",
   author_description: "Author of 'Why We Sleep'. Matthew is seen as the world expert on sleeps effects on the brain"
 )
@@ -109,6 +111,7 @@ lesson2.save!
     name: "How sleep affects you",
     description: "Video about the effects of sleep on happiness and resilience",
     time_to_complete: "8 mins",
+    photo: "sleep-video.svg",
     xp: 30,
     video: "Footboys.mp4"
   )
@@ -118,6 +121,7 @@ lesson2.save!
   activity2 = Activity.new(
     name: "Reflecting on your sleep",
     description: "Reflect on how your sleep impacts your day",
+    photo: "reflecting-sleep.svg",
     xp: 15,
     time_to_complete: "5 mins"
   )
@@ -135,13 +139,14 @@ lesson2.save!
     name: "Quiz",
     description: "Do you remember what you just learnt?",
     xp: 50,
+    photo: "quiz.svg",
     time_to_complete: "10 mins"
   )
   activity3.lesson = lesson2
   activity3.save!
 
     counter3 = 0
-    questions3 = ["How much sleep a night does a 16 year old need?","Do teenagers need more sleep than adults?", "Select the impacts of great sleep that are true."]
+    questions3 = ["How much sleep a night does a 16 year old need?","Do teenagers need more sleep than adults?", "Select the impacts of great sleep that are false."]
     correct_answers = ["9 hours", "True", "You gain weight"]
     possible_answers = [["12 hours", "7 hours", "9 hours", "5 hours"],["True", "False"], ["Easier to focus", "You live longer on average", "More resilient to negative life events", "You gain weight"]]
 
@@ -156,6 +161,7 @@ lesson2.save!
   activity4 = Activity.new(
     name: "Key Takeaways",
     description: "What can you takeaway from today?",
+    photo: "key-takeaways.svg",
     xp: 10,
     time_to_complete: "2 mins"
   )
@@ -176,7 +182,7 @@ lesson3 = Lesson.new(
   author: "Charles Duhigg",
   topic: "Sleep",
   time_to_complete: "25 mins",
-  photo: "mailbox.svg",
+  photo: "002-dumbbell.svg",
   author_photo: "CharlesDuhigg.jpg",
   author_description: "The author of The Power of habit. Charles knows what it takes to make a new habit stick!"
 )
@@ -231,7 +237,7 @@ lesson4 =Lesson.new(
   author: "Matthew Walker",
   topic: "Sleep",
   time_to_complete: "45 mins",
-  photo: "mailbox.svg",
+  photo: "005-online.svg",
   author_photo: "MatthewWalker.jpg",
   author_description: "Author of 'Why We Sleep'. Matthew is seen as the world expert on sleeps effects on the brain"
 )
@@ -301,7 +307,7 @@ lesson5 =Lesson.new(
   author: "Matthew Walker",
   topic: "Sleep",
   time_to_complete: "20 mins",
-  photo: "mailbox.svg",
+  photo: "004-online-class.svg",
   author_photo: "MatthewWalker.jpg",
   author_description: "Author of 'Why We Sleep'. Matthew is seen as the world expert on sleeps effects on the brain"
 )
@@ -371,7 +377,7 @@ lesson6 =Lesson.new(
   author: "Matthew Walker",
   topic: "Sleep",
   time_to_complete: "30 mins",
-  photo: "mailbox.svg",
+  photo: "008-silver-medal.svg",
   author_photo: "MatthewWalker.jpg",
   author_description: "Author of 'Why We Sleep'. Matthew is seen as the world expert on sleeps effects on the brain"
 )
@@ -445,7 +451,7 @@ lesson7 =Lesson.new(
   author: "Albert Bandura",
   topic: "Managing anxiety",
   time_to_complete: "45 mins",
-  photo: "mailbox.svg",
+  photo: "007-brain.svg",
   author_description: "Albert is the world expert on managing anxiety. After suffering from crippling anxiety at school he went on to study at Harvard and winning an Olympic gold medal.",
   author_photo: "AlbertBandura.jpg"
 )
@@ -516,7 +522,7 @@ lesson8 =Lesson.new(
   author: "Albert Bandura",
   topic: "Managing anxiety",
   time_to_complete: "20 mins",
-  photo: "mailbox.svg",
+  photo: "006-open-book.svg",
   author_description: "Albert is the world expert on managing anxiety. After suffering from crippling anxiety at school he went on to study at Harvard and winning an Olympic gold medal.",
   author_photo: "AlbertBandura.jpg"
 )
@@ -587,7 +593,7 @@ lesson9 =Lesson.new(
   author: "Albert Bandura",
   topic: "Managing anxiety",
   time_to_complete: "35 mins",
-  photo: "mailbox.svg",
+  photo: "009-image.svg",
   author_description: "Albert is the world expert on managing anxiety. After suffering from crippling anxiety at school he went on to study at Harvard and winning an Olympic gold medal.",
   author_photo: "AlbertBandura.jpg"
 )
@@ -661,7 +667,7 @@ lesson10 =Lesson.new(
   author: "Samantha Green",
   topic: "Dealing with failure",
   time_to_complete: "15 mins",
-  photo: "mailbox.svg",
+  photo: "010-fail.svg",
   author_description: "Samantha is the CEO and recently launched the Beating Failure Partnership with Oxford University.",
   author_photo: "SamanthaGreen.jpg"
 )
@@ -731,7 +737,7 @@ lesson11 =Lesson.new(
   author: "Samantha Green",
   topic: "Dealing with failure",
   time_to_complete: "25 mins",
-  photo: "mailbox.svg",
+  photo: "mountain.svg",
   author_description: "Samantha is the CEO and recently launched the Beating Failure Partnership with Oxford University.",
   author_photo: "SamanthaGreen.jpg"
 )
@@ -801,7 +807,7 @@ lesson12 =Lesson.new(
   author: "Samantha Green",
   topic: "Dealing with failure",
   time_to_complete: "35 mins",
-  photo: "mailbox.svg",
+  photo: "011-award.svg",
   author_description: "Samantha is the CEO and recently launched the Beating Failure Partnership with Oxford University.",
   author_photo: "SamanthaGreen.jpg"
 )
