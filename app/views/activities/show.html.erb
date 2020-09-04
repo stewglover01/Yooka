@@ -4,17 +4,16 @@
  <%# <div class="d-flex flex-column"> %>
 
     <% if @unanswered_questions.empty? && @activity.questions.select {|question| question.correct_answer.present? }.count > 0 %>
-      <div class="d-flex align-items-center" style="height:85vh">
-          <div class="d-flex flex-column align-items-center">
-              <div class="dashboard-element d-flex flex-column align-items-center">
-                  <h1>Congratulations!</h1>
+      <div class="d-flex align-items-center">
+          <div class="d-flex flex-column justify-content-center align-items-center vh-100">
+              <div class="d-flex flex-column align-items-center">
                   <%= image_tag 'winner.svg', alt: "congratulations!", style: "width:100%" %>
-                  <h3 class="mt-5">You have answered all questions and earned</h3>
+                  <h1 class="mt-5">You scored <%= @quiz_score%>/<%= @number_of_quiz_questions %></h1>
+                  <h3 class="mt-2">You earnt</h3>
                   <h2><%= image_tag "095-diamond.svg", :height=>"30px" %> <strong><%= @activity.xp%></strong> xp</h2>
-                  <p>You scored <%= @quiz_score%>/<%= @number_of_quiz_questions %> on this quiz!</p>
                   <canvas id="my-canvas" class="container-overlay"></canvas>
                   <% if @badgesearned.length > 0 %>
-                      <p>You have earned the following badges</p>
+                      <p>You earnt new badges!</p>
                       <div class="user-badges d-flex flex-wrap justify-content-center">
                           <% @badgesearned.each do |user_badge| %>
                                   <div class="d-flex align-items-center flex-column user-badge">
@@ -25,21 +24,20 @@
                       </div>
                   <% end %>
               </div>
-              <%= link_to 'Head back to lesson page', lesson_path(@activity.lesson), class:"btn btn-main center" %>`
+              <%= link_to 'Continue', lesson_path(@activity.lesson), class:"btn btn-main center" %>`
           </div>
       </div>
 
     <% elsif @unanswered_questions.empty? %>
-      <div class="d-flex align-items-center" style="height:85vh">
-          <div class="d-flex flex-column align-items-center">
-              <div class="dashboard-element d-flex flex-column align-items-center">
-                  <h1>Congratulations!</h1>
+    <div class="d-flex align-items-center">
+          <div class="d-flex flex-column justify-content-center align-items-center vh-100">
+              <div class="d-flex flex-column align-items-center">
                   <%= image_tag 'winner.svg', alt: "congratulations!", style: "width:100%" %>
-                  <h3 class="mt-5">You have answered all the questions and earned</h3>
+                  <h3 class="mt-2">You earnt</h3>
                   <h2><%= image_tag "095-diamond.svg", :height=>"30px" %> <strong><%= @activity.xp%></strong> xp</h2>
                   <canvas id="my-canvas" class="container-overlay"></canvas>
                   <% if @badgesearned.length > 0 %>
-                      <p>You have earned the following badges</p>
+                      <p>You earnt new badges!</p>
                       <div class="user-badges d-flex flex-wrap justify-content-center">
                           <% @badgesearned.each do |user_badge| %>
                                   <div class="d-flex align-items-center flex-column user-badge">
@@ -50,6 +48,13 @@
                       </div>
                   <% end %>
               </div>
+              <% if @activities.last == @activity%>
+                    <%= link_to 'Head to your journey', journey_path(current_user.journeys.first), class:"btn btn-main text-center", style:"width:200px;" %>
+              <% else %>
+                    <%= link_to 'Head back to lesson page', lesson_path(@activity.lesson), class:"btn btn-main text-center", style:"width:240px;" %>
+              <% end %>
+          </div>
+      </div>
                 <% if @activities.last == @activity%>
                     <%= link_to 'Head to your journey', journey_path(current_user.journeys.first), class:"btn btn-main text-center", style:"width:200px;" %>
                 <% else %>

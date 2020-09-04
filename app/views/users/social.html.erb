@@ -4,7 +4,7 @@
   <p>See your friends progress</p>
 </div>
 
-<h3>Challenge Leaderboard</h3>
+<h3 class="mt-4"><strong>Challenge Leaderboard</strong></h3>
 <div class="dashboard-element mb-4">
   <table style="width: 100%" class="table leaderboard mb-0">
           <% counter = 1 %>
@@ -22,13 +22,11 @@
 </div>
 
 
-  <h3>The Feed</h3>
-
-
+  <h3><strong>The Feed</strong></h3>
   <% @recent_activity.each do |activity| %>
       <% if activity.is_a?(BadgeUser) %>
 
-        <div class="feed-container my-4">
+        <div class="feed-container mb-4">
           <div class="feed-content d-flex justify-content-between">
             <div class="d-flex justify-content-start">
               <div class="feed-avatar align-self-start">
@@ -65,7 +63,7 @@
                 <div class="feed-name d-flex justify-content-start flex-grow-1">
                   <div>
                     <p><%= activity.journey.user.first_name %> has logged the <%= activity.habit.name %> habit.</p>
-                    <p class="feed-date"><%= activity.created_at.strftime("%A %d %B") %></p>
+                    <p class="feed-date sml-text"><%= activity.created_at.strftime("%A %d %B") %></p>
                   </div>
                 </div>
               </div>
