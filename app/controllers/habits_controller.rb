@@ -12,7 +12,7 @@ before_action :no_banner
     @badgesearned = []
     @journeys = current_user.journeys
     if @answered_questions.length > 0
-    @habit_progress = ((@answered_questions.length / @all_questions.length)*100).to_i
+    @habit_progress = ((@answered_questions.length.to_f / @all_questions.length.to_f)*100).to_i
     end
     # @journey_progress = ((@completed_lessons.length.to_f / @journey_lessons.length)*100).to_i
     # assigning XP and badges
