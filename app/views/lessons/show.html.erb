@@ -14,7 +14,7 @@
     <div>
       <div class="author">
         <h5 class="author-name"><%= @lesson.author.capitalize %></h5>
-        <p class="author-description"><%= @lesson.author_description.truncate(44) %></p>
+        <p class="author-description"><%= @lesson.author_description.truncate(43, omission:'..(read more)') %></p>
       </div>
     </div>
   </div>
