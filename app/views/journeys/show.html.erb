@@ -25,7 +25,7 @@
         <% if  journey_lessons.video_watched == true and @complete_journey_lessons.flatten.include? journey_lessons %>
             <% journey_lessons.complete = true %>
             <% journey_lessons.save! %>
-            <%= link_to lesson_path(journey_lessons.lesson), class: "duolingo-button finished #{index.odd? ? 'duolingo-left' : 'duolingo-right' }", style: "top: #{(index + 1) * 100}px; background-image: url(#{asset_path('talent.svg')})" do %>
+            <%= link_to lesson_path(journey_lessons.lesson), class: "duolingo-button finished #{index.odd? ? 'duolingo-left' : 'duolingo-right' }", style: "top: #{(index + 1) * 100}px; background-image: url(#{asset_path('164-strong.svg')})" do %>
             <% if index == 0 %>
                 <svg width="59" height="62" viewBox="0 0 59 62" fill="none" class="duolingo-line duolingo-first-line">
                 <path d="M14.9369 40.2153C14.9369 40.2153 11.3886 42.8389 6.86611 49.1945C2.34362 55.5502 1.19287 59.814 1.19287 59.814L4.26197 61.9518C4.26197 61.9518 7.8905 55.1791 10.3163 51.5579C12.7421 47.9367 18.006 42.3532 18.006 42.3532L14.9369 40.2153Z" fill="#C4C4C4"/>
