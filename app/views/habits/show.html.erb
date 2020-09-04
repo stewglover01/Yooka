@@ -1,5 +1,6 @@
 <div class="container p-0 vh-100 flex-column">
   <% if @unanswered_questions.empty?%>
+  <% @streak %>
       <div class="d-flex align-items-center" style="height:85vh">
     <div class="d-flex flex-column align-items-center">
         <div class="dashboard-element d-flex flex-column align-items-center">
@@ -25,7 +26,7 @@
 </div>
   <% else %>
     <div class="progress ml-5 mt-4 mb-4">
-        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <%= @activity_progress %>%" aria-valuenow="<%= @activity_progress %>" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <%= @habit_progress %>%" aria-valuenow="<%= @habit_progress %>" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
     <div class="text-center">
       <h1>💤</h1>
@@ -36,7 +37,7 @@
     <%= simple_form_for [@unanswered_questions.first, @response] do |f| %>
       <% if @unanswered_questions.first.question == "What time did you wake up?" %>
         <div class="choices">
-        <% numbers = ["5 am", "5:30","6 am", "6:30","7 am", "7:30","8 am", "8:30","9 am", "9:30","10 am", "10:30 +",] %>
+        <% numbers = ["5 am", "5:30 am","6 am", "6:30 am","7 am", "7:30 am","8 am", "8:30 am","9 am", "9:30 am","10 am", "10 am +",] %>
         <% numbers.each do |answer| %>
               <label class="choice-number collection_radio_buttons" for="response_content_<%=answer%>"><%=answer%>
                 <input class ="hiddenRadioButton" type="radio" value="<%=answer%>" name="response[content]" id="response_content_<%=answer%>">

@@ -1,5 +1,5 @@
 <div class="absolute-header">
-  <h3><%= @lesson.topic.capitalize %></h3>
+  <h1><%= @lesson.topic.capitalize %></h1>
 </div>
 
 <div class="lesson-main-description mt-4">
@@ -13,7 +13,7 @@
     <%= image_tag @lesson.author_photo, class: "avatar-large m-3", id: "author-img" %>
     <div>
       <div class="author">
-        <h5 class="author-name"><%= @lesson.author.capitalize %></h5>
+        <h5 class="author-name"><%= @lesson.author.split.map(&:capitalize).join(' ') %></h5>
         <p class="author-description"><%= @lesson.author_description.truncate(44) %></p>
       </div>
     </div>
