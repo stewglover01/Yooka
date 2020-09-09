@@ -1,1 +1,1 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+Final Le Wagon group Rails project developing a mental health monitoring app for teenagers. Embedding TDD using Rspec. Back-end Ruby and Javascript actions to drive gamified elements within the student journey. Data visualisation for teachers using Google Charts
