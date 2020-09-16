@@ -1,10 +1,14 @@
-<div class="background-brand-color extra-margin-login">
+<div class="background-brand-color extra-margin-login justify-content-center">
   <%= image_tag "login-image.png", alt: "login-background", style: "position: absolute; z-index: -1; left: 0; top: 0;", class: "banner-width" %>
   <div class="container form-login">
-    <div class="row">
+    <div class="row justify-content-center">
       <div class="col-xs-12 col-sm-4 col-sm-offset-4">
         <h2>Log in</h2>
-
+        <div class="login-info form-inputs">
+          <p> Want to take a look at our project? Login with the details below:</p>
+          <p> Username: stewart@gmail.com</p>
+          <p> Password: 123456<p>
+        </div>
         <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="form-inputs">
             <%= f.input :email, required: false, autofocus: true, placeholder: "susie@gmail.com" %>

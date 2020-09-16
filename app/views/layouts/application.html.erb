@@ -27,19 +27,23 @@
 
 
   <body class="<%= "background-brand-color" if devise_controller? %>">
-    <%= render "shared/banner" %>
-    <%= render "shared/top-navbar" unless @home || @user%>
-    <% if controller_name == 'videos' && action_name == 'show'%>
-      <%= yield %>
-    <% elsif @home  %>
-      <div class="home-container">
+      <%= render "shared/banner" %>
+      <%= render "shared/top-navbar" unless @home || @user%>
+  <div class="d-flex justify-content-center">
+    <div class="phone-container">
+      <% if controller_name == 'videos' && action_name == 'show'%>
         <%= yield %>
-      </div>
-    <%  else %>
-      <div class="container">
-        <%= yield %>
-      </div>
-    <%  end %>
-    <%= render "shared/navbar" unless @home %>
+      <% elsif @home  %>
+        <div class="home-container">
+          <%= yield %>
+        </div>
+      <%  else %>
+        <div class="container">
+          <%= yield %>
+        </div>
+      <%  end %>
+    </div>
+    </div>
+      <%= render "shared/navbar" unless @home %>
   </body>
 </html>
